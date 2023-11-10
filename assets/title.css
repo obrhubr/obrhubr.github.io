@@ -1,0 +1,24 @@
+.pagetitlediv {
+    margin-top: 50px;
+    margin-bottom: 30px;
+
+    color: var(--title-text-color);
+}
+
+.pagetitle {
+    position: relative;
+    display: table-cell;
+    overflow: hidden;
+
+    padding: 20px 0px 30px 0px;
+
+    font-size: 28px;
+    font-weight: 700;
+}
+
+.pagetitle:after {
+    content: "========================================================================================================================================================================";
+    position: absolute;
+    bottom: 5px;
+    left: 0;
+}

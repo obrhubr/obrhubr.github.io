@@ -1,0 +1,84 @@
+:root {
+    --main-bg-color: black;
+    --sec-bg-color: rgb(18, 18, 18);
+    
+    --title-text-color: white;
+    --detail-text-color: rgb(109, 109, 109);
+
+    --main-text-color: rgb(192, 192, 192);
+    --link-text-color: rgb(25, 182, 255);
+    
+    --highlight-color: rgb(252, 30, 163);
+}
+
+body {
+    background-color: var(--sec-bg-color);
+    width: 100%;
+    margin: 0;
+    padding: 0;
+    display: block;
+}
+
+.nav {
+    display: flex;
+    flex-direction: row;
+}
+
+.nav div {
+    margin-right: 20px;
+}
+
+.main {
+    font-family: 'Oxygen Mono', sans-serif;
+    
+    margin: 0;
+    padding: 20px;
+
+    max-width: 800px;
+    margin: auto;
+
+    background-color: var(--main-bg-color);
+    color: var(--main-text-color);
+
+    font-size: 16px;
+    font-weight: 400;
+}
+
+.link {
+    color: var(--link-text-color);
+    text-decoration: underline;
+    cursor: pointer;
+    text-underline-offset: 3px;
+}
+
+a {
+    color: var(--highlight-color);
+    text-decoration: underline;
+    cursor: pointer;
+    text-underline-offset: 2px;
+}
+
+.detail {
+    color: var(--detail-text-color);
+    margin-bottom: 30px;
+}
+
+.title {
+    color: var(--title-text-color);
+    text-decoration-color: var(--highlight-color);
+    text-underline-offset: 5px;
+
+    font-weight: 800;
+}
+
+.titlediv {
+    margin-bottom: 10px;
+}
+
+.excerpt {
+    margin-bottom: 10px;
+}
+
+.post {
+    margin-bottom: 50px;
+}
