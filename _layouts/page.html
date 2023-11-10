@@ -1,0 +1,28 @@
+---
+layout: head
+---
+
+{% include header.html %}
+
+<div class="pagetitlediv">
+	<div class="pagetitle">
+		{{ page.title }}
+	</div>
+</div>
+
+<div>
+	<div class="detail">
+		<span><i class="fa fa-clock"></i></span>
+		<span>{{ page.time }} read</span>
+
+		<span><i class="fa fa-pencil"></i></span>
+		<span>{{ page.published }}</span>
+
+		<span><i class="fa fa-tags"></i></span>
+		<span class="pseudojson">{{ page.tags | jsonify }}</span>
+	</div>
+
+	{{ content }}
+</div>
+
+{% include footer.html %}
