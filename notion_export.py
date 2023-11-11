@@ -1,6 +1,7 @@
 from notion_client import Client
 import os
 from notion2md.exporter.block import MarkdownExporter
+from notion2md.convertor.richtext import *
 import zipfile
 from datetime import datetime
 import shutil
@@ -132,7 +133,7 @@ excerpt: {excerpt}
 		time=str(round(len(new_file.split(" ")) / 200)) + " minute", 
 		date=pages[0][1]["last_edited_time"].split("T")[0], 
 		tags=" ".join(tags),
-		excerpt=pages[0][1]["properties"]["Summary"]["rich_text"][0]["text"]["content"]
+		excerpt=richtext_convertor(pages[0][1]["properties"]["Summary"]["rich_text"])
 	)
 
 	print("Writing new file to .md...")
