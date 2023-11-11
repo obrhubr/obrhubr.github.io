@@ -6,7 +6,7 @@ time: 9 minute
 published: 2023-11-11
 
 tags: CS C# Engines
-excerpt: Sebastian Lague started a competition to build the best chess engine in only 1024 tokens. My goal was to simplify the NNUE used by Stockfish to implement it for the competition. But the necessary reduction in complexity made the engine very weak. 
+excerpt: A Chess-AI is something every programmer should build at least once and 
 ---
 
 # How to try to build a chess engine and fail
