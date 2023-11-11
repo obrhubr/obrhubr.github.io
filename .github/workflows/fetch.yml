@@ -1,8 +1,14 @@
 name: fetch
 
-on:
+on: 
   schedule:
     - cron: "0 0 * * 0"    #runs at 11:30 UTC everyday
+  workflow_dispatch:
+    inputs:
+      environment:
+        type: string
+        default: DEV
+        required: true
 
 jobs:
   build:
