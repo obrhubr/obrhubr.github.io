@@ -17,7 +17,7 @@
 					<span class="pseudojson">{{ post.tags | jsonify }}</span>
 				</div>
 				<div class="excerpt">
-					{{ post.excerpt }}
+					{{ post.excerpt | markdownify }}
 				</div>
 				<div>
 					<span>
