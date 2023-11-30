@@ -3,3 +3,6 @@
 
  - name: Github
    url: https://github.com/obrhubr
+
+ - name: RSS Feed
+   url: https://obrhubr.github.io/feed.xml
