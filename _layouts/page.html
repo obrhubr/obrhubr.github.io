@@ -2,6 +2,16 @@
 layout: head
 ---
 
+<meta content="{{ page.title }}" property="og:title">
+<meta content="article" property="og:type">
+<meta content="{{ page.excerpt }}" property="og:description">
+<meta content="{{ site.url }}{{ page.url }}" property="og:url">
+{% if page.previewimage %}
+	{% if page.previewimage != "none" %}
+		<meta content="{{ site.url }}/assets/{{ page.permalink }}/{{ page.previewimage }}" property="og:image">
+	{% endif %}
+{% endif %}
+
 {% include header.html %}
 
 <div class="pagetitlediv">
