@@ -7,6 +7,7 @@ from datetime import datetime
 import shutil
 import re
 from dotenv import load_dotenv
+import urllib.request
 
 load_dotenv()
 
@@ -106,6 +107,20 @@ for page in pages:
 	with open("./notion2md/" + short_name + "/" + datetime.today().strftime('%Y-%m-%d') + "-" + short_name + ".md", "w") as f:
 		f.write(new_file)
 
+	# Add preview image
+	previewimage = "none"
+	preview_images = pages[0][1]["properties"]["preview-image"]["files"]
+	if len(preview_images) != 0:
+		# add image to meta tags
+		name = preview_images[0]['name'].split(".")
+		previewimage = "preview." + name[-1]
+
+		# download image
+		image_url = preview_images[0]['file']['url']
+
+		urllib.request.urlretrieve(image_url, "./notion2md/" + short_name + "/assets/" + previewimage)
+
+
 	# insert jekyll metadata
 	print("Inserting jekyll metadata...")
 	tags = []
@@ -126,6 +141,7 @@ published: {date}
 
 tags: {tags}
 permalink: {permalink}
+previewimage: {previewimage}
 excerpt: {excerpt}
 ---
 
@@ -135,6 +151,7 @@ excerpt: {excerpt}
 		date=pages[0][1]["last_edited_time"].split("T")[0], 
 		tags=" ".join(tags),
 		permalink=short_name,
+		previewimage=previewimage,
 		excerpt=richtext_convertor(pages[0][1]["properties"]["Summary"]["rich_text"])
 	)
 
