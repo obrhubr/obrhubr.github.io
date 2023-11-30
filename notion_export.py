@@ -145,7 +145,7 @@ excerpt: {excerpt}
 	# Copy markdown and assets to production folders
 	print("Copy files to assets/ and _posts/ folders...")
 	shutil.copytree("./notion2md/" + short_name + "/assets", "./assets/" + short_name)
-	shutil.copy("./notion2md/" + short_name + "/" + datetime.today().strftime('%Y-%m-%d') + "-" + short_name + ".md", "_posts")
+	shutil.copy("./notion2md/" + short_name + "/" + pages[0][1]["last_edited_time"].split("T")[0] + "-" + short_name + ".md", "_posts")
 
 # Remove Notion2md folder
 print("Removing the notion2md folder...")
