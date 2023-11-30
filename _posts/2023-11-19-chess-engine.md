@@ -3,7 +3,7 @@ layout: page
 title: How to build a chess engine and fail
 
 time: 9 minute
-published: 2023-11-11
+published: 2023-11-17
 
 tags: CS C# Engines
 permalink: chess-engine
