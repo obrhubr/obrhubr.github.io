@@ -103,13 +103,13 @@ for page in pages:
 			f.read()
 		)
 
-	print("Writing new file to .md...")
-	with open("./notion2md/" + short_name + "/" + datetime.today().strftime('%Y-%m-%d') + "-" + short_name + ".md", "w") as f:
+	print("Writing original file to .md...")
+	with open("./notion2md/" + short_name + "/" + page[1]["last_edited_time"].split("T")[0] + "-" + short_name + ".md", "w") as f:
 		f.write(new_file)
 
 	# Add preview image
 	previewimage = "none"
-	preview_images = pages[0][1]["properties"]["preview-image"]["files"]
+	preview_images = page[1]["properties"]["preview-image"]["files"]
 	if len(preview_images) != 0:
 		# add image to meta tags
 		name = preview_images[0]['name'].split(".")
@@ -120,11 +120,23 @@ for page in pages:
 
 		urllib.request.urlretrieve(image_url, "./notion2md/" + short_name + "/assets/" + previewimage)
 
+	# Add favicon
+	favicon = "favicon.png"
+	if page[1]["icon"]["type"] == "emoji":
+		favicon = short_name + "/favicon.png"
+
+		# Fetch icon as png from the web
+		from urllib.request import urlretrieve
+		emoji = page[1]['icon']["emoji"]
+		if len(emoji) > 1:
+			emoji = emoji[0]
+		print("Downloading emoji as favicon")
+		urlretrieve('https://emojiapi.dev/api/v1/{:X}'.format(ord(emoji)) + "/32.png", "./notion2md/" + short_name + "/assets" + "/favicon.png")
 
 	# insert jekyll metadata
 	print("Inserting jekyll metadata...")
 	tags = []
-	for tag in pages[0][1]["properties"]["Tags"]["multi_select"]:
+	for tag in page[1]["properties"]["Tags"]["multi_select"]:
 		tags += [tag["name"]]
 
 	new_file = ""
@@ -142,6 +154,7 @@ published: {date}
 tags: {tags}
 permalink: {permalink}
 previewimage: {previewimage}
+favicon: {favicon}
 excerpt: {excerpt}
 ---
 
@@ -152,17 +165,18 @@ excerpt: {excerpt}
 		tags=" ".join(tags),
 		permalink=short_name,
 		previewimage=previewimage,
-		excerpt=richtext_convertor(pages[0][1]["properties"]["Summary"]["rich_text"])
+		favicon=favicon,
+		excerpt=richtext_convertor(page[1]["properties"]["Summary"]["rich_text"])
 	)
 
-	print("Writing new file to .md...")
-	with open("./notion2md/" + short_name + "/" + datetime.today().strftime('%Y-%m-%d') + "-" + short_name + ".md", "w") as f:
+	print("Writing new file with metadata to .md...")
+	with open("./notion2md/" + short_name + "/" + page[1]["last_edited_time"].split("T")[0] + "-" + short_name + ".md", "w") as f:
 		f.write(metadata + new_file)
 
 	# Copy markdown and assets to production folders
 	print("Copy files to assets/ and _posts/ folders...")
 	shutil.copytree("./notion2md/" + short_name + "/assets", "./assets/" + short_name)
-	shutil.copy("./notion2md/" + short_name + "/" + pages[0][1]["last_edited_time"].split("T")[0] + "-" + short_name + ".md", "_posts")
+	shutil.copy("./notion2md/" + short_name + "/" + page[1]["last_edited_time"].split("T")[0] + "-" + short_name + ".md", "_posts")
 
 # Remove Notion2md folder
 print("Removing the notion2md folder...")
