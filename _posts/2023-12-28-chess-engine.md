@@ -3,7 +3,7 @@ layout: page
 title: How to build a chess engine and fail
 
 time: 9 minute
-published: 2023-11-30
+published: 2023-12-28
 
 tags: CS C# Engines
 permalink: chess-engine
@@ -32,15 +32,15 @@ Sebastian Lague has the perfect answer to that question: a [competition](https:/
 
 This limitation prevents the implementation of any neural networks or complex evaluation functions necessary for chess engines of the second type described above. This naturally would lead participants to choose to implement an efficient algorithm to search as much of the game tree as possible.
 
-Despite this, I wanted to do something akin to knowledge distillation, inspired by the NNUE of Stockfish, that uses the current board as an input and by applying the weights and biases of the model it comes up with a number.
+Despite this, I wanted to do something akin to knowledge distillation, inspired by the NNUE of Stockfish, that uses the current board as an input and applies the weights and biases of the model to come up with a number.
 
 If, instead of using a complex network, we used a single 8x8 grid of weights for each type of piece, we could distill the game knowledge of powerful engines into a very small number of bytes. This evaluation function could then still be “plug and play” with a traditional Minimax engine and give our engine a crucial competitive advantage, while still staying inside the allowed 1024 tokens.
 
-**(To anyone familiar with chess engine programming, this is essentially a ****[PST](https://www.chessprogramming.org/Piece-Square_Tables)****, a piece square table. What's new here is the way it's values will be fine-tuned.)**
+(To anyone familiar with chess engine programming, this is essentially a [PST](https://www.chessprogramming.org/Piece-Square_Tables), a piece square table. What's new here is the way it's values will be fine-tuned.)
 
 ## The Idea
 
-A very basic approach to an evaluation function is to add up the values of each piece a player has on the board and get the difference between these values for both players, which gives a score. Instead of assigning a static value to each type of piece (8 for a queen, 3 for a knight etc…) we weight their value based on their position on the field. One basic improvement we could make is to increase the value of a pawn the further it progresses up the board.
+A very basic approach for creating an evaluation function is adding up the values of each piece a player has on the board and calculating the difference between these values for both players, which gives a score. Instead of assigning a static value to each type of piece (8 for a queen, 3 for a knight etc…) we weight their value based on their position on the field. One basic improvement we could make is to increase the value of a pawn the further it progresses up the board.
 
 ![Untitled](/assets/chess-engine/2c42617a_Untitled.png)
 
