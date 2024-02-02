@@ -1,11 +1,11 @@
 ---
 layout: page
-title: How to build a chess engine and fail
+title: Machine Learning to Ski
 
 time: 9 minute
-published: 2023-12-28
+published: 2024-02-02
 
-tags: CS C# Engines
+tags: CS C# Engines AI
 permalink: chess-engine
 previewimage: preview.png
 favicon: chess-engine/favicon.png
