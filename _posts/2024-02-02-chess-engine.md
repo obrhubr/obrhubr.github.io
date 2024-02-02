@@ -1,6 +1,6 @@
 ---
 layout: page
-title: Machine Learning to Ski
+title: How to build a chess engine and fail
 
 time: 9 minute
 published: 2024-02-02

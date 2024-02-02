@@ -1,6 +1,7 @@
 :root {
     --main-bg-color: black;
     --sec-bg-color: rgb(18, 18, 18);
+    --table-color: rgb(40, 40, 40);
     
     --title-text-color: white;
     --detail-text-color: rgb(109, 109, 109);

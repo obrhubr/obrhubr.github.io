@@ -159,9 +159,9 @@ excerpt: {excerpt}
 ---
 
 """.format(
-		title=pages[0][1]["properties"]["Name"]["title"][0]["text"]["content"],
+		title=page[1]["properties"]["Name"]["title"][0]["text"]["content"],
 		time=str(round(len(new_file.split(" ")) / 200)) + " minute", 
-		date=pages[0][1]["last_edited_time"].split("T")[0], 
+		date=page[1]["last_edited_time"].split("T")[0], 
 		tags=" ".join(tags),
 		permalink=short_name,
 		previewimage=previewimage,
