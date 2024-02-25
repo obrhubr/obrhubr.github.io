@@ -14,11 +14,11 @@ excerpt: A Chess-AI is something every programmer should build at least once and
 
 # How to try to build a chess engine and fail
 
-(View the sourcecode and a more detailed writeup about the project at [https://github.com/obrhubr/chess-challenge-participation/](https://github.com/obrhubr/chess-challenge-participation/))
+(View the sourcecode and a more detailed write-up about the project at [https://github.com/obrhubr/chess-challenge-participation/](https://github.com/obrhubr/chess-challenge-participation/))
 
 ## What is the current state of chess engines?
 
-A Chess-AI is something of a rite of passage for every software engineer, as is a snake clone or a calculator console application. If you did not try to build one yet, you are certainly missing out (or preserving your own sanity, whatever you prefer). Between the [chessprogrammingwiki.org](https://www.chessprogramming.org/Main_Page) and other online ressources this is now a pretty well explored field, but that is not to say that innovation is impossible and nothing changed since the days of Deep Blue (the first ever chess computer the officially beat a grandmaster). 
+A Chess-AI is something of a rite of passage for every software engineer, as is a snake clone or a calculator console application. If you did not try to build one yet, you are certainly missing out (or preserving your own sanity, whatever you prefer). Between the [chessprogrammingwiki.org](https://www.chessprogramming.org/Main_Page) and other online resources this is now a pretty well explored field, but that is not to say that innovation is impossible and nothing changed since the days of Deep Blue (the first ever chess computer the officially beat a grandmaster). 
 
 In recent years Stockfish, the most advanced computer chess engine, has gotten a major upgrade in the form of a NNUE, a fast neural network of sorts which is used as it’s evaluation function. An evaluation function does exactly what it sounds like, it is used by the engine to evaluate the current position.
 
@@ -34,7 +34,7 @@ This limitation prevents the implementation of any neural networks or complex ev
 
 Despite this, I wanted to do something akin to knowledge distillation, inspired by the NNUE of Stockfish, that uses the current board as an input and applies the weights and biases of the model to come up with a number.
 
-If, instead of using a complex network, we used a single 8x8 grid of weights for each type of piece, we could distill the game knowledge of powerful engines into a very small number of bytes. This evaluation function could then still be “plug and play” with a traditional Minimax engine and give our engine a crucial competitive advantage, while still staying inside the allowed 1024 tokens.
+If, instead of using a complex network, we used a single 8x8 grid of weights for each type of piece, we could distil the game knowledge of powerful engines into a very small number of bytes. This evaluation function could then still be “plug and play” with a traditional Minimax engine and give our engine a crucial competitive advantage, while still staying inside the allowed 1024 tokens.
 
 (To anyone familiar with chess engine programming, this is essentially a [PST](https://www.chessprogramming.org/Piece-Square_Tables), a piece square table. What's new here is the way it's values will be fine-tuned.)
 
@@ -96,7 +96,7 @@ The fitness function would consist of evaluating a position with the values of t
 
 ## Disappointing results
 
-My enthusiasm for this idea quickly ebbed away very quickly once I realised how long training would take and also how bad the first dozen generations really were. Plugging in the values of the best models produced mediocre results, even against very weak opponents.
+My enthusiasm for this idea quickly ebbed away very quickly once I realized how long training would take and also how bad the first dozen generations really were. Plugging in the values of the best models produced mediocre results, even against very weak opponents.
 
 What was wrong? Distilling the knowledge stored in the [NNUE](https://tests.stockfishchess.org/nns), which is pretty small but still about 50MBs large, into only 24576 values was too much. The loss of context that my implementation had by design was crippling it’s ability. The different boards for each piece that make up the model do not consider their position relative to other pieces. Moving the queen to c6 would be evaluated as equally good, whether it blundered the queen to a pawn or delivered a beautiful checkmate.
 
@@ -114,11 +114,11 @@ For example, if white is to move, there are 11 other piece types (W Queen, W Roo
 
 ![Untitled-2023-11-03-1915](/assets/chess-engine/3d0a095a_Untitled-2023-11-03-1915.png)
 
-This graphic from the [chessprogrammingwiki.org](https://www.chessprogramming.org/Main_Page) nicely summarises the reset of the model architecture.
+This graphic from the [chessprogrammingwiki.org](https://www.chessprogramming.org/Main_Page) nicely summarizes the reset of the model architecture.
 
 ![HalfKAv2](/assets/chess-engine/82e86e6a_HalfKAv2.png)
 
-This architecture also allows the highly optimised evaluation of the network that makes stockfish so fast. As long as the king does not move, you only have to update a single input node to recompute the evaluation for each move.
+This architecture also allows the highly optimized evaluation of the network that makes stockfish so fast. As long as the king does not move, you only have to update a single input node to recompute the evaluation for each move.
 
 ## How could the shortcomings be remediated?
 
