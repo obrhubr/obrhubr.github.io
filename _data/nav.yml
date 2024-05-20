@@ -1,6 +1,9 @@
  - name: Home
    url: /
 
+ - name: About
+   url: /about.html
+
  - name: Github
    url: https://github.com/obrhubr
 
