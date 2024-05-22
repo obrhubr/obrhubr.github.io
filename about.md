@@ -17,11 +17,11 @@ I could also not have done this without the great [notion2md](https://github.com
 
 I urge you to checkout the following blogs and sites:
 
- * [James Haydon's Blog](https://jameshaydon.github.io)
+ * [jameshaydon.github.io](https://jameshaydon.github.io)
  * [tom7.org](http://tom7.org/)
  * [qntm.org](https://qntm.org)
  * [maggieappleton.com](https://maggieappleton.com/)
- * [https://publicdomainreview.org/](https://publicdomainreview.org/)
- * [https://www.thirtythreeforty.net/](https://www.thirtythreeforty.net/)
- * [https://simonwillison.net/](https://simonwillison.net/)
- * [https://fasterthanli.me/](https://fasterthanli.me/)
+ * [publicdomainreview.org](https://publicdomainreview.org/)
+ * [www.thirtythreeforty.net](https://www.thirtythreeforty.net/)
+ * [simonwillison.net](https://simonwillison.net/)
+ * [fasterthanli.me](https://fasterthanli.me/)

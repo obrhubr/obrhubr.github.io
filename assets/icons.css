@@ -1,6 +1,0 @@
-.link:after {
-    content: "\f08e";
-    font-size: small;
-    font-family: FontAwesome;
-    color: var(--link-text-color);
-}
