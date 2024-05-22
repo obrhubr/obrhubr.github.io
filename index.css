@@ -12,15 +12,22 @@
     --highlight-color: rgb(252, 30, 163);
 }
 
+html {
+    width: 100%;
+    height: 100%;
+}
+
 body {
     background-color: var(--sec-bg-color);
     width: 100%;
+    height: 100%;
     margin: 0;
     padding: 0;
     display: block;
 }
 
 .nav {
+    padding-top: 20px;
     display: flex;
     flex-direction: row;
 }
@@ -33,9 +40,11 @@ body {
     font-family: 'Oxygen Mono', sans-serif;
     
     margin: 0;
-    padding: 20px;
+    padding-left: 20px;
+    padding-right: 20px;
 
     max-width: 800px;
+    min-height: 100%;
     margin: auto;
 
     background-color: var(--main-bg-color);
