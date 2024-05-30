@@ -7,6 +7,7 @@
     --detail-text-color: rgb(109, 109, 109);
 
     --main-text-color: rgb(192, 192, 192);
+    --excerpt-color: rgb(147, 147, 147);
     --link-text-color: rgb(25, 182, 255);
     
     --highlight-color: rgb(252, 30, 163);
@@ -24,18 +25,18 @@ body {
     margin: 0;
     padding: 0;
     display: block;
-
-    text-align: justify;
 }
 
 .nav {
     padding-top: 20px;
     display: flex;
     flex-direction: row;
+    flex-wrap: wrap;
 }
 
 .nav div {
-    margin-right: 20px;
+    margin-right: 40px;
+    margin-bottom: 10px;
 }
 
 .main {
@@ -73,7 +74,7 @@ a {
 
 .detail {
     color: var(--detail-text-color);
-    margin-bottom: 30px;
+    margin-bottom: 0px;
 }
 
 .title {
@@ -86,14 +87,17 @@ a {
 
 .titlediv {
     margin-bottom: 10px;
+    font-weight: bold;
 }
 
 .excerpt {
     margin-bottom: 10px;
+    color: var(--excerpt-color);
 }
 
 .post {
     margin-bottom: 50px;
+    text-align: justify;
 }
 
 img {

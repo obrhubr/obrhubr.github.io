@@ -1,0 +1,20 @@
+<div>
+	{% for post in site.pages %}
+		{% if post.short == true %}
+			<div class="post">
+				<div class="titlediv">
+					## 
+					<span><a class="link title" href="{{ post.url }}">{{ post.title }} </a></span>
+				</div>
+				<div class="detail">
+					<span><i class="fa fa-pencil"></i></span>
+					<span>{{ post.published }}</span>
+					
+					<span>
+						<a class="link" href="{{ post.url }}">Read More » </a>
+					</span>
+				</div>
+			</div>
+		{% endif %}
+  	{% endfor %}
+</div>
