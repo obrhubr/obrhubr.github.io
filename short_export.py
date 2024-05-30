@@ -19,7 +19,7 @@ notion = Client(auth=os.environ["NOTION_TOKEN"])
 print("Fetching blog posts from Notion...")
 blog_posts = notion.databases.query(
 	**{
-		"database_id": os.environ["DB_ID"]
+		"database_id": os.environ["SHORT_DB_ID"]
 	}
 )
 
@@ -35,7 +35,7 @@ for entry in blog_posts["results"]:
 print("Deleting old blog posts and folders...")
 
 print("Delete files in _posts folder...")
-files = os.walk("./_posts/")
+files = os.walk("./short/")
 
 for dirpath, dirnames, filenames in files:
 	for filename in filenames:
@@ -49,7 +49,7 @@ files = os.walk("./assets/")
 for dirpath, dirnames, filenames in files:
 	for dirname in dirnames:
 		# Only delete folders from blog posts not notes
-		if dirname[0:2] != "20":
+		if dirname[0:2] == "20":
 			print("Deleted folder={folder}...".format(folder=dirpath + "/" + dirname))
 			shutil.rmtree(dirpath + "/" + dirname)
 
@@ -63,8 +63,7 @@ for page in pages:
 	print("Exporting page from Notion...")
 	MarkdownExporter(block_id=page[0], output_path='./notion2md/', download=True).export()
 
-	# Get url name of the page
-	short_name = page[1]["properties"]["short-name"]["rich_text"][0]["text"]["content"]
+	short_name =  page[1]["created_time"].split("T")[0] + "-" + page[1]["properties"]["Name"]["title"][0]["text"]["content"].replace(' ', '-').lower()
 
 	# Extract zip file export to short-name folder
 	with zipfile.ZipFile("./notion2md/" + page[0] + ".zip", 'r') as zip_ref:
@@ -109,38 +108,6 @@ for page in pages:
 	with open("./notion2md/" + short_name + "/" + page[1]["created_time"].split("T")[0] + "-" + short_name + ".md", "w") as f:
 		f.write(new_file)
 
-	# Add preview image
-	previewimage = "none"
-	preview_images = page[1]["properties"]["preview-image"]["files"]
-	if len(preview_images) != 0:
-		# add image to meta tags
-		name = preview_images[0]['name'].split(".")
-		previewimage = "preview." + name[-1]
-
-		# download image
-		image_url = preview_images[0]['file']['url']
-
-		urllib.request.urlretrieve(image_url, "./notion2md/" + short_name + "/assets/" + previewimage)
-
-	# Add favicon
-	favicon = "favicon.png"
-	if page[1]["icon"]["type"] == "emoji":
-		favicon = short_name + "/favicon.png"
-
-		# Fetch icon as png from the web
-		from urllib.request import urlretrieve
-		emoji = page[1]['icon']["emoji"]
-		if len(emoji) > 1:
-			emoji = emoji[0]
-		print("Downloading emoji as favicon")
-		urlretrieve('https://emojiapi.dev/api/v1/{:X}'.format(ord(emoji)) + "/32.png", "./notion2md/" + short_name + "/assets" + "/favicon.png")
-
-	# insert jekyll metadata
-	print("Inserting jekyll metadata...")
-	tags = []
-	for tag in page[1]["properties"]["Tags"]["multi_select"]:
-		tags += [tag["name"]]
-
 	new_file = ""
 	metadata = ""
 
@@ -150,25 +117,13 @@ for page in pages:
 layout: page
 title: {title}
 
-time: {time}
 published: {date}
-
-tags: {tags}
-permalink: {permalink}
-previewimage: {previewimage}
-favicon: {favicon}
-excerpt: {excerpt}
+short: true
 ---
 
 """.format(
 		title=page[1]["properties"]["Name"]["title"][0]["text"]["content"],
-		time=str(round(len(new_file.split(" ")) / 200)) + " minute", 
-		date=page[1]["created_time"].split("T")[0], 
-		tags=" ".join(tags),
-		permalink=short_name,
-		previewimage=previewimage,
-		favicon=favicon,
-		excerpt=richtext_convertor(page[1]["properties"]["Summary"]["rich_text"])
+		date=page[1]["created_time"].split("T")[0],
 	)
 
 	print("Writing new file with metadata to .md...")
@@ -178,7 +133,7 @@ excerpt: {excerpt}
 	# Copy markdown and assets to production folders
 	print("Copy files to assets/ and _posts/ folders...")
 	shutil.copytree("./notion2md/" + short_name + "/assets", "./assets/" + short_name)
-	shutil.copy("./notion2md/" + short_name + "/" + page[1]["created_time"].split("T")[0] + "-" + short_name + ".md", "_posts")
+	shutil.copy("./notion2md/" + short_name + "/" + page[1]["created_time"].split("T")[0] + "-" + short_name + ".md", "short")
 
 # Remove Notion2md folder
 print("Removing the notion2md folder...")

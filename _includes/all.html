@@ -1,0 +1,46 @@
+<div>
+	{%- assign all = site.pages | concat: site.posts -%}
+	{% for post in all %}
+		{% if post.excerpt != null %}
+			<div class="post">
+				<div class="titlediv">
+					## 
+					<span><a class="link title" href="{{ post.url }}">{{ post.title }} </a></span>
+				</div>
+				<div class="detail">
+					<span><i class="fa fa-clock"></i></span>
+					<span>{{ post.time }} read</span>
+
+					<span><i class="fa fa-pencil"></i></span>
+					<span>{{ post.published }}</span>
+
+					<span><i class="fa fa-tags"></i></span>
+					<span class="pseudojson">{{ post.tags | jsonify }}</span>
+				</div>
+				<div class="excerpt">
+					{{ post.excerpt | markdownify }}
+				</div>
+				<div>
+					<span>
+						<a class="link" href="{{ post.url }}">Read More » </a>
+					</span>
+				</div>
+			</div>
+		{% elsif post.short == true %}
+			<div class="post">
+				<div class="titlediv">
+					### 
+					<span><a class="link title" href="{{ post.url }}">{{ post.title }} </a></spa#n>
+				</div>
+				<div class="detail">
+					<span><i class="fa fa-pencil"></i></span>
+					<span>{{ post.published }}</span>
+					
+					<span>
+						<a class="link" href="{{ post.url }}">Read More » </a>
+					</span>
+				</div>
+			</div>
+		{% endif %}
+  	{% endfor %}
+</div>

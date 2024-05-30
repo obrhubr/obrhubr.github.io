@@ -3,9 +3,15 @@ layout: about
 title: About
 ---
 
-Hey, my name is Niklas and I am a developer from Austria and I want to study computer science at ETHZ.
+Hey, my name is Niklas ([Github](https://github.com/obrhubr)) and I am a developer from Austria and I want to study computer science at ETHZ. 
 
 I like coding, neural networks, Gödel Escher Bach, sociology, writing, model airplanes, fountain pens and champagne.
+
+### Work Experience
+
+ - [Journi](https://journiapp.com) (2024 Summer Internship for 2 months)
+ - [Journi](https://journiapp.com) (2023 Summer Internship for 2 months)
+ - [Web&Söhne](https://webundsoehne.com) (2022 Summer Internship for 2 months)
 
 ### Acknowledgements
 
