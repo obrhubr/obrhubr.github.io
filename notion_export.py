@@ -155,7 +155,7 @@ published: {date}
 
 tags: {tags}
 permalink: {permalink}
-previewimage: {previewimage}
+image: {previewimage}
 favicon: {favicon}
 excerpt: {excerpt}
 ---
