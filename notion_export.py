@@ -166,7 +166,7 @@ excerpt: {excerpt}
 		date=page[1]["created_time"].split("T")[0], 
 		tags=" ".join(tags),
 		permalink=short_name,
-		previewimage=previewimage,
+		previewimage="assets/" + short_name + "/" + previewimage,
 		favicon=favicon,
 		excerpt=richtext_convertor(page[1]["properties"]["Summary"]["rich_text"])
 	)
