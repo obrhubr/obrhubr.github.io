@@ -24,6 +24,7 @@ blog_posts = notion.databases.query(
 )
 
 # Get all blog posts marked ready for publishing
+old_pages = []
 pages = []
 
 for entry in blog_posts["results"]:
@@ -50,6 +51,7 @@ for dirpath, dirnames, filenames in files:
 	for dirname in dirnames:
 		# Only delete folders from blog posts not notes
 		if dirname[0:2] != "20":
+			old_pages += [dirname]
 			print("Deleted folder={folder}...".format(folder=dirpath + "/" + dirname))
 			shutil.rmtree(dirpath + "/" + dirname)
 
@@ -183,5 +185,27 @@ excerpt: {excerpt}
 # Remove Notion2md folder
 print("Removing the notion2md folder...")
 shutil.rmtree("./notion2md")
+
+# Send logsnag notification
+if len(old_pages) != len(pages):
+	import requests
+	# Define the endpoint URL
+	url = 'https://example.com/api/endpoint'
+	token = 'a4a1235927cef91812a645e040b3ed15'
+
+	data = {
+		'project': 'obrhubr',
+		'channel': 'blog',
+		'event': 'publish-post',
+		'description': 'A new blogpost was just published.',
+		'icon': '📫',
+		'notify': 'true'
+	}
+
+	headers = {
+		'Authorization': 'Bearer ' + token,
+		'Content-Type': 'application/json'  # Assuming you are sending JSON data
+	}
+	response = requests.post(url, json=data, headers=headers)
 
 print("Done.")
