@@ -1,6 +1,6 @@
 ---
 layout: page
-title: Making a German version of the NYT puzzle “Connections”
+title: "Making a German version of the NYT puzzle “Connections”"
 
 time: 7 minute
 published: 2024-05-26
@@ -9,8 +9,8 @@ tags: Programming Puzzle Data Driven
 permalink: nyt-connections
 image: assets/nyt-connections/preview.svg
 favicon: nyt-connections/favicon.png
-excerpt: I created a clone of the NYT Connections game in german: Verbindungen.
-A short taste of fame on Reddit allows me to evaluate user’s attempts at solving the puzzles. But what makes a puzzle great and could we try to generate them automatically?
+excerpt: "I created a clone of the NYT Connections game in german: Verbindungen.
+A short taste of fame on Reddit allows me to evaluate user’s attempts at solving the puzzles. But what makes a puzzle great and could we try to generate them automatically?"
 ---
 
 # Cloning and hosting a German version of “Connections”, the NYT puzzle

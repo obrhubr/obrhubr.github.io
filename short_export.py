@@ -117,7 +117,7 @@ for page in pages:
 		new_file = f.read()
 		metadata = """---
 layout: page
-title: {title}
+title: "{title}"
 
 published: {date}
 short: true
