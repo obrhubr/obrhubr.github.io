@@ -1,6 +1,6 @@
 ---
 layout: page
-title: How to build a chess engine and fail
+title: "How to build a chess engine and fail"
 
 time: 9 minute
 published: 2023-07-24
@@ -9,7 +9,7 @@ tags: CS C# Engines AI
 permalink: chess-engine
 image: assets/chess-engine/preview.png
 favicon: chess-engine/favicon.png
-excerpt: A Chess-AI is something every programmer should build at least once and [Sebastian Lague’s](https://www.youtube.com/@SebastianLague) [competition](https://www.youtube.com/watch?v=iScy18pVR58) was the perfect opportunity for me to do so. Constrained to 1024 tokens I wanted to implement an evaluation function similar to that of Stockfish’s NNUE but heavily simplified. And instead of using a complex feed-forward algorithm to train the neural network I wanted to optimise the parameters using a genetic algorithm that relied on historical Stockfish data. However, I quickly realised why the model Stockfish uses has 50MBs of data and would not fit into my small bot for the competition…
+excerpt: "A Chess-AI is something every programmer should build at least once and [Sebastian Lague’s](https://www.youtube.com/@SebastianLague) [competition](https://www.youtube.com/watch?v=iScy18pVR58) was the perfect opportunity for me to do so. Constrained to 1024 tokens I wanted to implement an evaluation function similar to that of Stockfish’s NNUE but heavily simplified. And instead of using a complex feed-forward algorithm to train the neural network I wanted to optimise the parameters using a genetic algorithm that relied on historical Stockfish data. However, I quickly realised why the model Stockfish uses has 50MBs of data and would not fit into my small bot for the competition…"
 ---
 
 # How to try to build a chess engine and fail
