@@ -145,7 +145,7 @@ shutil.rmtree("./notion2md")
 if len(old_pages) != len(pages):
 	import requests
 	# Define the endpoint URL
-	url = 'https://example.com/api/endpoint'
+	url = 'https://api.logsnag.com/v1/log'
 	token = 'a4a1235927cef91812a645e040b3ed15'
 
 	data = {
