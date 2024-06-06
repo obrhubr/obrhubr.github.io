@@ -24,7 +24,7 @@ jobs:
       - name: Install dependencies
         run: |
           python -m pip install --upgrade pip
-          pip install notion-client notion2md python-dotenv
+          pip install notion-client notion2md python-dotenv requests
       - name: Run exporter
         run: python short_export.py
         env:
