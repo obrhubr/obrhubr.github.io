@@ -1,0 +1,119 @@
+---
+layout: default
+title: Contact Niklas Oberhuber
+
+favicon: favicon.png
+---
+
+<script>
+function contact() {
+	const data = {
+		email: document.getElementById("email").value,
+		message: document.getElementById("message").value,
+		project: "obrhubr",
+		channel: "contact",
+		event: "contact-form",
+		icon: "📨",
+		notify: true,
+		description: "A user sent a request through the contact form.",
+		tags: {
+			email: document.getElementById("email").value,
+			message: document.getElementById("message").value
+		}
+	};
+
+	if (data.email == "" || data.message == "") {
+		show("Enter an email and a message.");
+		return;
+	};
+
+	// Define the API endpoint
+	const apiEndpoint = "https://api.logsnag.com/v1/log";
+
+	// Define the Bearer token
+	const bearerToken = "a4a1235927cef91812a645e040b3ed15";
+
+	// Use fetch to send the POST request
+	fetch(apiEndpoint, {
+		method: 'POST', // Specify the HTTP method
+		headers: {
+			'Content-Type': 'application/json', // Set the content type to JSON
+			'Authorization': `Bearer ${bearerToken}` // Add the Bearer token
+		},
+		body: JSON.stringify(data), // Convert the JSON data to a string
+	})
+	.then(response => {
+		if (!response.ok) {
+			// Handle HTTP errors
+			throw new Error('Logsnag response was not ok ' + response.statusText);
+		}
+		return response.json(); // Parse the JSON from the response
+	})
+	.then(data => {
+		// Handle the parsed JSON data
+		show("Successfully sent the contact form.");
+	})
+	.catch(error => {
+		// Handle errors
+		console.error('There was a problem with the fetch operation:', error);
+		show("We could not send the contact form.");
+	});
+}
+
+function show(message) {
+	console.log(message);
+	let m = document.getElementById("response");
+	m.innerHTML = message;
+}
+</script>
+
+<style>
+.contact-form {
+	display: flex;
+	flex-direction: column;
+}
+
+.contact-form div {
+	margin-top: 20px;
+
+	display: flex;
+	flex-direction: column;
+}
+
+input, textarea, button {
+	border: none;
+	border-radius: 5px;
+
+	min-height: 30px;
+
+	background-color: var(--table-color);
+	color: var(--main-text-color);
+
+	font-family: inherit;
+	resize: vertical;
+}
+
+button {
+	background-color: var(--link-text-color);
+	color: white;
+	max-width: 50px;
+}
+</style>
+
+<div class="contact-form">
+	<div>
+		<label for="email">Email: </label>
+		<input id="email">
+	</div>
+
+	<div>
+		<label for="message">Message: </label>
+		<textarea id="message"></textarea>
+	</div>
+
+	<div>
+		<button onclick="contact();" id="send">Send</button>
+	</div>
+
+	<div id="response"></div>
+</div>
