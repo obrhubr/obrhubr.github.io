@@ -12,3 +12,6 @@
 
  - name: RSS Feed
    url: https://obrhubr.github.io/feed.xml
+
+ - name: Contact me!
+   url: /contact.html
