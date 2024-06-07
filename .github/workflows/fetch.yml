@@ -26,7 +26,7 @@ jobs:
           python -m pip install --upgrade pip
           pip install notion-client notion2md python-dotenv requests
       - name: Run exporter
-        run: python notion_export.py
+        run: python ./scripts/notion_export.py
         env:
             NOTION_TOKEN: ${{ secrets.NOTION_TOKEN }}
             DB_ID: ${{ secrets.DB_ID }}

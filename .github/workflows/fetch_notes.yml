@@ -1,4 +1,4 @@
-name: fetch
+name: fetch-notes
 
 on: 
   schedule:
@@ -26,7 +26,7 @@ jobs:
           python -m pip install --upgrade pip
           pip install notion-client notion2md python-dotenv requests
       - name: Run exporter
-        run: python short_export.py
+        run: python ./scripts/short_export.py
         env:
             NOTION_TOKEN: ${{ secrets.NOTION_TOKEN }}
             SHORT_DB_ID: ${{ secrets.SHORT_DB_ID }}
