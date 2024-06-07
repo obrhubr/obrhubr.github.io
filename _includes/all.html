@@ -4,7 +4,7 @@
 		{% if post.excerpt != null %}
 			<div class="post">
 				<div class="titlediv">
-					## 
+					<i style="color: gold;" class="fa-solid fa-star"></i> ## 
 					<span><a class="link title" href="{{ post.url }}">{{ post.title }} </a></span>
 				</div>
 				<div class="detail">
@@ -29,7 +29,7 @@
 		{% elsif post.short == true %}
 			<div class="post">
 				<div class="titlediv">
-					### 
+					## 
 					<span><a class="link title" href="{{ post.url }}">{{ post.title }} </a></spa#n>
 				</div>
 				<div class="detail">
