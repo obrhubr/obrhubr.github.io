@@ -49,7 +49,7 @@ files = os.walk("./assets/")
 
 for dirpath, dirnames, filenames in files:
 	for dirname in dirnames:
-		# Only delete folders from blog posts not notes
+		# Only delete folders from notes not blogposts
 		if dirname[0:2] == "20":
 			old_pages += [dirname]
 			print("Deleted folder={folder}...".format(folder=dirpath + "/" + dirname))
@@ -65,7 +65,7 @@ for page in pages:
 	print("Exporting page from Notion...")
 	MarkdownExporter(block_id=page[0], output_path='./notion2md/', download=True).export()
 
-	short_name =  page[1]["created_time"].split("T")[0] + "-" + page[1]["properties"]["Name"]["title"][0]["text"]["content"].replace(' ', '-').lower()
+	short_name =  page[1]["properties"]["short-name"]["rich_text"][0]["text"]["content"]
 
 	# Extract zip file export to short-name folder
 	with zipfile.ZipFile("./notion2md/" + page[0] + ".zip", 'r') as zip_ref:
@@ -90,8 +90,8 @@ for page in pages:
 	print("Moving assets...")
 	for dirpath, dirnames, filenames in files:
 			for filename in filenames:
-				if re.search(r"\.(gif|jpe?g|tiff?|png|webp|bmp)$", filename) != None:
-					if dirpath[len(dirpath) - 6:] != "assets":			
+				if re.search(r"\.(gif|jpe?g|tiff?|svg|png|webp|bmp)$", filename) != None:
+					if dirpath[len(dirpath) - 6:] != "assets":
 						print("Moved file src={src} to dst={dst}...".format(src=dirpath + "/" + filename, dst="./notion2md/" + short_name + "/assets/"))
 						shutil.move(dirpath + "/" + filename, "./notion2md/" + short_name + "/assets/")
 
@@ -102,7 +102,7 @@ for page in pages:
 	with open("./notion2md/" + short_name + "/" + page[1]["created_time"].split("T")[0] + "-" + short_name + ".md", "r") as f:
 		new_file = re.sub(
 			r"(\!\[.*?\])\((.*)\)",
-			r"\1"+ "(/assets/" + short_name + "/" + r"\2" + ")",
+			r"\1"+ "(/assets/" + page[1]["created_time"].split("T")[0] + "-" + short_name + "/" + r"\2" + ")",
 			f.read()
 		)
 
@@ -121,11 +121,13 @@ title: "{title}"
 
 published: {date}
 short: true
+permalink: {permalink}
 ---
 
 """.format(
 		title=page[1]["properties"]["Name"]["title"][0]["text"]["content"],
 		date=page[1]["created_time"].split("T")[0],
+		permalink=short_name
 	)
 
 	print("Writing new file with metadata to .md...")
@@ -133,9 +135,9 @@ short: true
 		f.write(metadata + new_file)
 
 	# Copy markdown and assets to production folders
-	print("Copy files to assets/ and _posts/ folders...")
-	shutil.copytree("./notion2md/" + short_name + "/assets", "./assets/" + short_name)
-	shutil.copy("./notion2md/" + short_name + "/" + page[1]["created_time"].split("T")[0] + "-" + short_name + ".md", "short")
+	print("Copy files to assets/ and short/ folders...")
+	shutil.copytree("./notion2md/" + short_name + "/assets", "./assets/" + page[1]["created_time"].split("T")[0] + "-" +  short_name)
+	shutil.copy("./notion2md/" + short_name + "/" + page[1]["created_time"].split("T")[0] + "-" + short_name + ".md", "./short/")
 
 # Remove Notion2md folder
 print("Removing the notion2md folder...")
