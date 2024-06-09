@@ -1,5 +1,5 @@
 ---
-layout: page
+layout: note
 title: "How I created my Blog - Notion to GitHub Pages"
 
 published: 2024-06-09
