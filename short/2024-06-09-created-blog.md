@@ -4,6 +4,7 @@ title: "How I created my Blog - Notion to GitHub Pages"
 
 published: 2024-06-09
 short: true
+permalink: created-blog
 ---
 
 # How I created my Blog - Notion to GitHub Pages
@@ -28,6 +29,4 @@ I set up an action in the repository which stores the source code for the blog. 
 I don’t have to worry about anything, except changing the tag from `preview` to `publish` in my Notion Database containing all the posts. This also means I can edit the posts anytime from Notion and the changes will be reflected at most 7 days later. 
 
 I don’t have to waste time worrying if I have actually pushed changes to GitHub, especially if I’m not on my PC or a platform that allows me to interface with git.
-
-<br/>
 
