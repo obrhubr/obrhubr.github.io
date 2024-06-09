@@ -116,7 +116,7 @@ for page in pages:
 	with open("./notion2md/" + short_name + "/" + page[1]["created_time"].split("T")[0] + "-" + short_name + ".md", "r") as f:
 		new_file = f.read()
 		metadata = """---
-layout: page
+layout: note
 title: "{title}"
 
 published: {date}
