@@ -10,6 +10,7 @@ permalink: created-blog
 # How I created my Blog - Notion to GitHub Pages
 
 The biggest hurdle to creating content for a blog is writing the entries themselves. Hosting a blog on GitHub Pages means that you have to submit your entries in markdown (or html) format. But while Markdown is great for writing documents, adding tables and images is not as ergonomic as I would like.
+
 This is why I use Notion to edit my blog posts. I get a great interface for free - which allows me to edit from anywhere and any device - and I can easily upload images and create tables with a GUI. Then, once finished, I download (automatically of course, I’m a developer after all) raw Markdown and publish to GitHub.
 
 ## But…

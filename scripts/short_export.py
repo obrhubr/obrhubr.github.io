@@ -145,6 +145,8 @@ shutil.rmtree("./notion2md")
 
 # Send logsnag notification
 if len(old_pages) != len(pages):
+	print("Logging new note to Logsnag...")
+	
 	import requests
 	# Define the endpoint URL
 	url = 'https://api.logsnag.com/v1/log'
