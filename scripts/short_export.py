@@ -41,6 +41,7 @@ files = os.walk("./short/")
 for dirpath, dirnames, filenames in files:
 	for filename in filenames:
 		if filename != "0000-01-01-default.md":
+			old_pages += [filename]
 			print("Deleted file={file}...".format(file=dirpath + "/" + filename))
 			os.remove(dirpath + "/" + filename)
 
@@ -51,7 +52,6 @@ for dirpath, dirnames, filenames in files:
 	for dirname in dirnames:
 		# Only delete folders from notes not blogposts
 		if dirname[0:2] == "20":
-			old_pages += [dirname]
 			print("Deleted folder={folder}...".format(folder=dirpath + "/" + dirname))
 			shutil.rmtree(dirpath + "/" + dirname)
 
@@ -142,9 +142,6 @@ permalink: {permalink}
 # Remove Notion2md folder
 print("Removing the notion2md folder...")
 shutil.rmtree("./notion2md")
-
-print(old_pages, pages)
-print(len(old_pages), len(pages))
 
 # Send logsnag notification
 if len(old_pages) != len(pages):

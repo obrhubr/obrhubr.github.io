@@ -41,6 +41,7 @@ files = os.walk("./_posts/")
 for dirpath, dirnames, filenames in files:
 	for filename in filenames:
 		if filename != "0000-01-01-default.md":
+			old_pages += [filename]
 			print("Deleted file={file}...".format(file=dirpath + "/" + filename))
 			os.remove(dirpath + "/" + filename)
 
@@ -51,7 +52,6 @@ for dirpath, dirnames, filenames in files:
 	for dirname in dirnames:
 		# Only delete folders from blog posts not notes
 		if dirname[0:2] != "20":
-			old_pages += [dirname]
 			print("Deleted folder={folder}...".format(folder=dirpath + "/" + dirname))
 			shutil.rmtree(dirpath + "/" + dirname)
 
