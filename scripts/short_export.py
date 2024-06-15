@@ -66,6 +66,7 @@ for page in pages:
 	MarkdownExporter(block_id=page[0], output_path='./notion2md/', download=True).export()
 
 	short_name =  page[1]["properties"]["short-name"]["rich_text"][0]["text"]["content"]
+	publish_time = page[1]["properties"]["Date"]["date"]["start"].split("T")[0]
 
 	# Extract zip file export to short-name folder
 	with zipfile.ZipFile("./notion2md/" + page[0] + ".zip", 'r') as zip_ref:
@@ -79,7 +80,7 @@ for page in pages:
 	print("Rename markdown file and folder to short_name={short_name} and date={date}...".format(short_name=short_name, date=datetime.today().strftime('%Y-%m-%d')))
 	os.rename(
 		"./notion2md/" + short_name + "/" + page[0] + ".md", 
-		"./notion2md/" + short_name + "/" + page[1]["created_time"].split("T")[0] + "-" + short_name + ".md"	
+		"./notion2md/" + short_name + "/" + publish_time + "-" + short_name + ".md"	
 	)
 
 	# Create asset directory and move all images there
@@ -99,21 +100,21 @@ for page in pages:
 	new_file = ""
 
 	print("Reading .md file and replacing any markdown image tags with the correct filename...")
-	with open("./notion2md/" + short_name + "/" + page[1]["created_time"].split("T")[0] + "-" + short_name + ".md", "r") as f:
+	with open("./notion2md/" + short_name + "/" + publish_time + "-" + short_name + ".md", "r") as f:
 		new_file = re.sub(
 			r"(\!\[.*?\])\((.*)\)",
-			r"\1"+ "(/assets/" + page[1]["created_time"].split("T")[0] + "-" + short_name + "/" + r"\2" + ")",
+			r"\1"+ "(/assets/" + publish_time + "-" + short_name + "/" + r"\2" + ")",
 			f.read()
 		)
 
 	print("Writing original file to .md...")
-	with open("./notion2md/" + short_name + "/" + page[1]["created_time"].split("T")[0] + "-" + short_name + ".md", "w") as f:
+	with open("./notion2md/" + short_name + "/" + publish_time + "-" + short_name + ".md", "w") as f:
 		f.write(new_file)
 
 	new_file = ""
 	metadata = ""
 
-	with open("./notion2md/" + short_name + "/" + page[1]["created_time"].split("T")[0] + "-" + short_name + ".md", "r") as f:
+	with open("./notion2md/" + short_name + "/" + publish_time + "-" + short_name + ".md", "r") as f:
 		new_file = f.read()
 		metadata = """---
 layout: note
@@ -126,18 +127,18 @@ permalink: {permalink}
 
 """.format(
 		title=page[1]["properties"]["Name"]["title"][0]["text"]["content"],
-		date=page[1]["created_time"].split("T")[0],
+		date=publish_time,
 		permalink=short_name
 	)
 
 	print("Writing new file with metadata to .md...")
-	with open("./notion2md/" + short_name + "/" + page[1]["created_time"].split("T")[0] + "-" + short_name + ".md", "w") as f:
+	with open("./notion2md/" + short_name + "/" + publish_time + "-" + short_name + ".md", "w") as f:
 		f.write(metadata + new_file)
 
 	# Copy markdown and assets to production folders
 	print("Copy files to assets/ and short/ folders...")
-	shutil.copytree("./notion2md/" + short_name + "/assets", "./assets/" + page[1]["created_time"].split("T")[0] + "-" +  short_name)
-	shutil.copy("./notion2md/" + short_name + "/" + page[1]["created_time"].split("T")[0] + "-" + short_name + ".md", "./short/")
+	shutil.copytree("./notion2md/" + short_name + "/assets", "./assets/" + publish_time + "-" +  short_name)
+	shutil.copy("./notion2md/" + short_name + "/" + publish_time + "-" + short_name + ".md", "./short/")
 
 # Remove Notion2md folder
 print("Removing the notion2md folder...")
