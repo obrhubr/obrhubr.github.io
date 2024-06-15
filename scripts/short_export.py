@@ -143,10 +143,13 @@ permalink: {permalink}
 print("Removing the notion2md folder...")
 shutil.rmtree("./notion2md")
 
+print(old_pages, pages)
+print(len(old_pages), len(pages))
+
 # Send logsnag notification
 if len(old_pages) != len(pages):
 	print("Logging new note to Logsnag...")
-	
+
 	import requests
 	# Define the endpoint URL
 	url = 'https://api.logsnag.com/v1/log'
