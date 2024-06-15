@@ -133,5 +133,3 @@ Repeat until you are left with 4 categories: (This is a real example)
 
 This is not a very good Connections puzzle, but it is a playable one. And if you aren’t a friend of mine who likes to create too difficult puzzles (you know who you are!), a playable puzzle is better than an impossible puzzle and most of all, better than nothing.
 
-<br/>
-
