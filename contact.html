@@ -52,6 +52,8 @@ function contact() {
 	.then(data => {
 		// Handle the parsed JSON data
 		show("Successfully sent the contact form.");
+
+		document.getElementById("inputs").remove();
 	})
 	.catch(error => {
 		// Handle errors
@@ -97,22 +99,32 @@ button {
 	background-color: var(--link-text-color);
 	color: white;
 	max-width: 50px;
+	cursor: pointer;
+}
+
+button {
+	background-color: var(--link-text-color);
+	color: white;
+	max-width: 50px;
+	cursor: pointer;
 }
 </style>
 
 <div class="contact-form">
-	<div>
-		<label for="email">Email: </label>
-		<input id="email">
-	</div>
-
-	<div>
-		<label for="message">Message: </label>
-		<textarea id="message"></textarea>
-	</div>
-
-	<div>
-		<button onclick="contact();" id="send">Send</button>
+	<div id="inputs">
+		<div>
+			<label for="email">Email: </label>
+			<input id="email">
+		</div>
+	
+		<div>
+			<label for="message">Message: </label>
+			<textarea id="message"></textarea>
+		</div>
+	
+		<div>
+			<button onclick="contact();" id="send">Send</button>
+		</div>
 	</div>
 
 	<div id="response"></div>
