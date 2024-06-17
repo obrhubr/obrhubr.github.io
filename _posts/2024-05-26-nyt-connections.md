@@ -15,9 +15,9 @@ A short taste of fame on Reddit allows me to evaluate user’s attempts at solvi
 
 # Cloning and hosting a German version of “Connections”, the NYT puzzle
 
-(View the sourcecode at [github.com/obrhubr/nyt-connections-deutsch](https://github.com/obrhubr/nyt-connections-deutsch/))
+(View the latest sourcecode at [github.com/obrhubr/modular-games](https://github.com/obrhubr/modular-games), the original is still available under [github.com/obrhubr/nyt-connections-deutsch](https://github.com/obrhubr/nyt-connections-deutsch))
 
-Try the game out at [verbindungen.obrhubr.org](https://verbindungen.obrhubr.org/) (you should probably be able to speak german).
+Try the game out at [spiele.obrhubr.org](https://spiele.obrhubr.org/) (you should probably be able to speak German).
 
 <br/>
 
@@ -87,7 +87,7 @@ But there is an interesting phenomenon, the second most common order is to only 
 
 The title of the tricky categories which were immediately solved were: “Words in James Bond titles” and “Words from Goethe’s book titles”. In hindsight, these are very obvious to people who have a bit of general knowledge - and Goethe <u>is</u> very famous in Germany and Austria. 
 
-(You can play the puzzles these are from at [verbindungen.obrhubr.org/?number=l55J4qxSSJh8SSQcUs2E](https://verbindungen.obrhubr.org/?number=l55J4qxSSJh8SSQcUs2E) and [verbindungen.obrhubr.org/?number=anQYl1GaSWsmQlJYBUs3](https://verbindungen.obrhubr.org/?number=l55J4qxSSJh8SSQcUs2E))
+(You can play the puzzles these are from at [spiele.obrhubr.org/verbindungen/play.html?number=l55J4qxSSJh8SSQcUs2E](https://spiele.obrhubr.org/verbindungen/play.html?number=l55J4qxSSJh8SSQcUs2E) and [spiele.obrhubr.org/verbindungen/play.html?number=anQYl1GaSWsmQlJYBUs3](https://spiele.obrhubr.org/verbindungen/play.html?number=l55J4qxSSJh8SSQcUs2E))
 
 ## What makes a great Connections Game?
 
