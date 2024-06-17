@@ -5,6 +5,7 @@ title: "How I created my Blog - Notion to GitHub Pages"
 published: 2024-06-09
 short: true
 permalink: created-blog
+favicon: 2024-06-09-created-blog/favicon.png
 ---
 
 # How I created my Blog - Notion to GitHub Pages

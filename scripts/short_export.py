@@ -111,6 +111,19 @@ for page in pages:
 	with open("./notion2md/" + short_name + "/" + publish_time + "-" + short_name + ".md", "w") as f:
 		f.write(new_file)
 
+	# Add favicon
+	favicon = "favicon.png"
+	if page[1]["icon"]["type"] == "emoji":
+		favicon = publish_time + "-" + short_name + "/favicon.png"
+
+		# Fetch icon as png from the web
+		from urllib.request import urlretrieve
+		emoji = page[1]['icon']["emoji"]
+		if len(emoji) > 1:
+			emoji = emoji[0]
+		print("Downloading emoji as favicon")
+		urlretrieve('https://emojiapi.dev/api/v1/{:X}'.format(ord(emoji)) + "/32.png", "./notion2md/" + short_name + "/assets" + "/favicon.png")
+
 	new_file = ""
 	metadata = ""
 
@@ -123,12 +136,14 @@ title: "{title}"
 published: {date}
 short: true
 permalink: {permalink}
+favicon: {favicon}
 ---
 
 """.format(
 		title=page[1]["properties"]["Name"]["title"][0]["text"]["content"],
 		date=publish_time,
-		permalink=short_name
+		permalink=short_name,
+		favicon=favicon
 	)
 
 	print("Writing new file with metadata to .md...")
