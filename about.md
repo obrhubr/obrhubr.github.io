@@ -3,9 +3,7 @@ layout: about
 title: About
 ---
 
-Hey, my name is Niklas ([Github](https://github.com/obrhubr)) and I am a developer from Austria and I want to study computer science at ETHZ. 
-
-I like coding, neural networks, Gödel Escher Bach, sociology, writing, model airplanes, fountain pens and champagne.
+Hey, my name is Niklas ([Github](https://github.com/obrhubr)). I'm a developer from Austria.
 
 ### Work Experience
 
