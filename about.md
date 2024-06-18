@@ -13,9 +13,9 @@ Hey, my name is Niklas ([Github](https://github.com/obrhubr)). I'm a developer f
 
 ### Acknowledgements
 
-The first version of my site's design is heavily inspired by [James Haydon's Blog](https://jameshaydon.github.io), which I loved and discovered through hackernews.
+My site's design was heavily inspired by [James Haydon's Blog](https://jameshaydon.github.io), which I discovered through HackerNews.
 
-I could also not have done this without the great [notion2md](https://github.com/echo724/notion2md) project.
+I could also not have built this site without [notion2md](https://github.com/echo724/notion2md).
 
 ### Recommendations
 
