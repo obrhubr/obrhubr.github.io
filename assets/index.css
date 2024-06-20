@@ -4,7 +4,7 @@
     --table-color: rgb(40, 40, 40);
     
     --title-text-color: white;
-    --detail-text-color: rgb(109, 109, 109);
+    --underscore: rgb(60, 60, 60);
 
     --main-text-color: rgb(192, 192, 192);
     --excerpt-color: rgb(147, 147, 147);
@@ -88,5 +88,5 @@ h1, h2, h3, h4, h5 {
 }
 
 .detail {
-    color: var(--detail-text-color);
+    color: var(--excerpt-color);
 }
