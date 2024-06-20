@@ -13,11 +13,9 @@ excerpt: "I created a clone of the NYT Connections game in german: Verbindungen.
 A short taste of fame on Reddit allows me to evaluate user’s attempts at solving the puzzles. But what makes a puzzle great and could we try to generate them automatically?"
 ---
 
-# Cloning and hosting a German version of “Connections”, the NYT puzzle
-
 (View the latest sourcecode at [github.com/obrhubr/modular-games](https://github.com/obrhubr/modular-games), the original is still available under [github.com/obrhubr/nyt-connections-deutsch](https://github.com/obrhubr/nyt-connections-deutsch))
 
-Try the game out at [spiele.obrhubr.org](https://spiele.obrhubr.org/) (you should probably be able to speak German).
+Try out the game at [spiele.obrhubr.org](https://spiele.obrhubr.org/) (you should probably be able to speak German).
 
 <br/>
 
