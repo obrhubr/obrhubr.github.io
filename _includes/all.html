@@ -4,7 +4,7 @@
 		{% if post.excerpt != null %}
 			<div class="post">
 				<div class="titlediv">
-					<span><img class="inline-icon" src="/assets/{{ post.favicon }}"/></span> ## 
+					<span><img class="inline-icon" src="/assets/{{ post.favicon }}"/></span>
 					<span><a class="link title" href="{{ post.url }}">{{ post.title }} </a></span>
 				</div>
 				<div class="detail">
@@ -28,8 +28,7 @@
 			</div>
 		{% elsif post.short == true %}
 			<div class="post">
-				<div class="titlediv">
-					## 
+				<div class="titlediv"> 
 					<span><a class="link title" href="{{ post.url }}">{{ post.title }} </a></spa#n>
 				</div>
 				<div class="detail">
