@@ -10,9 +10,13 @@
     font-weight: 800;
 }
 
-.titlediv {
-    margin-bottom: 10px;
-    font-weight: bold;
+.published-date {
+    color: var(--excerpt-color);
+}
+
+.inline-sep {
+    color: var(--underscore);
+    font-weight: 800;
 }
 
 .inline-icon {

@@ -1,36 +1,31 @@
-<div>
+<ul>
 	{%- assign all = site.pages | concat: site.posts -%}
 	{% for post in all %}
 		{% if post.excerpt != null %}
-			<div class="post">
-				<div class="titlediv">
-					<span>
-						<img class="inline-icon" src="/assets/{{ post.favicon }}"/>
-					</span>
-					<span>
-						<a class="link title" href="{{ post.url }}">{{ post.title }} </a>
-					</span>
-				</div>
-				<div class="excerpt">
-					{{ post.excerpt | markdownify }}
-				</div>
-				<div>
-					<span>
-						<a class="link" href="{{ post.url }}">Read More » </a>
-					</span>
-				</div>
-			</div>
+			<li class="post">
+				<span class="published-date">
+					{{ post.published }}
+				</span>
+				<span class="inline-sep">
+					>
+				</span>
+				<span>
+					<img class="inline-icon" src="/assets/{{ post.favicon }}"/>
+				</span>
+				<span>
+					<a class="link title" href="{{ post.url }}">{{ post.title }} </a>
+				</span>
+			</li>
 		{% elsif post.short == true %}
-			<div class="post">
-				<div class="titlediv"> 
-					<span><a class="link title" href="{{ post.url }}">{{ post.title }} </a></spa#n>
-				</div>
-				<div>
-					<span>
-						<a class="link" href="{{ post.url }}">Read More » </a>
-					</span>
-				</div>
-			</div>
+			<li class="post">
+				<span class="published-date">
+					{{ post.published }}
+				</span>
+				<span class="inline-sep">
+					>
+				</span>
+				<span><a class="link title" href="{{ post.url }}">{{ post.title }} </a></span>
+			</li>
 		{% endif %}
   	{% endfor %}
-</div>
+</ul>
