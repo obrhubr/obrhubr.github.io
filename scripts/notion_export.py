@@ -141,8 +141,12 @@ for page in pages:
 	# insert jekyll metadata
 	print("Inserting jekyll metadata...")
 	tags = []
+	is_short = False
 	for tag in page[1]["properties"]["Tags"]["multi_select"]:
 		tags += [tag["name"]]
+
+	if "short" in tags:
+		is_short = True
 
 	new_file = ""
 	metadata = ""
@@ -161,6 +165,7 @@ permalink: {permalink}
 image: {previewimage}
 favicon: {favicon}
 excerpt: "{excerpt}"
+short: {short}
 ---
 
 """.format(
@@ -171,7 +176,8 @@ excerpt: "{excerpt}"
 		permalink=short_name,
 		previewimage="assets/" + short_name + "/" + previewimage,
 		favicon=favicon,
-		excerpt=richtext_convertor(page[1]["properties"]["Summary"]["rich_text"])
+		excerpt=richtext_convertor(page[1]["properties"]["Summary"]["rich_text"]),
+		short=is_short
 	)
 
 	print("Writing new file with metadata to .md...")

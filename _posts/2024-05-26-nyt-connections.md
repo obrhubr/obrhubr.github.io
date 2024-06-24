@@ -11,13 +11,14 @@ image: assets/nyt-connections/preview.png
 favicon: nyt-connections/favicon.png
 excerpt: "I created a clone of the NYT Connections game in german: Verbindungen.
 A short taste of fame on Reddit allows me to evaluate user’s attempts at solving the puzzles. But what makes a puzzle great and could we try to generate them automatically?"
+short: False
 ---
 
 (View the sourcecode at [github.com/obrhubr/modular-games](https://github.com/obrhubr/modular-games) and [github.com/obrhubr/nyt-connections-deutsch](https://github.com/obrhubr/nyt-connections-deutsch) or try out the games yourself at [spiele.obrhubr.org](https://spiele.obrhubr.org/).)
 
 <br/>
 
-I must admit to having conditioned myself into solving the daily NYT puzzles in a somewhat pavlovian way. I solve them every day, with my morning tea. But finishing them all leaves me with a sense of unease and I usually have an itch for more puzzles. To quell this urge I found the daily [Quordle](https://quordlegame.com/) and then the daily [Waffle](https://wafflegame.net/) and soon after the daily [LinkedIn](https://www.linkedin.com/games/) puzzles. And before I even knew it, the entire thing got out of hand - I would only slightly be exaggerating by saying that I spent the entire day puzzling.
+I enjoyed solving the daily New York Times puzzles, then I found the daily [Quordle](https://quordlegame.com/) and then the daily [Waffle](https://wafflegame.net/) and soon after the daily [LinkedIn](https://www.linkedin.com/games/) puzzles. And before I even knew it, the entire thing got out of hand (I would only slightly be exaggerating by saying that I spent the entire day puzzling).
 
 To convert this daily ritual into something more meaningful - and educational - I decided to build my own version of my favorite puzzles: [Connections](https://www.nytimes.com/games/connections). But I wanted to add a twist and after some deliberation settled on creating a german version (because it’s my mother tongue).
 
