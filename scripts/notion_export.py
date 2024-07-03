@@ -151,6 +151,10 @@ for page in pages:
 	new_file = ""
 	metadata = ""
 
+	# Tags to array
+	# TODO: Remove short from tags
+	array_to_string = lambda arr: '[{}]'.format(', '.join(f'"{x}"' for x in arr))
+
 	with open("./notion2md/" + short_name + "/" + publish_time + "-" + short_name + ".md", "r") as f:
 		new_file = f.read()
 		metadata = """---
@@ -172,7 +176,7 @@ short: {short}
 		title=page[1]["properties"]["Name"]["title"][0]["text"]["content"],
 		time=str(round(len(new_file.split(" ")) / 200)) + " minute", 
 		date=publish_time, 
-		tags=" ".join(tags),
+		tags=array_to_string(tags),
 		permalink=short_name,
 		previewimage="assets/" + short_name + "/" + previewimage,
 		favicon=favicon,

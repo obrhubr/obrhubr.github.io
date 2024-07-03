@@ -5,7 +5,7 @@ title: "Learning how to make great Puzzles by Cloning the NYT Puzzle “Connecti
 time: 7 minute
 published: 2024-05-26
 
-tags: Programming Puzzle Data Driven
+tags: ["Puzzle", "Data Analysis", "Web Development"]
 permalink: nyt-connections
 image: assets/nyt-connections/preview.png
 favicon: nyt-connections/favicon.png
@@ -20,7 +20,7 @@ short: False
 
 I enjoyed solving the daily New York Times puzzles, then I found the daily [Quordle](https://quordlegame.com/) and then the daily [Waffle](https://wafflegame.net/) and soon after the daily [LinkedIn](https://www.linkedin.com/games/) puzzles. And before I even knew it, the entire thing got out of hand (I would only slightly be exaggerating by saying that I spent the entire day puzzling).
 
-To convert this daily ritual into something more meaningful - and educational - I decided to build my own version of my favorite puzzles: [Connections](https://www.nytimes.com/games/connections). But I wanted to add a twist and after some deliberation settled on creating a german version (because it’s my mother tongue).
+To convert this daily ritual into something more meaningful - and educational - I decided to build my own version of my favourite puzzles: [Connections](https://www.nytimes.com/games/connections). But I wanted to add a twist and after some deliberation settled on creating a German version (because it’s my mother tongue).
 
 I sent my first puzzle - or “Verbindung” as I like to call them - to a good friend and he was hooked. He responded in kind, but his was way harder! And soon we shot puzzles back and forth, trying to outsmart the other (he won).
 
@@ -38,7 +38,7 @@ A friend encouraged me to post the site to the [r/de](https://reddit.com/r/de) a
 
 They - in typical reddit fashion - reminded me that self-promotion is strictly prohibited by striking me with the ban hammer. Even though I was not selling anything, which I also told them, they were adamant on keeping their users safe from my posts.
 
-I accept that of course, but it’s a bit sad as people seemed to enjoy them. We got several comments, my favorite being: “Ich liebe es 😡 aber mein Telefon landete schon 2* an der Wand.” which translates to “I love it 😡 but I threw my phone twice against the wall already.”
+I accept that of course, but it’s a bit sad as people seemed to enjoy them. We got several comments, my favourite being: “Ich liebe es 😡 aber mein Telefon landete schon 2* an der Wand.” which translates to “I love it 😡 but I threw my phone twice against the wall already.”
 
 The actual impact of this short stint on reddit were 310 new users in total, playing a grand total of about 140 games. Not a bad conversion rate…
 

@@ -5,7 +5,7 @@ title: "How to build a chess engine and fail"
 time: 9 minute
 published: 2023-07-24
 
-tags: CS C# Engines AI
+tags: ["Chess Engines", "AI", "Games"]
 permalink: chess-engine
 image: assets/chess-engine/preview.png
 favicon: chess-engine/favicon.png
@@ -31,7 +31,7 @@ Sebastian Lague has the perfect answer to that question: a [competition](https:/
 
 This limitation prevents the implementation of any neural networks or complex evaluation functions necessary for chess engines of the second type described above. This naturally would lead participants to choose to implement an efficient algorithm to search as much of the game tree as possible.
 
-Despite this, I wanted to do something akin to knowledge distillation, inspired by the NNUE of Stockfish, that uses the current board as an input and applies the weights and biases of the model to come up with a number.
+Despite this, I wanted to do something akin to knowledge distillation, inspired by the [NNUE of Stockfish](https://www.chessprogramming.org/Stockfish_NNUE), that uses the current board as an input and applies the weights and biases of the model to come up with a number.
 
 If, instead of using a complex network, we used a single 8x8 grid of weights for each type of piece, we could distil the game knowledge of powerful engines into a very small number of bytes. This evaluation function could then still be “plug and play” with a traditional Minimax engine and give our engine a crucial competitive advantage, while still staying inside the allowed 1024 tokens.
 
@@ -97,7 +97,7 @@ The fitness function would consist of evaluating a position with the values of t
 
 My enthusiasm for this idea quickly ebbed away very quickly once I realized how long training would take and also how bad the first dozen generations really were. Plugging in the values of the best models produced mediocre results, even against very weak opponents.
 
-What was wrong? Distilling the knowledge stored in the [NNUE](https://tests.stockfishchess.org/nns), which is pretty small but still about 50MBs large, into only 24576 values was too much. The loss of context that my implementation had by design was crippling it’s ability. The different boards for each piece that make up the model do not consider their position relative to other pieces. Moving the queen to c6 would be evaluated as equally good, whether it blundered the queen to a pawn or delivered a beautiful checkmate.
+What was wrong? Distilling the knowledge stored in the NNUE, which is pretty small but still about 50MBs large, into only 24576 values was too much. The loss of context that my implementation had by design was crippling it’s ability. The different boards for each piece that make up the model do not consider their position relative to other pieces. Moving the queen to c6 would be evaluated as equally good, whether it blundered the queen to a pawn or delivered a beautiful checkmate.
 
 But adding the additional context that stockfish provides it’s NNUE was simply not possible for the amount of tokens that the challenge bestowed upon us.
 
@@ -105,7 +105,7 @@ But adding the additional context that stockfish provides it’s NNUE was simply
 
 ![Untitled](/assets/chess-engine/f15a6ae6_Untitled.png)
 
-Stockfish’s NNUE is essentially made up of a heavily overparametrised input layer and a simple 4 layer network behind it. What this means is that instead of using bitboards representing the positions of the different pieces as inputs and applying the weights and biases, it instead gives the NNUE the positions of every single piece in relation to every single king position. This provides the network the necessary context to evaluate the position, which our simplified version lacked. (1)
+[Stockfish’s NNUE](https://github.com/official-stockfish/nnue-pytorch/blob/master/docs/nnue.md#what-is-nnue) is essentially made up of a heavily overparametrised input layer and a simple 4 layer network behind it. What this means is that instead of using bitboards representing the positions of the different pieces as inputs and applying the weights and biases, it instead gives the NNUE the positions of every single piece in relation to every single king position. This provides the network the necessary context to evaluate the position, which our simplified version lacked.
 
 Concretely this translates to a model architecture consisting of 2x45056 inputs. It has two sides, one for the side that currently moves and the opposing side. Where does 45056 come from? For each of the two input halves, there are 11 other piece types to consider in relation to the king of the current side and there are then 64 squares a piece could be on for 64 squares the king could be on.
 
@@ -122,14 +122,4 @@ This architecture also allows the highly optimized evaluation of the network tha
 ## How could the shortcomings be remediated?
 
 While the ultra-high rate of compression from 2x45065 inputs to only 6x8x8 is clearly too high, a more conservative approach might be able to identify unused or less impactful inputs or nodes in the stockfish NNUE to apply a “pruning” of sorts. Some positions such as (…, pa1) and others where the pawns would have to walk backwards are not even possible and **I assume naively** could easily be removed from the network.
-
-<br/>
-
-**Bibliography:**
-
-- (1) [https://github.com/official-stockfish/nnue-pytorch/blob/master/docs/nnue.md#what-is-nnue](https://github.com/official-stockfish/nnue-pytorch/blob/master/docs/nnue.md#what-is-nnue)
-
-- [https://www.chessprogramming.org/Stockfish_NNUE](https://www.chessprogramming.org/Stockfish_NNUE)
-
-- [https://stockfishchess.org/blog/2020/introducing-nnue-evaluation/](https://stockfishchess.org/blog/2020/introducing-nnue-evaluation/)
 
