@@ -10,11 +10,10 @@ favicon: nyt-connections/favicon.png
 excerpt: "I created a clone of the NYT Connections game in german: Verbindungen.
 A short taste of fame on Reddit allows me to evaluate user’s attempts at solving the puzzles. But what makes a puzzle great and could we try to generate them automatically?"
 short: False
-
+sourcecode: "github.com/obrhubr/modular-games"
 ---
-(View the sourcecode at [github.com/obrhubr/modular-games](https://github.com/obrhubr/modular-games) and [github.com/obrhubr/nyt-connections-deutsch](https://github.com/obrhubr/nyt-connections-deutsch) or try out the games yourself at [spiele.obrhubr.org](https://spiele.obrhubr.org/).)
 
-<br/>
+Try out the games yourself at [spiele.obrhubr.org](https://spiele.obrhubr.org/).
 
 I enjoyed solving the daily New York Times puzzles, then I found the daily [Quordle](https://quordlegame.com/) and then the daily [Waffle](https://wafflegame.net/) and soon after the daily [LinkedIn](https://www.linkedin.com/games/) puzzles. And before I even knew it, the entire thing got out of hand (I would only slightly be exaggerating by saying that I spent the entire day puzzling).
 

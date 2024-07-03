@@ -138,6 +138,13 @@ def get_words(text):
 	
 	return f"{minutes} minute"
 
+def get_sourcecode(post):
+	try:
+		src = post["properties"]["sourcecode"]["rich_text"][0]["plain_text"]
+		return f'"{src}"'
+	except KeyError:
+		return ""
+
 def add_metadata(markdown_text, metadata):
 	print("Inserting jekyll metadata...")
 
@@ -175,7 +182,8 @@ def format_page(post, short_name, publish_time, filename):
 		"image": os.path.join(util.ASSETS, short_name, fetch_previewimage(post, short_name)),
 		"favicon": fetch_favicon(post, short_name),
 		"excerpt": f'"{richtext_convertor(post["properties"]["Summary"]["rich_text"])}"',
-		"short": check_short(post)
+		"short": check_short(post),
+		"sourcecode": get_sourcecode(post)
 	}
 
 	# insert jekyll metadata

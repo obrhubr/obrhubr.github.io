@@ -18,15 +18,25 @@ layout: head
 	<div class="pagetitle">
 		{{ page.title }}
 	</div>
-	<div class="detail">
-		Published on {{ page.published | date_to_string: "ordinal", "UK" }}.
-	</div>
-	<div class="tags">
-		{% for tag in page.tags %}
-			<span class="tag">{{ tag }}</span>
-		{% endfor %}
+	<div class="metadata">
+		<div class="detail">
+			Published on {{ page.published | date_to_string: "ordinal", "UK" }}.
+		</div>
+		<div class="tags">
+			{% for tag in page.tags %}
+				<span class="tag">{{ tag }}</span>
+			{% endfor %}
+		</div>
+		{% if page.sourcode != "" %}
+			<div class="detail sourcecode">
+				You can find the <b>sourcecode</b> at: 
+				<a href="{{ page.sourcecode }}" target="_blank">{{ page.sourcecode }}</a>
+			</div>
+		{% endif %}
 	</div>
 </div>
+
+<hr>
 
 <div>
 	{{ content }}

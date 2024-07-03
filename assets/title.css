@@ -1,6 +1,6 @@
 .pagetitlediv {
     margin-top: 20px;
-    margin-bottom: 30px;
+    margin-bottom: 20px;
 
     color: var(--title-text-color);
 }
@@ -23,7 +23,7 @@
     left: 0;
 }
 
-.explication {
-    font-size: 16px;
-    color: var(--main-text-color)
+hr {
+    border: 0;
+    border-top: 2px solid var(--underscore);
 }

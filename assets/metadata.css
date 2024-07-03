@@ -1,3 +1,8 @@
+.metadata div {
+	margin-top: 2px;
+	margin-bottom: 2px;
+}
+
 .tags span:nth-child(1n) { background-color: #74A4BC; }
 .tags span:nth-child(2n) { background-color: #29524A; }
 .tags span:nth-child(3n) { background-color: #CE6D8B; }
@@ -8,10 +13,12 @@
 	font-size: 12px;
 	
 	padding: 5px;
-    margin: 2px;
-
 	border-radius: 5px;
 
     display: inline-block;
     color: white;
+}
+
+.detail {
+    color: var(--excerpt-color);
 }

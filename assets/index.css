@@ -94,7 +94,3 @@ img {
 h1, h2, h3, h4, h5 {
     color: var(--title-text-color);
 }
-
-.detail {
-    color: var(--excerpt-color);
-}
