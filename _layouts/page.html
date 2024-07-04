@@ -24,7 +24,7 @@ layout: head
 		</div>
 		<div class="tags">
 			{% for tag in page.tags %}
-				<span class="tag">{{ tag }}</span>
+				<span style="background-color: var(--{{ tag.color }});" class="tag">{{ tag.name }}</span>
 			{% endfor %}
 		</div>
 		{% if page.sourcode != "" %}

@@ -108,24 +108,16 @@ def fetch_favicon(post, short_name):
 
 	return os.path.join(short_name, "favicon.png")
 
-def get_tags(post):
-	tags = []
-	for tag in post["properties"]["Tags"]["multi_select"]:
-		tags += [tag["name"]]
-
-	return tags
-
 def format_tags(post):
-	array_to_string = lambda arr: '[{}]'.format(', '.join(f'"{x}"' for x in arr))
-
-	return array_to_string(get_tags(post))
+	return str(post["properties"]["Tags"]["multi_select"])
 
 # Check if the post has the tag "Short"
 def check_short(post):
-	tags = get_tags(post)
+	tags = post["properties"]["Tags"]["multi_select"]
 
-	if "Short" in tags:
-		return True
+	for tag in tags:
+		if tag["name"] == "Short":
+			return True
 	
 	return False
 

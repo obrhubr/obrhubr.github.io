@@ -3,7 +3,7 @@ layout: page
 title: "How to build a chess engine and fail"
 time: 9 minutes
 published: 2023-07-24
-tags: ["Chess Engines", "AI", "Games"]
+tags: [{'id': '91758743-8ccc-4495-9e97-0f2e67538e81', 'name': 'Chess Engines', 'color': 'blue'}, {'id': '4260119c-7ec5-48b3-ba5b-96f4335cdc7f', 'name': 'AI', 'color': 'yellow'}, {'id': '28d7f40f-be75-455e-9d82-781b78d1548c', 'name': 'Games', 'color': 'pink'}]
 permalink: chess-engine
 image: assets/chess-engine/preview.png
 favicon: chess-engine/favicon.png

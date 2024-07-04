@@ -3,21 +3,18 @@
 	margin-bottom: 2px;
 }
 
-.tags span:nth-child(1n) { background-color: var(--tag-color1); }
-.tags span:nth-child(2n) { background-color: var(--tag-color2); }
-.tags span:nth-child(3n) { background-color: var(--tag-color3); }
-.tags span:nth-child(4n) { background-color: var(--tag-color4); }
-.tags span:nth-child(5n) { background-color: var(--tag-color5); }
-
 .tag {
-	font-size: 12px;
+    display: inline-block;
+	min-width: 30px;
+
+	text-align: center;
 	
 	padding: 5px;
 	border-radius: 5px;
 
 	margin-bottom: 5px;
 
-    display: inline-block;
+	font-size: 12px;
     color: var(--tag-text-color);
 }
 
