@@ -1,0 +1,23 @@
+:root {
+    --main-bg-color: rgb(18, 18, 18);
+    --sec-bg-color: rgb(18, 18, 18);
+
+    --title-text-color: white;
+    --decoration-color: rgb(60, 60, 60);
+
+    --table-color: rgb(40, 40, 40);
+    
+    --main-text-color: rgb(192, 192, 192);
+    --secondary-text-color: rgb(147, 147, 147);
+    --link-text-color: rgb(252, 30, 163);
+    --link-hover-color: rgb(255, 159, 217);
+    
+    --navigation-text-color: rgb(25, 182, 255);
+
+	--tag-text-color: #FFFFFF;
+	--tag-color1: #74A4BC;
+	--tag-color2: #29524A;
+	--tag-color3: #CE6D8B;
+	--tag-color4: #E1CE7A;
+	--tag-color5: #440D0F;
+}

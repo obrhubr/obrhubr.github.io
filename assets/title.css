@@ -25,5 +25,5 @@
 
 hr {
     border: 0;
-    border-top: 2px solid var(--underscore);
+    border-top: 2px solid var(--decoration-color);
 }

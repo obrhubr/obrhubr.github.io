@@ -1,7 +1,4 @@
-.highlight .hll { background-color: #49483e }
-.highlight  { background: #272822; color: #f8f8f2 }
 .highlight .c { color: #75715e } /* Comment */
-.highlight .err { color: #960050; background-color: #1e0010 } /* Error */
 .highlight .k { color: #66d9ef } /* Keyword */
 .highlight .l { color: #ae81ff } /* Literal */
 .highlight .n { color: #f8f8f2 } /* Name */
@@ -69,9 +66,14 @@
 .highlight .vm { color: #f8f8f2 } /* Name.Variable.Magic */
 .highlight .il { color: #ae81ff } /* Literal.Number.Integer.Long */
 
-.language-plaintext { 
-	color: #e6db74;
-	background: #272822;
+/* Setting background colors */
+.highlight .hll { background-color: #49483e }
+.highlight  { background: #272822; color: #f8f8f2 }
+.highlight .err { color: #960050; background-color: #1e0010 } /* Error */
+.language-plaintext {  color: #e6db74; background: #272822; }
+
+/* Styling of the boxes */
+.language-plaintext {
 	padding: 2px 5px 2px 5px;
 	border-radius: 5px;
 	word-wrap: break-word;

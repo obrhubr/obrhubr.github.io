@@ -11,7 +11,7 @@ table {
 }
 
 thead tr {
-    background-color: var(--sec-bg-color);
+    background-color: var(--main-bg-color);
     text-align: left;
 }
 
