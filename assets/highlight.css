@@ -68,17 +68,19 @@
 .highlight .vi { color: #f8f8f2 } /* Name.Variable.Instance */
 .highlight .vm { color: #f8f8f2 } /* Name.Variable.Magic */
 .highlight .il { color: #ae81ff } /* Literal.Number.Integer.Long */
+
 .language-plaintext { 
 	color: #e6db74;
 	background: #272822;
-	padding: 3px 8px 3px 8px;
+	padding: 2px 5px 2px 5px;
 	border-radius: 5px;
 	word-wrap: break-word;
 }
+
 .highlight {
 	margin: 0;
-	padding: 5px 15px 5px 15px;
-	border-radius: 8px;
+	padding: 3px 10px 3px 10px;
+	border-radius: 5px;
 }
 
 pre { white-space: pre; overflow: auto; }
