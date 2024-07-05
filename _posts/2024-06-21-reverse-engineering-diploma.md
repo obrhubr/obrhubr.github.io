@@ -94,27 +94,17 @@ openssl rsautl -verify -inkey key.pem -pubin -in data.bin -raw -hexdump
 00f0 - XX XX XX XX XX XX XX XX-XX XX XX XX XX XX XX XX   que-Chimie~10.00
 ```
 
-From which we can extract the following text, using the `Latin1` character set:
+From which we can extract the following text, using the `Latin1` character set and parse it with the regex:
 
+![regex-parsing](/assets/reverse-engineering-diploma/5c113092_regex-parsing.png)
 
-```python
-Baccalaureat general session 2024|XXXXXXX|XXXXXXX|010101|10.00|Admis Mention Tres Bien avec les felicitations du jury||Epreuve orale terminale (Grand oral)~10.00#Mathematiques~10.00#Physique-Chimie~10.00
-```
+Finally, in the `_transformTextToReleveNotes()` function, the grades at the end are separated by at the hashtags `#` and then the tildes `~` to parse and display them to the user.
 
-The assembly code shows that it is then parsed with the following regex, which extracts the characters between the pipes `|`.
-
-
-```python
-(.*)\|(.*)\|(.*)\|([0-9]{2}[0-9]{2}[0-9]{2})\|(.*)\|(.*)\|(.*)\|(.*)
-```
-
-Finally, in the `_transformTextToReleveNotes()` function, the grades at the end (`...Mathematiques~10.00#Physique-Chimie~10.00`) are separated by at the hashtags `#` and then the tildes `~` to parse and display them to the user.
-
-I can now write a Python program that extracts my data from the PDF.
+Using this information, I wrote a [Python program](https://github.com/obrhubr/reverseengineering-diploma/blob/master/src/load_diploma.py) that extracts my data from the PDF.
 
 ## So what’s the issue here?
 
-The first issue is the absolute disregard for any of the standards related to RSA key usage. Encrypting with the private key and decrypting with the public key is usually only done in the context of signing/verifying. This is consistent with the `\x00\x01` at the beginning of the decrypted message’s padding. The `\x01` indicates a block type 1 in PKCS#1 padding, which means the operation performed was signing.
+The first issue is the absolute disregard for any of the standards related to RSA key usage. Encrypting with the private key and decrypting with the public key is usually only done in the context of signing/verifying. This is consistent with the `\x00\x01` bytes at the beginning of the decrypted message’s padding. The `\x01` byte indicates a block type 1 in PKCS#1 padding, which means the operation performed was signing.
 
 Python’s cryptography libraries straight out refuse to do any decrypting with public keys, the only available methods are for verifying. This requires you to provide the signature and the message. This is not possible here, since the signature is the message. Thus I had to resort to the obscure `openssl` commands and in the case of my Python program, had to reimplement the RSA algorithm in Python to get useful results.
 
@@ -124,7 +114,7 @@ Python’s cryptography libraries straight out refuse to do any decrypting with 
 
 According to [this comment](https://news.ycombinator.com/item?id=40878538#40879071) using RSA to encrypt the whole message in the signature is called “signature with (total) message recovery”. But according to the [RFC](https://datatracker.ietf.org/doc/html/rfc8017) (the official document outlining how RSA should be used) this is not intended functionality:
 
-> ‘Accordingly, the EMSA-PKCS-v1_5 encoding method explicitly includes a hash operation and is not intended for signature schemes with message recovery.’ - [RFC 8017, Section 8.2](https://datatracker.ietf.org/doc/html/rfc8017#section-8.2)
+> Accordingly, the EMSA-PKCS-v1_5 encoding method explicitly includes a hash operation and is not intended for signature schemes with message recovery. - [RFC 8017, Section 8.2](https://datatracker.ietf.org/doc/html/rfc8017#section-8.2)
 
 ## Is this secure?
 
@@ -134,15 +124,23 @@ The good news for the French ministry of education is that it’s probably not p
 
 ### What’s the Probability to randomly generate a valid Diploma
 
-In order for the App to actually show data instead of exiting, we need the decrypted text to match the regex. The simplest possible text which is valid is `||||123456|||` because it has the 8 `|` pipe separated sections and the birthday. The pipes don’t actually have to have any text between them, as `.*` matches any character between **zero** and unlimited times.
+In order for the App to actually show data instead of exiting, we need the decrypted text to match the regex. The simplest possible text which is valid is the following, because it has the 8 `|` pipe separated sections and the birthday. The pipes don’t actually have to have any text between them, as `.*` matches any character between **zero** and unlimited times.
+
+![possibilities_243padding](/assets/reverse-engineering-diploma/127d0bea_possibilities_243padding.png)
+
+<br/>
 
 This means that we can calculate how many possible messages there are, that match this regex.
 
-If there are 243 bytes of padding (`\x00\x01\xff... 238 more times ...\xff\x00`), then we have $ 10^6 $ valid messages. This is because every string `||||XXXXXX|||` - where X is any digit - matches. Therefore we have 6 characters with 10 possibilities (0-9) which means $ 10^6 $ total possibilities.
+If there are 243 bytes of padding (`\x00\x01\xff... 238 more times ...\xff\x00`), then we have $ 10^6 $ valid messages. This is because the birthday has 6 characters, which can be digits from 0 to 9. Every other bytes has to be a specific value in order to match the regex.
 
-For every byte less of padding, there can be one more character of random text in between the pipes - except between the numbers, because it has to exactly 6 digits. For example `Y||||123456|||` and `||Y||123456|||`, where Y is any character, are both valid messages. And since the app uses the `Latin1`, there are 189 valid characters.
+But as soon as we use only 242 bytes of padding, we have one character that could be anything, and can be located anywhere between the pipes:
 
-To calculate the amount of possibilities for $ n $ chars (so $ 256 - 13 - n $ bytes of padding) we have to consider how many ways we can put the $ n $ chars in the spaces between the pipes. This is solved by the classic combinatorial formula called the stars and bars theorem. It calculates the number of ways to place $ n $ indistinguishable balls into $ k $ labelled urns.
+![possibilities_242padding](/assets/reverse-engineering-diploma/3ba8a8fc_possibilities_242padding.png)
+
+And since the app uses the `Latin1`, there are 189 valid characters that byte could represent.
+
+To calculate the amount of possibilities for $ n $ chars (so $ 256 - 13 - n $ bytes of padding or $ 13 + n $ bytes of message) we have to consider how many ways we can put the $ n $ chars in the spaces between the pipes. This is solved by the classic combinatorial formula called the stars and bars theorem. It calculates the number of ways to place $ n $ indistinguishable balls into $ k $ labelled urns.
 
 We can use python to sum all possible combinations for us:
 

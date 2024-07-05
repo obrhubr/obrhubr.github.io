@@ -75,11 +75,11 @@ Another interesting observation is that the most common order in which people so
 2. Medium -> Straightforward -> Tricky -> Hard (total: 9)
 ```
 
-Which at least tells us that Medium and Straightforward are actually the easiest.
+Which at least tells us that Medium and Straightforward are - as expected - the easiest.
 
-But there is an interesting phenomenon, the second most common order is to only solve the tricky category and nothing else, at 12 occurrences. This seemed bizarre at first but we can actually learn something important from this.
+But there is an interesting phenomenon, the second most common order is to only solve the tricky category and nothing else, with 12 occurrences. This seemed bizarre at first but we can actually learn something important from this.
 
-The title of the tricky categories which were immediately solved were: “Words in James Bond titles” and “Words from Goethe’s book titles”. In hindsight, these are very obvious to people who have a bit of general knowledge - and Goethe <u>is</u> very famous in Germany and Austria. 
+The title of the tricky categories which were immediately solved were: “Words in James Bond titles” and “Words from Goethe’s book titles”. In hindsight, these are very obvious to people who have a bit of general knowledge - and Goethe is *very* famous in Germany and Austria. 
 
 (You can play the puzzles these are from at [spiele.obrhubr.org/verbindungen/play.html?number=l55J4qxSSJh8SSQcUs2E](https://spiele.obrhubr.org/verbindungen/play.html?number=l55J4qxSSJh8SSQcUs2E) and [spiele.obrhubr.org/verbindungen/play.html?number=anQYl1GaSWsmQlJYBUs3](https://spiele.obrhubr.org/verbindungen/play.html?number=l55J4qxSSJh8SSQcUs2E))
 
