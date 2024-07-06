@@ -21,6 +21,7 @@ layout: head
 	<div class="metadata">
 		<div class="detail">
 			Published on {{ page.published | date_to_string: "ordinal", "UK" }}.
+			{{ page.time }} long read.
 		</div>
 		<div class="tags">
 			{% for tag in page.tags %}
