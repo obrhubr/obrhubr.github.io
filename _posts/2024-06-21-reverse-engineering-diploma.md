@@ -62,13 +62,13 @@ After a day or two of familiarizing myself with the syntax and different instruc
 
 1. First the app calls the function `scanBarcode()` to get the data from the QR code
 
-2. Then, it compares the first two digits to find out which version the document has. It can be either `01`, `02`, `03` or `04`. These two digits account for the first two of the 258 bytes. This means that the encrypted data itself is 256 bytes long. This is exactly the length of the result of encrypting something using a RSA 2048-bit key.
+1. Then, it compares the first two digits to find out which version the document has. It can be either `01`, `02`, `03` or `04`. These two digits account for the first two of the 258 bytes. This means that the encrypted data itself is 256 bytes long. This is exactly the length of the result of encrypting something using a RSA 2048-bit key.
 
-3. Depending on the result of the comparison, it uses a different method and a different public key to decrypt it. My diploma starts with `02` and therefore the apps calls `_decodeRlnWithRSAToken2022()`.
+1. Depending on the result of the comparison, it uses a different method and a different public key to decrypt it. My diploma starts with `02` and therefore the apps calls `_decodeRlnWithRSAToken2022()`.
 
-4. This function first creates a PEM version of the RSA token - which means it prepends the `----BEGIN RSA PUBLIC KEY-----` and appends the `-----END RSA PUBLIC KEY-----` suffix to the key. Then it decodes the QR code with base64 and decrypts it with the RSA public key and PKCS#1 padding. The resulting bytes are processed with a Latin1 decoder - Latin1 is a type of text character set, like UTF-8.
+1. This function first creates a PEM version of the RSA token - which means it prepends the `----BEGIN RSA PUBLIC KEY-----` and appends the `-----END RSA PUBLIC KEY-----` suffix to the key. Then it decodes the QR code with base64 and decrypts it with the RSA public key and PKCS#1 padding. The resulting bytes are processed with a Latin1 decoder - Latin1 is a type of text character set, like UTF-8.
 
-5. The decrypted and decoded text is then passed to `_transformTextToReleveNotes()` and parsed using a Regex that extracts the data and displays it to the user.
+1. The decrypted and decoded text is then passed to `_transformTextToReleveNotes()` and parsed using a Regex that extracts the data and displays it to the user.
 
 After wrestling with the `openssl` command line tool and invoking a few arcane options, I managed to coax it into correctly decrypting the bytes. The result of the decryption looks like this:
 
