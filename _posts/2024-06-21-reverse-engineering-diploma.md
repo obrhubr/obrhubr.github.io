@@ -34,11 +34,11 @@ As I have at least a little bit of trust in the French authorities’ knowledge 
 
 When I scanned the code to extract the data, what I discovered was a simple base64 encoded string (which I knew because it ended in `==`) exactly 258 bytes long. But my excitement didn’t last long as the result of decoding it was random bytes that didn’t seem to contain any useful data.
 
-## Discovering the atrocities committed to create the QR code
+## Discovering that this would take longer than I thought
 
 After asking my friend to send me his PDF too, I realised that his was also 258 bytes long. For anyone with a little knowledge about RSA encryption, this does not bode well. But at that time I was blissfully ignorant and assumed I did something wrong - I thought I may have chosen the wrong character set - and it would decode just fine after fiddling with it a bit.
 
-But when I was still left with illegible garbled data, I knew that I would have to look inside the app itself, to discover how it accessed the data. 
+But when I was still left with illegible garbled data, I knew that I would have to look inside the app itself to discover how it accessed the data. 
 
 But there was one more thing to try first: Did the app access the internet to fetch the diploma? This would tell me if there was hope for a simple and quick solution. After putting my phone in airplane mode I could still access the data through the app. This was good news, as it confirmed that both the data and the keys to decrypt it had to be in the app itself. But actually accessing them would be another challenge.
 
@@ -102,21 +102,25 @@ Finally, in the `_transformTextToReleveNotes()` function, the grades at the end 
 
 Using this information, I wrote a [Python program](https://github.com/obrhubr/reverseengineering-diploma/blob/master/src/load_diploma.py) that extracts my data from the PDF.
 
-## So what’s the issue here?
+## Using RSA creatively to sign physical documents
 
-The first issue is the absolute disregard for any of the standards related to RSA key usage. Encrypting with the private key and decrypting with the public key is usually only done in the context of signing/verifying. This is consistent with the `\x00\x01` bytes at the beginning of the decrypted message’s padding. The `\x01` byte indicates a block type 1 in PKCS#1 padding, which means the operation performed was signing.
+Encrypting with the private key and decrypting with the public key is usually only done in the context of signing/verifying. This is consistent with the `\x00\x01` bytes at the beginning of the decrypted message’s padding. The `\x01` byte indicates a block type 1 in PKCS#1 padding, which means the operation performed was signing.
 
 Python’s cryptography libraries straight out refuse to do any decrypting with public keys, the only available methods are for verifying. This requires you to provide the signature and the message. This is not possible here, since the signature is the message. Thus I had to resort to the obscure `openssl` commands and in the case of my Python program, had to reimplement the RSA algorithm in Python to get useful results.
 
 <br/>
 
-**EDIT:** After posting this to [Hacker News](https://news.ycombinator.com/item?id=40878538) I got some valuable information from people obviously more knowledgeable than me.
+**EDIT:** However, this is not what is happening here. After posting this to [Hacker News](https://news.ycombinator.com/item?id=40878538) I got some valuable information from people obviously more knowledgeable than me.
 
 According to [this comment](https://news.ycombinator.com/item?id=40878538#40879071) using RSA to encrypt the whole message in the signature is called “signature with (total) message recovery”. But according to the [RFC](https://datatracker.ietf.org/doc/html/rfc8017) (the official document outlining how RSA should be used) this is not intended functionality:
 
 > Accordingly, the EMSA-PKCS-v1_5 encoding method explicitly includes a hash operation and is not intended for signature schemes with message recovery. - [RFC 8017, Section 8.2](https://datatracker.ietf.org/doc/html/rfc8017#section-8.2)
 
-## Is this secure?
+<br/>
+
+**EDIT 2:** Thanks to a [very helpful commenter on Lobsters](https://lobste.rs/s/qkqe46/reverse_engineering_verification_qr#c_hx3k9r) I stand corrected. In this scenario and for this threat model this is something you can do. As this [Stack Exchange reply](https://crypto.stackexchange.com/questions/17802/description-of-signatures-with-message-recovery-as-in-iso-iec-9796-2-and-emv-si) states there are ISO standards for implementing this. But verifying if it was done correctly here is out of my scope.
+
+<br/>
 
 As I understand it, the reason signature with message recovery is not recommended is because it creates the possibility of an attacker generating a random string that decrypts to valid data.
 
