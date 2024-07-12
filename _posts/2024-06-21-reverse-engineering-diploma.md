@@ -104,7 +104,7 @@ Using this information, I wrote a [Python program](https://github.com/obrhubr/re
 
 ## Using RSA creatively to sign physical documents
 
-Encrypting with the private key and decrypting with the public key is usually only done in the context of signing/verifying. This is consistent with the `\x00\x01` bytes at the beginning of the decrypted message’s padding. The `\x01` byte indicates a block type 1 in PKCS#1 padding, which means the operation performed was signing.
+Encrypting with the private key and decrypting with the public key is *usually* only done in the context of signing/verifying. This is consistent with the `\x00\x01` bytes at the beginning of the decrypted message’s padding. The `\x01` byte indicates a block type 1 in PKCS#1 padding, which means the operation performed was signing.
 
 Python’s cryptography libraries straight out refuse to do any decrypting with public keys, the only available methods are for verifying. This requires you to provide the signature and the message. This is not possible here, since the signature is the message. Thus I had to resort to the obscure `openssl` commands and in the case of my Python program, had to reimplement the RSA algorithm in Python to get useful results.
 
@@ -118,13 +118,13 @@ According to [this comment](https://news.ycombinator.com/item?id=40878538#408790
 
 <br/>
 
-**EDIT 2:** Thanks to a [very helpful commenter on Lobsters](https://lobste.rs/s/qkqe46/reverse_engineering_verification_qr#c_hx3k9r) I stand corrected. In this scenario and for this threat model this is something you can do. As this [Stack Exchange reply](https://crypto.stackexchange.com/questions/17802/description-of-signatures-with-message-recovery-as-in-iso-iec-9796-2-and-emv-si) states there are ISO standards for implementing this. But verifying if it was done correctly here is out of my scope.
+**EDIT 2:** Thanks to a [very helpful commenter on Lobsters](https://lobste.rs/s/qkqe46/reverse_engineering_verification_qr#c_hx3k9r) I stand corrected. In this scenario and for this threat model, signing with total message recovery is an accepted practice. As this [Stack Exchange reply](https://crypto.stackexchange.com/questions/17802/description-of-signatures-with-message-recovery-as-in-iso-iec-9796-2-and-emv-si) states there are ISO standards for it. But verifying if it was done correctly here is out of reach for me.
 
 <br/>
 
 As I understand it, the reason signature with message recovery is not recommended is because it creates the possibility of an attacker generating a random string that decrypts to valid data.
 
-The good news for the French ministry of education is that it’s probably not possible to forge a diploma.
+The good news for the French ministry of education is that it’s probably not possible to forge a diploma, as we'll see in this next section.
 
 ### What’s the Probability to randomly generate a valid Diploma
 
