@@ -6,3 +6,9 @@ author: obrhubr
 
 feed:
   excerpt_only: true
+
+exclude:
+  - scripts
+  - .github
+  - CNAME
+  - README.md
