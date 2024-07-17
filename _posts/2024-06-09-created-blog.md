@@ -29,7 +29,7 @@ The first point doesn’t concern me as anything I write will be freely availabl
 
 ## How does my Writing get from Notion to [obrhubr.org](http://obrhubr.org/)?
 
-I set up an action in the repository which stores the source code for the blog. It runs once a week and - thanks to [notion2md](https://github.com/echo724/notion2md) - fetches all posts tagged with `publish` from Notion. The assets are then automatically moved to the right directory in the Jekyll blog and the Markdown file is tagged with the information needed to publish it (date, excerpt, reading time, tags).
+I set up an action in the repository which stores the source code for the blog. It runs once a day and - thanks to [notion2md](https://github.com/echo724/notion2md) - fetches all posts tagged with `publish` from Notion. The assets are then automatically moved to the right directory in the Jekyll blog and the Markdown file is tagged with the information needed to publish it (date, excerpt, reading time, tags).
 
 I don’t have to worry about anything, except changing the tag from `preview` to `publish` in my Notion Database containing all the posts. This also means I can edit the posts anytime from Notion and the changes will be reflected at most 7 days later. 
 
