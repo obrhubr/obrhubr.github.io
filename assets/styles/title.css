@@ -11,18 +11,16 @@
     overflow: hidden;
 
     line-height: normal;
-
-    padding: 20px 0px 30px 0px;
-
+    
     font-size: 28px;
     font-weight: 700;
+
+    border-bottom: 10px double var(--title-text-color);
 }
 
-.pagetitle:after {
-    content: "========================================================================================================================================================================";
-    position: absolute;
-    bottom: 5px;
-    left: 0;
+.spacer {
+    margin-top: 40px;
+    margin-bottom: 30px;
 }
 
 hr {
