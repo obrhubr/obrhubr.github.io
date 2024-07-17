@@ -10,6 +10,7 @@ favicon: reverse-engineering-diploma/favicon.png
 excerpt: "When graduating a French school, your diploma contains a QR code which can be scanned with an app to display your grades, as a means of verification for universities or employers. I reverse engineer the app to recreate it’s functionality in Python. Then I try to break their signing method to generate any diploma with any grades."
 short: False
 sourcecode: "https://github.com/obrhubr/reverseengineering-diploma"
+katex: True
 ---
 
 At 15:50 Eastern European Time on the 18th of June 2024, I walked out of my last exam, having finally finished school after 13 years. This also meant that I could get into programming again, having been forced to quit my work in favour of studying.
@@ -62,13 +63,13 @@ After a day or two of familiarizing myself with the syntax and different instruc
 
 1. First the app calls the function `scanBarcode()` to get the data from the QR code
 
-1. Then, it compares the first two digits to find out which version the document has. It can be either `01`, `02`, `03` or `04`. These two digits account for the first two of the 258 bytes. This means that the encrypted data itself is 256 bytes long. This is exactly the length of the result of encrypting something using a RSA 2048-bit key.
+2. Then, it compares the first two digits to find out which version the document has. It can be either `01`, `02`, `03` or `04`. These two digits account for the first two of the 258 bytes. This means that the encrypted data itself is 256 bytes long. This is exactly the length of the result of encrypting something using a RSA 2048-bit key.
 
-1. Depending on the result of the comparison, it uses a different method and a different public key to decrypt it. My diploma starts with `02` and therefore the apps calls `_decodeRlnWithRSAToken2022()`.
+3. Depending on the result of the comparison, it uses a different method and a different public key to decrypt it. My diploma starts with `02` and therefore the apps calls `_decodeRlnWithRSAToken2022()`.
 
-1. This function first creates a PEM version of the RSA token - which means it prepends the `----BEGIN RSA PUBLIC KEY-----` and appends the `-----END RSA PUBLIC KEY-----` suffix to the key. Then it decodes the QR code with base64 and decrypts it with the RSA public key and PKCS#1 padding. The resulting bytes are processed with a Latin1 decoder - Latin1 is a type of text character set, like UTF-8.
+4. This function first creates a PEM version of the RSA token - which means it prepends the `----BEGIN RSA PUBLIC KEY-----` and appends the `-----END RSA PUBLIC KEY-----` suffix to the key. Then it decodes the QR code with base64 and decrypts it with the RSA public key and PKCS#1 padding. The resulting bytes are processed with a Latin1 decoder - Latin1 is a type of text character set, like UTF-8.
 
-1. The decrypted and decoded text is then passed to `_transformTextToReleveNotes()` and parsed using a Regex that extracts the data and displays it to the user.
+5. The decrypted and decoded text is then passed to `_transformTextToReleveNotes()` and parsed using a Regex that extracts the data and displays it to the user.
 
 After wrestling with the `openssl` command line tool and invoking a few arcane options, I managed to coax it into correctly decrypting the bytes. The result of the decryption looks like this:
 
@@ -136,7 +137,7 @@ In order for the App to actually show data instead of exiting, we need the decry
 
 This means that we can calculate how many possible messages there are, that match this regex.
 
-If there are 243 bytes of padding (`\x00\x01\xff... 238 more times ...\xff\x00`), then we have $ 10^6 $ valid messages. This is because the birthday has 6 characters, which can be digits from 0 to 9. Every other bytes has to be a specific value in order to match the regex.
+If there are 243 bytes of padding (`\x00\x01\xff... 238 more times ...\xff\x00`), then we have $$ 10^6 $$ valid messages. This is because the birthday has 6 characters, which can be digits from 0 to 9. Every other bytes has to be a specific value in order to match the regex.
 
 But as soon as we use only 242 bytes of padding, we have one character that could be anything, and can be located anywhere between the pipes:
 
@@ -144,7 +145,7 @@ But as soon as we use only 242 bytes of padding, we have one character that coul
 
 And since the app uses the `Latin1`, there are 189 valid characters that byte could represent.
 
-To calculate the amount of possibilities for $ n $ chars (so $ 256 - 13 - n $ bytes of padding or $ 13 + n $ bytes of message) we have to consider how many ways we can put the $ n $ chars in the spaces between the pipes. This is solved by the classic combinatorial formula called the stars and bars theorem. It calculates the number of ways to place $ n $ indistinguishable balls into $ k $ labelled urns.
+To calculate the amount of possibilities for $$ n $$ chars (so $$ 256 - 13 - n $$ bytes of padding or $$ 13 + n $$ bytes of message) we have to consider how many ways we can put the $$ n $$ chars in the spaces between the pipes. This is solved by the classic combinatorial formula called the stars and bars theorem. It calculates the number of ways to place $$ n $$ indistinguishable balls into $$ k $$ labelled urns.
 
 We can use python to sum all possible combinations for us:
 
@@ -162,7 +163,7 @@ for n in range(0, 256-13):
 total_possibilities  *= 10**6
 ```
 
-But we want to know if there is any chance for us to generate one such message by checking all possible encrypted ciphertexts iteratively. The total number of existing ciphertexts is $ 256^{256} $, because they have to be exactly 256 bytes long. By diving $ 256^{256} $ by the amount of messages which match the regex, we know how many we would have to try on average, before finding a single valid one.
+But we want to know if there is any chance for us to generate one such message by checking all possible encrypted ciphertexts iteratively. The total number of existing ciphertexts is $$ 256^{256} $$, because they have to be exactly 256 bytes long. By diving $$ 256^{256} $$ by the amount of messages which match the regex, we know how many we would have to try on average, before finding a single valid one.
 
 
 ```python
@@ -187,7 +188,5 @@ print(f"Days to find one result: {time }")
 # 3.650876742465208e+38
 ```
 
-$ 3 \cdot 10^{38} $ days is a completely unrealistic timespan, so we will sadly have to surrender to the French…
-
-<br/>
+$$ 3 \cdot 10^{38} $$ days is a completely unrealistic timespan, so we will sadly have to surrender to the French…
 

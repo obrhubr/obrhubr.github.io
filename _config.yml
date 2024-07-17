@@ -4,6 +4,9 @@ plugins:
 
 author: obrhubr
 
+kramdown:
+  math_engine: katex
+
 feed:
   excerpt_only: true
 

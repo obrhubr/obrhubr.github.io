@@ -11,6 +11,7 @@ excerpt: "I created a clone of the NYT Connections game in german: Verbindungen.
 A short taste of fame on Reddit allows me to evaluate user’s attempts at solving the puzzles. But what makes a puzzle great and could we try to generate them automatically?"
 short: False
 sourcecode: "github.com/obrhubr/modular-games"
+katex: False
 ---
 
 Try out the games yourself at [spiele.obrhubr.org](https://spiele.obrhubr.org/).

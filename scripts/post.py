@@ -150,6 +150,36 @@ def add_metadata(markdown_text, metadata):
 
 	return f"{metadata_to_string(metadata)}\n{markdown_text}"
 
+# Replace single quote dollar sign with double dollar sign
+def render_math(markdown_text):
+	print("Replace math dollar signs for katex ssg rendering...")
+
+	# Split text at code blocks to avoid replacing dollar signs
+	code_pattern = re.compile(r'(```[\s\S]*?```|`[^`\n]*`)')
+	split_text = code_pattern.split(markdown_text)
+
+	# Regex pattern to detect single dollar sign math blocks
+	math_pattern = re.compile(r"(?<!\$)\$([^$]+?)\$(?!\$)")
+
+	# Replace the dollar signs
+	output_text = []
+	has_math = False
+	for index, part in enumerate(split_text):
+		# Check if text is inside or outside code block
+		if index % 2 == 0:
+			part, n_subs = math_pattern.subn(r"$$\1$$", part)
+
+			# Check if any $ ... $ was replaced
+			if n_subs > 0:
+				has_math = True
+
+		output_text += [part]
+
+	if has_math:
+		markdown_text = ''.join(output_text)
+
+	return has_math, markdown_text
+
 def format_page(post, short_name, publish_time, filename):
 	# Read file
 	markdown_text = ""
@@ -160,9 +190,12 @@ def format_page(post, short_name, publish_time, filename):
 	# Replace MD image tags with correct filename
 	markdown_text = re.sub(
 		r"(\!\[.*?\])\((.*)\)",
-		r"\1"+ "(/assets/" + short_name + "/" + r"\2" + ")",
+		r"\1" + "(/assets/" + short_name + "/" + r"\2" + ")",
 		markdown_text
 	)
+
+	# Ensure correct math rendering with katex
+	has_math, markdown_text = render_math(markdown_text)
 
 	# Set metadata
 	metadata = {
@@ -175,7 +208,8 @@ def format_page(post, short_name, publish_time, filename):
 		"favicon": fetch_favicon(post, short_name),
 		"excerpt": f'"{richtext_convertor(post["properties"]["Summary"]["rich_text"])}"',
 		"short": check_short(post),
-		"sourcecode": get_sourcecode(post)
+		"sourcecode": get_sourcecode(post),
+		"katex": has_math
 	}
 
 	# insert jekyll metadata
@@ -188,6 +222,8 @@ def format_page(post, short_name, publish_time, filename):
 	return
 
 def export_page(post_id, post):
+	print(f"Downloading post, id={post_id}...")
+
 	download_markdown(post_id)
 
 	# Get url name of the page
