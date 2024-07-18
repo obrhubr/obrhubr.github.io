@@ -26,7 +26,7 @@ layout: head
 			{{ page.time }} long read.
 		</div>
 		<div class="tags">
-			{% for tag in page.tags %}
+			{% for tag in page.colortags %}
 				<span style="background-color: var(--{{ tag.color }});" class="tag">{{ tag.name }}</span>
 			{% endfor %}
 		</div>

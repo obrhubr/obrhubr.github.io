@@ -3,7 +3,8 @@ layout: page
 title: "Reverse Engineering the Verification QR Code on my Diploma"
 time: 12 minutes
 published: 2024-06-21
-tags: [{'id': '32482503-541e-4c2d-95f7-3f01e0b4dc97', 'name': 'Security Research', 'color': 'pink'}, {'id': '7977fe03-0c9b-436d-b28e-6b5fe7061907', 'name': 'Reverse Engineering', 'color': 'green'}, {'id': '2b5f0676-d41e-48c1-bb20-cb086cb5f776', 'name': 'Cryptography', 'color': 'blue'}]
+colortags: [{'id': '32482503-541e-4c2d-95f7-3f01e0b4dc97', 'name': 'Security Research', 'color': 'pink'}, {'id': '7977fe03-0c9b-436d-b28e-6b5fe7061907', 'name': 'Reverse Engineering', 'color': 'green'}, {'id': '2b5f0676-d41e-48c1-bb20-cb086cb5f776', 'name': 'Cryptography', 'color': 'blue'}]
+tags: ["Security Research", "Reverse Engineering", "Cryptography"]
 permalink: reverse-engineering-diploma
 image: assets/reverse-engineering-diploma/preview.png
 favicon: reverse-engineering-diploma/favicon.png
