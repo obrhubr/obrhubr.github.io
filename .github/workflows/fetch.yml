@@ -1,37 +1,42 @@
-name: fetch
+name: Export Posts from Notion to Jekyll
 
 on: 
   schedule:
     - cron: "0 0 * * *"
   workflow_dispatch:
-    inputs:
-      environment:
-        type: string
-        default: DEV
-        required: true
 
 jobs:
   build:
     runs-on: ubuntu-latest
 
     steps:
-      - name: checkout repo content
-        uses: actions/checkout@v4 # checkout the repository content to github runner.
-        with:
-          token: ${{ secrets.PAT }}
       - name: setup python
         uses: actions/setup-python@v4
         with:
-          python-version: '3.10'  
+          python-version: '3.10'
+      - name: checkout repo content to /blog/
+        uses: actions/checkout@v4 # checkout the repository content to github runner.
+        with:
+          token: ${{ secrets.PAT }}
+          path: ./blog
+      - name: Download notion-to-jekyll
+        uses: actions/checkout@v4 # checkout the repository content to github runner.
+        with:
+          token: ${{ secrets.PAT }}
+          path: ./notion-to-jekyll
       - name: Install dependencies
         run: |
+          cd ./notion-to-jekyll
           python -m pip install --upgrade pip
-          pip install notion-client notion2md python-dotenv requests
+          pip install .
       - name: Run exporter
-        run: python ./scripts/notion_export.py
+        run: |
+          cd ./blog
+          notion-to-jekyll --log
         env:
             NOTION_TOKEN: ${{ secrets.NOTION_TOKEN }}
             DB_ID: ${{ secrets.DB_ID }}
+            LOGSNAG_TOKEN: ${{ secrets.LOGSNAG_TOKEN }}
       - name: Commit to repository
         uses: stefanzweifel/git-auto-commit-action@v5
         with:
