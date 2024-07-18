@@ -35,9 +35,9 @@ I don’t have to worry about anything, except changing the tag from `preview` t
 
 I don’t have to waste time worrying if I have actually pushed changes to GitHub, especially if I’m not on my PC or a platform that allows me to interface with git.
 
-## Minimising JavaScript
+## Minimising JavaScript usage
 
-I wanted to minimise the amount of JavaScript that gets run when loading my blog. I have now successfully removed everything except the Google Analytics tag, which I cannot replace without moving away from GitHub Pages and counting the visits by accessing the server logs.
+To make my blog simpler and more usable, I wanted to throw out all JavaScript from my blog. I have now successfully removed everything except the Google Analytics tag, which I cannot replace without moving away from GitHub Pages and counting the visits by accessing the server logs.
 
 Instead of using MathJax to render equations, I use the Katex integration with Jekyll to render the equations server side.
 
