@@ -4,7 +4,7 @@ title: "Learning how to make great Puzzles by Cloning the NYT Puzzle “Connecti
 time: 7 minutes
 published: 2024-05-26
 colortags: [{'id': 'f50f3705-0c22-40e2-a074-91d12222a447', 'name': 'Puzzle', 'color': 'purple'}, {'id': '11658a68-3c22-4966-b5fe-93f7c296ba7e', 'name': 'Data Analysis', 'color': 'green'}, {'id': 'b4957fab-6b30-4589-a430-e71f10a30aeb', 'name': 'Web Development', 'color': 'purple'}]
-tags: ["Puzzle", "Data Analysis", "Web Development"]
+tags: ['Puzzle', 'Data Analysis', 'Web Development']
 permalink: nyt-connections
 image: assets/nyt-connections/preview.png
 favicon: nyt-connections/favicon.png
@@ -27,7 +27,7 @@ I sent my first puzzle - or “Verbindung” as I like to call them - to a good 
 
 When first loading the site you are presented with the blank grid of 16 words of today's puzzle. There are four categories - with four different difficulties - each with different titles, and four words each that fit into them respectively. The objective is for you to find the words that go into each category. You can read the entire rules at [www.nytimes.com/games/connections](https://www.nytimes.com/games/connections).
 
-![combined](/assets/nyt-connections/e388a5a4572a9f8db14b11e78b47ef8e.jpg)
+![Screenshots of the game on a mobile device.](/assets/nyt-connections/e388a5a4572a9f8db14b11e78b47ef8e.jpg)
 
 ## A short taste of fame
 
@@ -51,15 +51,13 @@ Knowing that all puzzles were played at least ten times, I think this graph trul
 
 But now I also now know that the puzzle published on the 2nd of June shouldn’t have been that easy. 
 
-![Untitled](/assets/nyt-connections/05f4e2581592289ffeefcb170c512fd6.jpg)
-
-<br/>
+![Graph showing how many attempts at solving each puzzle were successful.](/assets/nyt-connections/05f4e2581592289ffeefcb170c512fd6.jpg)
 
 **2. The next question that begged to be answered, was how well we tuned the difficulties of the different categories.**
 
 In a perfect world, we would like to see the straightforward category to be solved first and most often, then the medium difficulty, etc… But estimating difficulty is very hard, and this was reflected in the data.
 
-![Untitled](/assets/nyt-connections/5f0f0e17f83b2a9485cde1433cbd8da6.jpg)
+![Graph showing how often each of the difficulties were solved first in a puzzle.](/assets/nyt-connections/5f0f0e17f83b2a9485cde1433cbd8da6.jpg)
 
 The graph shows which categories were solved first and how often. Clearly, most users found the tricky category easier than the hard one, and by a large margin. Also somehow the medium difficulty one was easier than the straightforward category? This was something I did not expect.
 

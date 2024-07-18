@@ -4,7 +4,7 @@ title: "How I created my Blog - Notion to GitHub Pages"
 time: 2 minutes
 published: 2024-06-09
 colortags: [{'id': '2ed41265-7c0a-4aa6-9c43-6ca82f1a0459', 'name': 'Short', 'color': 'default'}, {'id': 'd4527084-e89a-472f-a8aa-454b5d0a3eeb', 'name': 'Blogging', 'color': 'gray'}, {'id': '26e3acab-0124-4773-a185-49dd8760c91c', 'name': 'API', 'color': 'orange'}]
-tags: ["Short", "Blogging", "API"]
+tags: ['Short', 'Blogging', 'API']
 permalink: created-blog
 image: assets/created-blog/none
 favicon: created-blog/favicon.png

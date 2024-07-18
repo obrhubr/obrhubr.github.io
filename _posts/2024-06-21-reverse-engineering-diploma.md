@@ -4,7 +4,7 @@ title: "Reverse Engineering the Verification QR Code on my Diploma"
 time: 12 minutes
 published: 2024-06-21
 colortags: [{'id': '32482503-541e-4c2d-95f7-3f01e0b4dc97', 'name': 'Security Research', 'color': 'pink'}, {'id': '7977fe03-0c9b-436d-b28e-6b5fe7061907', 'name': 'Reverse Engineering', 'color': 'green'}, {'id': '2b5f0676-d41e-48c1-bb20-cb086cb5f776', 'name': 'Cryptography', 'color': 'blue'}]
-tags: ["Security Research", "Reverse Engineering", "Cryptography"]
+tags: ['Security Research', 'Reverse Engineering', 'Cryptography']
 permalink: reverse-engineering-diploma
 image: assets/reverse-engineering-diploma/preview.png
 favicon: reverse-engineering-diploma/favicon.png
@@ -18,11 +18,11 @@ At 15:50 Eastern European Time on the 18th of June 2024, I walked out of my last
 
 Three days later, I was sent a PDF with the grades I received in my exams. What stood out to me however, was the QR code in the top right. This it what the PDF looks like. (And no this isn’t the real one. In fact, go ahead and scan the QR code, I dare you.)
 
-![diplome](/assets/reverse-engineering-diploma/0e6450ebb79cfdb23ce38d49b48b43e9.jpg)
+![The censored diploma PDF.](/assets/reverse-engineering-diploma/0e6450ebb79cfdb23ce38d49b48b43e9.jpg)
 
 The only clue to the code’s function is a small text below referencing [CycladesVérif](https://play.google.com/store/apps/details?id=fr.edu.rennes.cyclades.mobile.verifcertif.verifDocEducNat&hl=de_AT), a mobile application. To quench my curiosity I downloaded it and scanned the code. What I got was a summary of my personal information and grades. I would guess the code is for universities or employers to verify that you didn’t tamper with the PDF in order to boost your grades. They provide an example of what it looks like after scanning a QR code on the [Play Store](https://play-lh.googleusercontent.com/WDq09uvaMeZDMV7hnSlb4_W0vgpx7wiSzMILhqz32ptSqt8u5YWC_afSuVJN0zersg=w2560-h1440-rw):
 
-![example](/assets/reverse-engineering-diploma/48dfdfcce67c781278ce1d859ced9bfc.jpg)
+![Screenshot of the CycladesVérif app.](/assets/reverse-engineering-diploma/48dfdfcce67c781278ce1d859ced9bfc.jpg)
 
 What annoyed me however was that this mobile app - which wouldn’t work on all devices - was the only way to scan this code.
 
@@ -98,7 +98,7 @@ openssl rsautl -verify -inkey key.pem -pubin -in data.bin -raw -hexdump
 
 From which we can extract the following text, using the `Latin1` character set and parse it with the regex:
 
-![regex-parsing](/assets/reverse-engineering-diploma/4ec9f54a002f1276a3d9b290a1b2d78f.jpg)
+![Image showing the regex and the parsed diploma.](/assets/reverse-engineering-diploma/4ec9f54a002f1276a3d9b290a1b2d78f.jpg)
 
 Finally, in the `_transformTextToReleveNotes()` function, the grades at the end are separated by at the hashtags `#` and then the tildes `~` to parse and display them to the user.
 
@@ -132,9 +132,7 @@ The good news for the French ministry of education is that it’s probably not p
 
 In order for the App to actually show data instead of exiting, we need the decrypted text to match the regex. The simplest possible text which is valid is the following, because it has the 8 `|` pipe separated sections and the birthday. The pipes don’t actually have to have any text between them, as `.*` matches any character between **zero** and unlimited times.
 
-![possibilities_243padding](/assets/reverse-engineering-diploma/4bfc129aa72e8bd5f8a012c10ce78ee5.jpg)
-
-<br/>
+![Illustration showing the number of minimal valid messages matching the regex.](/assets/reverse-engineering-diploma/4bfc129aa72e8bd5f8a012c10ce78ee5.jpg)
 
 This means that we can calculate how many possible messages there are, that match this regex.
 
@@ -142,7 +140,7 @@ If there are 243 bytes of padding (`\x00\x01\xff... 238 more times ...\xff\x00`)
 
 But as soon as we use only 242 bytes of padding, we have one character that could be anything, and can be located anywhere between the pipes:
 
-![possibilities_242padding](/assets/reverse-engineering-diploma/0f4c207344abccf08908503b9c4ccdc4.jpg)
+![Illustration of the number of valid messages with 242 bytes of padding. ](/assets/reverse-engineering-diploma/0f4c207344abccf08908503b9c4ccdc4.jpg)
 
 And since the app uses the `Latin1`, there are 189 valid characters that byte could represent.
 

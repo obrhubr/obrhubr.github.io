@@ -4,7 +4,7 @@ title: "How to build a chess engine and fail"
 time: 9 minutes
 published: 2023-07-24
 colortags: [{'id': '91758743-8ccc-4495-9e97-0f2e67538e81', 'name': 'Chess Engines', 'color': 'blue'}, {'id': '4260119c-7ec5-48b3-ba5b-96f4335cdc7f', 'name': 'AI', 'color': 'yellow'}, {'id': '28d7f40f-be75-455e-9d82-781b78d1548c', 'name': 'Games', 'color': 'pink'}]
-tags: ["Chess Engines", "AI", "Games"]
+tags: ['Chess Engines', 'AI', 'Games']
 permalink: chess-engine
 image: assets/chess-engine/preview.png
 favicon: chess-engine/favicon.png
@@ -40,13 +40,13 @@ If, instead of using a complex network, we used a single 8x8 grid of weights for
 
 A very basic approach for creating an evaluation function is adding up the values of each piece a player has on the board and calculating the difference between these values for both players, which gives a score. Instead of assigning a static value to each type of piece (8 for a queen, 3 for a knight etc…) we weight their value based on their position on the field. One basic improvement we could make is to increase the value of a pawn the further it progresses up the board.
 
-![Untitled](/assets/chess-engine/88ec73806903d8949199ff6732e94c7d.jpg)
+![Basic piece square table.](/assets/chess-engine/88ec73806903d8949199ff6732e94c7d.jpg)
 
 Instead, copying the idea of the NNUE, we “train” our model on a lot of games and could come up with very sophisticated weighting strategies. We assign a value to every square of the board a piece could stand on, and do that for every type of piece. To evaluate a position, we would only need to add the value of the squares every piece stands on.
 
 For the implementation, we would need to save the weights of each square of each piece to an array. To evaluate we take a bitboard (`1` means a piece is present on the square, `0` indicates that no piece is there) representing the different pieces on the board as an array, and multiply it and the model’s weights together. The result would be a board with only the values of the squares left, that have a piece currently standing on them. Summing the values of the 6 different boards (6 piece types: pawn, knight, bishop, rook, queen, king) together for each player and subtracting them gives us a value in the format of the classic stockfish evaluation: `-1.5` for example to represent black winning by a certain margin, `+7.9` to represent white having a very powerful advantage.
 
-![Untitled](/assets/chess-engine/56a2473f18ae062a3fa14163e5a091dc.jpg)
+![Diagram illustrating the evaluation function using the piece square table.](/assets/chess-engine/56a2473f18ae062a3fa14163e5a091dc.jpg)
 
 ## Implementing the genetic algorithm and training
 
@@ -54,7 +54,7 @@ The question that remains is that of setting the value for each of the squares o
 
 Genetic algorithms on the contrary don’t use these more sophisticated techniques, and just mutate the values of the boards randomly between generations, always selecting the best of the current generation. Our training would therefore look something like this: we instantiate the model with randomly selected numbers between some boundary. We then evaluate these “weights” to assign a fitness to each and at the end we select the very best. We then slightly but still randomly mutate the values to create 500 or more children and test their fitness again. 
 
-![Untitled](/assets/chess-engine/cd6de3b4020921afb8d5ee095ab77eb4.jpg)
+![Diagram illustrating genetic algorithms.](/assets/chess-engine/cd6de3b4020921afb8d5ee095ab77eb4.jpg)
 
 We repeat this for a few hundred generations and we would be left with a single model that has been optimized for the fitness function. 
 
@@ -102,7 +102,7 @@ But adding the additional context that stockfish provides it’s NNUE was simply
 
 ## How does the NNUE solve this problem?
 
-![Untitled](/assets/chess-engine/1dce3e28383a340dba9adcf6a80ebe11.jpg)
+![Comparison between Stockfish’s NNUE weights and the piece square tables used by my bot.](/assets/chess-engine/1dce3e28383a340dba9adcf6a80ebe11.jpg)
 
 [Stockfish’s NNUE](https://github.com/official-stockfish/nnue-pytorch/blob/master/docs/nnue.md#what-is-nnue) is essentially made up of a heavily overparametrised input layer and a simple 4 layer network behind it. What this means is that instead of using bitboards representing the positions of the different pieces as inputs and applying the weights and biases, it instead gives the NNUE the positions of every single piece in relation to every single king position. This provides the network the necessary context to evaluate the position, which our simplified version lacked.
 
@@ -110,13 +110,13 @@ Concretely this translates to a model architecture consisting of 2x45056 inputs.
 
 For example, if white is to move, there are 11 other piece types (W Queen, W Rook, W Bishop, W Knight, W Pawn, B King, B Queen, B Rook, B Bishop, B Knight, B Pawn) that have to be taken into account. For each of the pieces on the board, we would then get the pair of `(king position, piece positions)`, and activate the corresponding input node of the network.
 
-![Untitled-2023-11-03-1915](/assets/chess-engine/10664f42cf1f14e2c1c97ee86e9ff3da.jpg)
+![Diagram illustrating how the NNUE works.](/assets/chess-engine/10664f42cf1f14e2c1c97ee86e9ff3da.jpg)
 
 This graphic from the [chessprogrammingwiki.org](https://www.chessprogramming.org/Main_Page) nicely summarizes the reset of the model architecture.
 
-![HalfKAv2](/assets/chess-engine/f1df2943f5aa32d505165bb3282959a6.jpg)
+![Diagram of the NNUE’s architecture](/assets/chess-engine/f1df2943f5aa32d505165bb3282959a6.jpg)
 
-This architecture also allows the highly optimized evaluation of the network that makes stockfish so fast. As long as the king does not move, you only have to update a single input node to recompute the evaluation for each move.
+This architecture also allows the highly optimized evaluation of the network that makes Stockfish so fast. As long as the king does not move, you only have to update a single input node to recompute the evaluation for each move.
 
 ## How could the shortcomings be remediated?
 
