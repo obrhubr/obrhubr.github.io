@@ -11,7 +11,7 @@ excerpt: "I created a clone of the NYT Connections game in german: Verbindungen.
 A short taste of fame on Reddit allows me to evaluate user’s attempts at solving the puzzles. But what makes a puzzle great and could we try to generate them automatically?"
 short: False
 sourcecode: "github.com/obrhubr/modular-games"
-katex: False
+math: False
 ---
 
 Try out the games yourself at [spiele.obrhubr.org](https://spiele.obrhubr.org/).
@@ -26,7 +26,7 @@ I sent my first puzzle - or “Verbindung” as I like to call them - to a good 
 
 When first loading the site you are presented with the blank grid of 16 words of today's puzzle. There are four categories - with four different difficulties - each with different titles, and four words each that fit into them respectively. The objective is for you to find the words that go into each category. You can read the entire rules at [www.nytimes.com/games/connections](https://www.nytimes.com/games/connections).
 
-![combined](/assets/nyt-connections/0f799f50_combined.png)
+![combined](/assets/nyt-connections/e388a5a4572a9f8db14b11e78b47ef8e.jpg)
 
 ## A short taste of fame
 
@@ -50,7 +50,7 @@ Knowing that all puzzles were played at least ten times, I think this graph trul
 
 But now I also now know that the puzzle published on the 2nd of June shouldn’t have been that easy. 
 
-![Untitled](/assets/nyt-connections/9b37e001_Untitled.png)
+![Untitled](/assets/nyt-connections/05f4e2581592289ffeefcb170c512fd6.jpg)
 
 <br/>
 
@@ -58,7 +58,7 @@ But now I also now know that the puzzle published on the 2nd of June shouldn’t
 
 In a perfect world, we would like to see the straightforward category to be solved first and most often, then the medium difficulty, etc… But estimating difficulty is very hard, and this was reflected in the data.
 
-![Untitled](/assets/nyt-connections/b9b39665_Untitled.png)
+![Untitled](/assets/nyt-connections/5f0f0e17f83b2a9485cde1433cbd8da6.jpg)
 
 The graph shows which categories were solved first and how often. Clearly, most users found the tricky category easier than the hard one, and by a large margin. Also somehow the medium difficulty one was easier than the straightforward category? This was something I did not expect.
 
