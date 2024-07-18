@@ -3,6 +3,7 @@ plugins:
   - jekyll-sitemap
 
 author: obrhubr
+url: https://obrhubr.org
 
 kramdown:
   math_engine: katex
