@@ -37,7 +37,7 @@ It still fundamentally works the same, but it’s a ✨python package✨ now. Ho
 Here is what that looks like on the terminal (I’m quite proud of my progress bars):
 
 
-```plain text
+```bash
 Starting Notion to Jekyll Exporter...
 Loading secrets from the environment variables.
 Found 5 blog posts to publish.
