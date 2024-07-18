@@ -24,6 +24,14 @@ jobs:
         with:
           token: ${{ secrets.PAT }}
           path: ./notion-to-jekyll
+      - name: Check dirs
+        run: |
+          ls -a
+          cd ./blog
+          ls -a
+          cd ..
+          cd ./notion-to-jekyll
+          ls -a
       - name: Install dependencies
         run: |
           cd ./notion-to-jekyll
