@@ -16,9 +16,9 @@ math: False
 
 I previously wrote about my process to publish posts to my blog. In the meantime I have been quite busy and the way it works has now changed quite a bit.
 
-Previously, I had a [single script](https://github.com/obrhubr/obrhubr.github.io/blob/5521915354da232c5bc40c8d8a035f6c7d2fd953/notion_export.py) called `notion_export.py` living in my [blogs repository](https://github.com/obrhubr/obrhubr.github.io) that downloaded all posts and their assets and simply copied them into my `_posts` directory. I ran this script daily using GitHub Actions, that was it.
+Previously, I had a [single script](https://github.com/obrhubr/obrhubr.github.io/blob/5521915354da232c5bc40c8d8a035f6c7d2fd953/notion_export.py) called `notion_export.py` living in my [blog’s repository](https://github.com/obrhubr/obrhubr.github.io) that downloaded all posts and their assets and simply copied them into my `_posts` directory. I ran this script daily using GitHub Actions, that was it.
 
-But as I added more features this script grew in size drastically. This is why I removed it from my blog’s repository and migrated it to a standalone tool - `notion-to-jekyll`.
+But as I added more features the script grew in size drastically. This is why I refactored it into a standalone tool: `notion-to-jekyll`.
 
 It still fundamentally works the same, but it’s a ✨python package✨ now. However, there have been a few upgrades.
 
@@ -29,6 +29,8 @@ It still fundamentally works the same, but it’s a ✨python package✨ now. Ho
 - It supports inline equations that work with [Katex](https://katex.org/), which means I don’t need JavaScript to render them with [MathJax](https://www.mathjax.org/) on the frontend.
 
 - It converts all images to `.jpg` and renames them to an MD5 hash of their content, which fixes the ugly filenames on my blog.
+
+- Use the captions on Notion to add correct alt-text to the images.
 
 - and a lot more small details…
 
@@ -72,8 +74,6 @@ Exporting post chess-engine: 100%|███████████████�
 
 Finished exporting posts from Notion to Jekyll.
 ```
-
-<br/>
 
 If you want to use this tool too, you can! Head to the repository at [obrhubr/notion-to-jekyll](https://github.com/obrhubr/notion-to-jekyll) and follow the instructions. You can customise it to fit your use case with the command line options.
 

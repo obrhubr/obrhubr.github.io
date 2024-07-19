@@ -43,17 +43,19 @@ The actual impact of this short stint on reddit were 310 new users in total, pla
 
 ## Tracking user behaviour
 
-After the massive - a new dimension for me at least - influx of visitors died down, I was left with a database full of data waiting to be analysed. I was however briefly interrupted due to passing my final exams, but now it’s time to get some insights out of raw data.
+After the massive - a new dimension for me at least - influx of visitors died down, I was left with a database waiting to be analysed. I was only briefly interrupted due to passing my final exams, but now it’s time to get some insights out of raw data.
 
 **1. The most important question was of course: who makes the harder puzzles?**
 
-Knowing that all puzzles were played at least ten times, I think this graph truly speaks for itself. My friend is a horrible puzzle designer (or too smart for all of us). 
-
-But now I also now know that the puzzle published on the 2nd of June shouldn’t have been that easy. 
+Knowing that all puzzles were played at least ten times, I think this graph truly speaks for itself:
 
 ![Graph showing how many attempts at solving each puzzle were successful.](/assets/nyt-connections/05f4e2581592289ffeefcb170c512fd6.jpg)
 
-**2. The next question that begged to be answered, was how well we tuned the difficulties of the different categories.**
+You can see that the puzzles I created were solved at much higher rates than those my friend created. He is either making fiendishly difficult puzzles on purpose or smarter than all of us.
+
+But now I also now know that the puzzle published on the 2nd of June shouldn’t have been that easy. 
+
+**2. The next question that begged to be answered was: How well did we choose the difficulties of the different categories?**
 
 In a perfect world, we would like to see the straightforward category to be solved first and most often, then the medium difficulty, etc… But estimating difficulty is very hard, and this was reflected in the data.
 
