@@ -51,7 +51,7 @@ Knowing that all puzzles were played at least ten times, I think this graph trul
 
 ![Graph showing how many attempts at solving each puzzle were successful.](/assets/nyt-connections/05f4e2581592289ffeefcb170c512fd6.jpg)
 
-You can see that the puzzles I created were solved at much higher rates than those my friend created. He is either making fiendishly difficult puzzles on purpose or smarter than all of us.
+You can see that the puzzles I created were solved at much higher rates than those my friend created. He is either making fiendishly difficult puzzles on purpose or is smarter than all of us.
 
 But now I also now know that the puzzle published on the 2nd of June shouldn’t have been that easy. 
 
