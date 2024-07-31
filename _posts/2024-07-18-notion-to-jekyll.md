@@ -16,9 +16,9 @@ math: False
 
 I previously wrote about my process to publish posts to my blog. In the meantime I have been quite busy and the way it works has now changed quite a bit.
 
-Previously, I had a [single script](https://github.com/obrhubr/obrhubr.github.io/blob/5521915354da232c5bc40c8d8a035f6c7d2fd953/notion_export.py) called `notion_export.py` living in my [blog’s repository](https://github.com/obrhubr/obrhubr.github.io) that downloaded all posts and their assets and simply copied them into my `_posts` directory. I ran this script daily using GitHub Actions, that was it.
+Previously, I had a [single script](https://github.com/obrhubr/obrhubr.github.io/blob/5521915354da232c5bc40c8d8a035f6c7d2fd953/notion_export.py) called `notion_export.py` living in my [blog’s repository](https://github.com/obrhubr/obrhubr.github.io) that downloaded all posts and their assets and simply copied them into my `_posts` directory. This script ran daily on GitHub Actions and mirrored my entire writings from Notion to my blog.
 
-But as I added more features the script grew in size drastically. This is why I refactored it into a standalone tool: `notion-to-jekyll`.
+But as I added more features, the script grew in size drastically. This is why I refactored it into a standalone tool: `notion-to-jekyll`.
 
 It still fundamentally works the same, but it’s a ✨python package✨ now. However, there have been a few upgrades.
 
@@ -36,7 +36,7 @@ It still fundamentally works the same, but it’s a ✨python package✨ now. Ho
 
 <br/>
 
-Here is what that looks like on the terminal (I’m quite proud of my progress bars):
+Here is what that looks like on the terminal:
 
 
 ```bash

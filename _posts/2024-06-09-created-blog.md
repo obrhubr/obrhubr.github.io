@@ -14,19 +14,19 @@ sourcecode: "https://github.com/obrhubr/obrhubr.github.io"
 math: False
 ---
 
-The biggest hurdle to creating content for a blog is writing the entries themselves. Hosting a blog on GitHub Pages means that you have to submit your entries in markdown (or html) format. But while Markdown is great for writing documents, adding tables and images is not as ergonomic as I would like.
+The biggest hurdle to creating content for a blog is writing the posts themselves. Hosting a blog on GitHub Pages means that you have to push your posts in markdown (or html) format. But while Markdown is great for writing documents, adding tables and images is not as easy as I would like.
 
 This is why I use Notion to edit my blog posts. I get a great interface for free - which allows me to edit from anywhere and any device - and I can easily upload images and create tables with a GUI. Then, once finished, I download (automatically of course, I’m a developer after all) raw Markdown and publish to GitHub.
 
 ## But…
 
-The battle-hardened Linux user will take offense at two things here:
+The big-corp wary user will point out two things here:
 
 - I don’t own my data. Notion stores it in the cloud and can do anything and everything they want with it.
 
-- Editing locally allows me to customise everything about the interface.
+- Editing locally would allow me to customise everything about the interface.
 
-The first point doesn’t concern me as anything I write will be freely available online anyways, no secrets here… As for the second point, of course editing locally might allow me to change specific things, and I sometimes miss this (especially for code blocks). But the fact that I can edit from anywhere makes the trade-off worth it.
+However the ease of use and that I can edit from anywhere in the world on any device makes these trade-offs worth it for me.
 
 ## How does my Writing get from Notion to [obrhubr.org](http://obrhubr.org/)?
 
@@ -35,10 +35,4 @@ I set up an action in the repository which stores the source code for the blog. 
 I don’t have to worry about anything, except changing the tag from `preview` to `publish` in my Notion Database containing all the posts. This also means I can edit the posts anytime from Notion and the changes will be reflected at most 7 days later. 
 
 I don’t have to waste time worrying if I have actually pushed changes to GitHub, especially if I’m not on my PC or a platform that allows me to interface with git.
-
-## Minimising JavaScript usage
-
-To make my blog simpler and more usable, I wanted to throw out all JavaScript from my blog. I have now successfully removed everything except the Google Analytics tag, which I cannot replace without moving away from GitHub Pages and counting the visits by accessing the server logs.
-
-Instead of using MathJax to render equations, I use the Katex integration with Jekyll to render the equations server side.
 
