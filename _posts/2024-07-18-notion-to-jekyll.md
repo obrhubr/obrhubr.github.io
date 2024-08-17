@@ -22,7 +22,7 @@ But as I added more features, the script grew in size drastically. This is why I
 
 It still fundamentally works the same, but it’s a ✨python package✨ now. However, there have been a few upgrades.
 
-- Instead of downloading all posts, it only exports those that have changed in the last 24 hours (which makes it a lot faster).
+- Instead of downloading all posts, it only exports those that have changed since it last downloaded them.
 
 - It logs any changes to [Logsnag](https://logsnag.com/) and notifies me.
 
