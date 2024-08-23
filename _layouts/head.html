@@ -6,7 +6,11 @@
 		<meta name="viewport" content="width=device-width, initial-scale=1">
 
 		<!-- Page title -->
-		<title>{{ page.title }}</title>
+		{% if page.url == "/" %}
+			<title>{{ site.data.metadata.person.name }}'s {{ page.title }}</title>
+		{% else %}
+			<title>{{ page.title }} - {{ site.data.metadata.person.name }}</title>
+		{% endif %}
 
 		<!-- Fonts -->
 		<link rel="preload" href="/assets/fonts/iosevka-aile-bold.woff2" as="font" crossorigin="anonymous">
