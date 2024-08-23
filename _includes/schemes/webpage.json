@@ -1,0 +1,11 @@
+{
+	"@context": "http://schema.org",
+	"@type": "WebPage",
+	"name": "{{ site.data.metadata.site.title }}",
+	"url" : "{{ site.data.metadata.site.url }}",
+	"author": {% include schemes/_includes/person.json %},
+	"publisher": {% include schemes/_includes/person.json %},
+	"keywords": [{% for keyword in site.data.metadata.site.keywords %}"{{ keyword }}"{% if forloop.last == false %},{% endif %}{% endfor %}],
+	"description": "{{ site.data.metadata.site.description }}",
+	"image": {% include schemes/_includes/favicon.json %}
+}

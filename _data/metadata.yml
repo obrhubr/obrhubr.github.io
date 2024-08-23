@@ -1,0 +1,35 @@
+site:
+  url: "https://obrhubr.org"
+  title: "Niklas Oberhuber's Posts & Notes"
+  description: "Hey! I'm Niklas and I write about anything that crosses my mind, mostly computer science topics."
+  keywords: ["Blog", "Personal Blog", "Software", "Machine Learning", "Data Analysis", "Programming"]
+  image: 
+    url: "/assets/favicon.png"
+    width: 32
+    height: 32
+
+  previewimage:
+    width: 2000
+    height: 600
+
+person:
+  name: "Niklas Oberhuber"
+  firstname: "Niklas"
+  github: "https://github.com/obrhubr"
+  gender: "male"
+  jobTitle: "Software Engineer"
+  image:
+    width: 32
+    height: 32
+    url: "/assets/favicon.png"
+
+  work:
+    - company: "Journi"
+      url: "https://journiapp.com"
+      description: "2024 Summer Internship for 2 months"
+    - company: "Journi"
+      url: "https://journiapp.com"
+      description: "2023 Summer Internship for 2 months"
+    - company: "Web&Söhne"
+      url: "https://webundsoehne.com"
+      description: "2022 Summer Internship for 2 months"

@@ -1,42 +1,23 @@
 ---
-layout: head
+layout: default
 ---
 
-<meta content="{{ page.title }}" property="og:title">
-<meta content="article" property="og:type">
-<meta content="{{ page.excerpt }}" property="og:description">
-<meta content="{{ site.url }}{{ page.url }}" property="og:url">
-{% if page.image %}
-	{% if page.image != "none" %}
-		<meta content="{{ site.url }}/{{ page.image }}" property="og:image">
+<div class="metadata">
+	<div class="detail">
+		Published on {{ page.published | date_to_string: "ordinal", "UK" }}.
+		{{ page.time }} long read.
+	</div>
+	<div class="tags">
+		{% for tag in page.colortags %}
+			<span style="background-color: var(--{{ tag.color }});" class="tag">{{ tag.name }}</span>
+		{% endfor %}
+	</div>
+	{% if page.sourcode != "" %}
+		<div class="detail sourcecode">
+			You can find the <b>sourcecode</b> at: 
+			<a href="{{ page.sourcecode }}" target="_blank">{{ page.sourcecode }}</a>
+		</div>
 	{% endif %}
-{% endif %}
-
-{% include header.html %}
-
-<div class="pagetitlediv">
-	<div class="spacer">
-		<div class="pagetitle">
-			{{ page.title }}
-		</div>
-	</div>
-	<div class="metadata">
-		<div class="detail">
-			Published on {{ page.published | date_to_string: "ordinal", "UK" }}.
-			{{ page.time }} long read.
-		</div>
-		<div class="tags">
-			{% for tag in page.colortags %}
-				<span style="background-color: var(--{{ tag.color }});" class="tag">{{ tag.name }}</span>
-			{% endfor %}
-		</div>
-		{% if page.sourcode != "" %}
-			<div class="detail sourcecode">
-				You can find the <b>sourcecode</b> at: 
-				<a href="{{ page.sourcecode }}" target="_blank">{{ page.sourcecode }}</a>
-			</div>
-		{% endif %}
-	</div>
 </div>
 
 <hr>
@@ -44,5 +25,3 @@ layout: head
 <div>
 	{{ content }}
 </div>
-
-{% include footer.html %}

@@ -8,9 +8,6 @@
 		<!-- Page title -->
 		<title>{{ page.title }}</title>
 
-		<!-- google search meta tags -->
-		<meta name="description" content="Hey! I'm Niklas and I write about anything that crosses my mind, mostly computer science topics.">
-		
 		<!-- Fonts -->
 		<link rel="preload" href="/assets/fonts/iosevka-aile-bold.woff2" as="font" crossorigin="anonymous">
 		<link rel="preload" href="/assets/fonts/iosevka-aile-normal.woff2" as="font" crossorigin="anonymous">
@@ -43,6 +40,32 @@
 			gtag('js', new Date());
 
 			gtag('config', 'G-07W7KYBHYN');
+		</script>
+
+		<!-- Metadata -->
+		{% include metadata/metadata.html %}
+		{% if page.layout == "page" %}
+			{% include metadata/page.html %}
+		{% elsif page.layout == "about" %}
+			{% include metadata/about.html %}
+		{% elsif page.url == "/contact.html" %}
+			{% include metadata/contact.html %}
+		{% endif %}
+
+		<!-- JSON+LD Scheme -->
+		<script type="application/ld+json">
+			{% include schemes/webpage.json %}
+		</script>
+		<script type="application/ld+json">
+			{% if page.url == "/" %}
+				{% include schemes/home.json %}
+			{% elsif page.layout == "page" %}
+				{% include schemes/post.json %}
+			{% elsif page.layout == "about" %}
+				{% include schemes/about.json %}
+			{% elsif page.url == "/contact.html" %}
+				{% include schemes/contact.json %}
+			{% endif %}
 		</script>
   	</head>
 	<body>

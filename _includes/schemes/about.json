@@ -1,0 +1,6 @@
+{
+	"@context": "http://schema.org",
+	"@type": "AboutPage",
+	"about": {% include schemes/_includes/person.json %},
+	"image": {% include schemes/_includes/favicon.json %}
+}

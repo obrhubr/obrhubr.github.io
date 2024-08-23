@@ -1,0 +1,12 @@
+{
+	"@context": "http://schema.org",
+	"@type": "Person",
+	"name": "{{ site.data.metadata.person.name }}",
+	"url": "{{ site.data.metadata.site.url }}",
+	"jobTitle": "{{ site.data.metadata.person.jobTitle }}",
+	"gender": "{{ site.data.metadata.person.gender }}",
+	"image": {% include schemes/_includes/favicon.json %},
+	"sameAs": [
+		"{{ site.data.metadata.person.github }}"
+	]
+}

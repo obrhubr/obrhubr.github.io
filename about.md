@@ -1,15 +1,16 @@
 ---
 layout: about
 title: About
+
+favicon: favicon.png
 ---
 
-Hey, my name is Niklas ([Github](https://github.com/obrhubr)). I'm a developer from Austria.
+Hey, my name is {{ site.data.metadata.site.person.firstname }} ([Github](https://github.com/obrhubr)). I'm a developer from Austria.
 
 ### Work Experience
 
- - [Journi](https://journiapp.com) (2024 Summer Internship for 2 months)
- - [Journi](https://journiapp.com) (2023 Summer Internship for 2 months)
- - [Web&Söhne](https://webundsoehne.com) (2022 Summer Internship for 2 months)
+{% for work in site.data.metadata.person.work %}
+ - [{{ work.company }}]({{ work.url }}) {{ work.description }} {% endfor %}
 
 ### Acknowledgements
 

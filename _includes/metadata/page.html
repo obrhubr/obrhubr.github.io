@@ -1,0 +1,9 @@
+<meta content="{{ page.title }}" property="og:title">
+<meta content="article" property="og:type">
+<meta content="{{ page.excerpt }}" property="og:description">
+<meta content="{{ site.url }}{{ page.url }}" property="og:url">
+{% if page.image %}
+	{% if page.image != "none" %}
+		<meta content="{{ site.url }}/{{ page.image }}" property="og:image">
+	{% endif %}
+{% endif %}

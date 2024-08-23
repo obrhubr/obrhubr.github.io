@@ -1,0 +1,6 @@
+{
+	"@type": "ImageObject",
+	"url": "{{ site.url }}{{ site.data.metadata.site.image.url }}",
+	"width": {{ site.data.metadata.site.image.width }},
+	"height": {{ site.data.metadata.site.image.height }}
+}
