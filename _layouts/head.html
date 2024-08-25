@@ -18,15 +18,17 @@
 		<link rel="preload" href="/assets/fonts/iosevka-aile-normalitalic.woff2" as="font" crossorigin="anonymous">
 		
 		<!-- Stylesheets -->
-		<link rel="stylesheet" href="/assets/styles/colors.css">
-		<link rel="stylesheet" href="/assets/styles/index.css">
-		<link rel="stylesheet" href="/assets/styles/title.css">
-		<link rel="stylesheet" href="/assets/styles/navigation.css">
-		<link rel="stylesheet" href="/assets/styles/posts.css">
-		<link rel="stylesheet" href="/assets/styles/highlight.css">
-		<link rel="stylesheet" href="/assets/styles/table.css">
-		<link rel="stylesheet" href="/assets/styles/metadata.css">
-		<link rel="stylesheet" href="/assets/styles/md.css">
+		<style>
+			{% include /styles/colors.css %}
+			{% include /styles/index.css %}
+			{% include /styles/title.css %}
+			{% include /styles/navigation.css %}
+			{% include /styles/posts.css %}
+			{% include /styles/table.css %}
+			{% include /styles/highlight.css %}
+			{% include /styles/metadata.css %}
+			{% include /styles/md.css %}
+		</style>
 
 		<!-- Page Favicon -->
 		<link rel="icon" type="image/png" href="/assets/{{ page.favicon }}">
