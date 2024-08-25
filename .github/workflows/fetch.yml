@@ -10,6 +10,8 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
+      - name: Install libwebp-dev
+        run: sudo apt-get update && sudo apt-get install -y libwebp-dev
       - name: setup python
         uses: actions/setup-python@v4
         with:
