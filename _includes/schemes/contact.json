@@ -2,7 +2,6 @@
 	"@context": "https://schema.org",
 	"@type": "ContactPage",
 	"mainEntityOfPage": {% include schemes/webpage.json %},
-	"publisher": {% include schemes/_includes/person.json %},
 	"author": {% include schemes/_includes/person.json %},
 	"image": {% include schemes/_includes/favicon.json %}
 }

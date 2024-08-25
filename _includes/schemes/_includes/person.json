@@ -1,5 +1,4 @@
 {
-	"@context": "http://schema.org",
 	"@type": "Person",
 	"name": "{{ site.data.metadata.person.name }}",
 	"url": "{{ site.data.metadata.site.url }}",

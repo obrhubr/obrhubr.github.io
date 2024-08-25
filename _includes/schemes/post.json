@@ -7,8 +7,8 @@
 	"datePublished": "{{ page.published | date: '%FT%T%:z' }}",
 	"dateCreated": "{{ page.published | date: '%FT%T%:z' }}",
 	"dateModified": "{{ page.published | date: '%FT%T%:z' }}",
-	"wordCount": "{{ page.content | number_of_words }}",
-	"inLanguage ": "en-UK",
+	"wordCount": {{ page.content | number_of_words }},
+	"inLanguage": "en-UK",
 	"description": "{{ page.excerpt }}",
 	{% if page.image %}{% if page.image != "none" %}"image": {
 		"@type": "ImageObject",
@@ -17,11 +17,8 @@
 		"height": {{ site.data.metadata.site.previewimage.height }}
 	},{% endif %}{% endif %}
 	"author": {% include schemes/_includes/person.json %},
-	"publisher": {% include schemes/_includes/person.json %},
 	"isPartOf": {
 		"@type": "Blog",
-		"url" : "{{ site.data.metadata.site.url }}",
-		"author": {% include schemes/_includes/person.json %},
-		"publisher": {% include schemes/_includes/person.json %}
+		"url" : "{{ site.data.metadata.site.url }}"
 	}
 }
