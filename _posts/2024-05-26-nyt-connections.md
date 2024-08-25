@@ -27,7 +27,7 @@ I sent my first puzzle - or “Verbindung” as I like to call them - to a good 
 
 When first loading the site you are presented with the blank grid of 16 words of today's puzzle. There are four categories - with four different difficulties - each with different titles, and four words each that fit into them respectively. The objective is for you to find the words that go into each category. You can read the entire rules at [www.nytimes.com/games/connections](https://www.nytimes.com/games/connections).
 
-![Screenshots of the game on a mobile device.](/assets/nyt-connections/e388a5a4572a9f8db14b11e78b47ef8e.jpg)
+![Screenshots of the game on a mobile device.](/assets/nyt-connections/78b13ae5371679835c80503e5775b845.webp)
 
 ## A short taste of fame
 
@@ -49,7 +49,7 @@ After the massive - a new dimension for me at least - influx of visitors died do
 
 Knowing that all puzzles were played at least ten times, I think this graph truly speaks for itself:
 
-![Graph showing how many attempts at solving each puzzle were successful.](/assets/nyt-connections/05f4e2581592289ffeefcb170c512fd6.jpg)
+![Graph showing how many attempts at solving each puzzle were successful.](/assets/nyt-connections/42350a06b6e3cce667caa14d8caf7c8a.webp)
 
 You can see that the puzzles I created were solved at much higher rates than those my friend created. He is either making fiendishly difficult puzzles on purpose or is smarter than all of us.
 
@@ -59,7 +59,7 @@ But now I also now know that the puzzle published on the 2nd of June shouldn’t
 
 In a perfect world, we would like to see the straightforward category to be solved first and most often, then the medium difficulty, etc… But estimating difficulty is very hard, and this was reflected in the data.
 
-![Graph showing how often each of the difficulties were solved first in a puzzle.](/assets/nyt-connections/5f0f0e17f83b2a9485cde1433cbd8da6.jpg)
+![Graph showing how often each of the difficulties were solved first in a puzzle.](/assets/nyt-connections/73325df79cf4cc0cd992c5039a1334a2.webp)
 
 The graph shows which categories were solved first and how often. Clearly, most users found the tricky category easier than the hard one, and by a large margin. Also somehow the medium difficulty one was easier than the straightforward category? This was something I did not expect.
 
