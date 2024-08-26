@@ -11,6 +11,8 @@ kramdown:
 feed:
   excerpt_only: true
 
+plugins_dir: ./_plugins
+
 exclude:
   - scripts
   - .github

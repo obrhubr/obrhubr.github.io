@@ -6,3 +6,5 @@ gem "jekyll"
 gem 'jekyll-feed'
 gem 'jekyll-sitemap'
 gem 'kramdown-math-katex'
+gem 'nokogiri'
+gem 'fastimage'
