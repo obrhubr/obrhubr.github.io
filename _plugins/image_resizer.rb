@@ -3,93 +3,107 @@ require 'nokogiri'
 require 'fileutils'
 
 module Jekyll
-  class ResizedImage < StaticFile
-    def initialize(site, base, dir, name, dest_dir)
-      super(site, base, dir, name)
-      @dest_dir = dest_dir
-    end
+	class ResizedImage < StaticFile
+		def initialize(site, base, dir, name, dest_dir)
+			super(site, base, dir, name)
+			@dest_dir = dest_dir
+		end
 
-    def destination(dest)
-      File.join(dest, @dest_dir, @name)
-    end
+		def destination(dest)
+			File.join(dest, @dest_dir, @name)
+		end
 
-    def write(dest)
-      super(dest)
-    end
-  end
+		def write(dest)
+			super(dest)
+		end
+	end
 
-  module ImageResizer
-    TARGET_WIDTHS = [1080, 720, 640, 480, 320]
+	module ImageResizer
+		TARGET_WIDTHS = [1080, 720, 640, 480, 320]
 
-    def resize_images(content)
-      @resized_images_to_cleanup ||= []
-      doc = Nokogiri::HTML.fragment(content)
-      doc.css('img').each do |img|
-        src = img['src']
-        next unless src
+		def resize_images(content)
+			# Only resize images in production build
+			if ENV['JEKYLL_ENV'] == "production"
+				# Get HTML nodes from content
+				doc = Nokogiri::HTML.fragment(content)
 
-        resized_images = resize_image(src)
+				# Iterate through all images
+				doc.css('img').each do |img|
+					# Get src of image
+					src = img['src']
+					next unless src
 
-        # Set the srcset attribute
-        img['srcset'] = build_srcset(resized_images)
+					# Resize the image and include the original in the srcset
+					resized_images = resize_image(src)
 
-        # Get the largest image (1080px) dimensions
-        largest_image_path = File.join(@context.registers[:site].source, resized_images[1080])
-        if File.exist?(largest_image_path)
-          largest_image = MiniMagick::Image.open(largest_image_path)
-          img['width'] = largest_image.width
-          img['height'] = largest_image.height
-        end
+					# Set the srcset attribute
+					img['srcset'] = build_srcset(src, resized_images)
 
-        # Store resized images for later cleanup
-        @resized_images_to_cleanup.concat(resized_images.values)
-      end
-      doc.to_html
-    end
+					# Set the src attribute to the original image
+					img['src'] = src
 
-    def resize_image(src)
-      site = @context.registers[:site]
-      source_dir = site.source
-      image = MiniMagick::Image.open(File.join(source_dir, src))
-      resized_images = {}
+					# Get the default dimensions from the original image
+					original_image_path = File.join(@context.registers[:site].source, src)
+					if File.exist?(original_image_path)
+						original_image = MiniMagick::Image.open(original_image_path)
+						img['width'] = original_image.width
+						img['height'] = original_image.height
+					end
+				end
+				doc.to_html
+			else
+				content
+			end
+		end
 
-      TARGET_WIDTHS.each do |width|
-        output_file_name = "#{File.basename(src, '.*')}-#{width}.#{image.type.downcase}"
-        output_file_path = File.join(File.dirname(src), output_file_name)
+		def resize_image(src)
+			site = @context.registers[:site]
+			
+			source_dir = site.source
+			image = MiniMagick::Image.open(File.join(source_dir, src))
+			resized_images = {}
 
-        # Ensure the directory exists before attempting to write the file
-        output_dir = File.join(source_dir, File.dirname(src))
-        FileUtils.mkdir_p(output_dir) unless Dir.exist?(output_dir)
+			TARGET_WIDTHS.each do |width|
+				if image.width > width
+					output_file_name = "#{File.basename(src, '.*')}-#{width}.#{image.type.downcase}"
+					output_file_path = File.join(File.dirname(src), output_file_name)
 
-        # Resize and write the image
-        unless resized_images.values.include?(output_file_path)
-          resized_image_path = generate_resized_image(image, output_file_name, width, output_dir)
-          resized_images[width] = output_file_path if resized_image_path
+					# Ensure the directory exists before attempting to write the file
+					output_dir = File.join(source_dir, File.dirname(src))
+					FileUtils.mkdir_p(output_dir) unless Dir.exist?(output_dir)
 
-          # Add the file to the static files to ensure Jekyll copies it
-          site.static_files << Jekyll::ResizedImage.new(site, source_dir, File.dirname(src), output_file_name, File.dirname(src))
-        end
-      end
+					# Resize and write the image
+					unless resized_images.values.include?(output_file_path)
+						resized_image_path = generate_resized_image(image, output_file_name, width, output_dir)
+						resized_images[width] = output_file_path if resized_image_path
 
-      resized_images
-    end
+						# Add the file to the static files to ensure Jekyll copies it
+						site.static_files << Jekyll::ResizedImage.new(site, source_dir, File.dirname(src), output_file_name, File.dirname(src))
+					end
+				end
+			end
 
-    def generate_resized_image(image, output_file_name, width, output_dir)
-      output_path = File.join(output_dir, output_file_name)
+			resized_images
+		end
 
-      unless File.exist?(output_path)
-        resized_image = image.clone
-        resized_image.resize "#{width}x"
-        resized_image.write(output_path)
-      end
+		def generate_resized_image(image, output_file_name, width, output_dir)
+			output_path = File.join(output_dir, output_file_name)
 
-      output_file_name
-    end
+			unless File.exist?(output_path)
+				resized_image = image.clone
+				resized_image.resize "#{width}x"
+				resized_image.write(output_path)
+			end
 
-    def build_srcset(resized_images)
-      resized_images.map { |width, file| "#{file} #{width}w" }.join(', ')
-    end
-  end
+			output_file_name
+		end
+
+		def build_srcset(original_src, resized_images)
+			srcset = resized_images.map { |width, file| "#{file} #{width}w" }.join(', ')
+			# Add the original image as the default (highest resolution) version
+			"#{original_src} #{MiniMagick::Image.open(File.join(@context.registers[:site].source, original_src)).width}w, " + srcset
+		end
+	end
 end
 
 Liquid::Template.register_filter(Jekyll::ImageResizer)
