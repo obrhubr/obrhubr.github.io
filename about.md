@@ -24,12 +24,6 @@ The font I use on the site was taken from [xeiaso.net](https://xeiaso.net/) as d
 
 I urge you to checkout the following blogs and sites:
 
- * [jameshaydon.github.io](https://jameshaydon.github.io)
- * [tom7.org](http://tom7.org/)
- * [qntm.org](https://qntm.org)
- * [maggieappleton.com](https://maggieappleton.com/)
- * [publicdomainreview.org](https://publicdomainreview.org/)
- * [www.thirtythreeforty.net](https://www.thirtythreeforty.net/)
- * [simonwillison.net](https://simonwillison.net/)
- * [fasterthanli.me](https://fasterthanli.me/)
- * [xeiaso.net](https://xeiaso.net/)
+{% assign sorted_recommendations = site.data.recommendations | sort: "name" %}
+{% for rec in sorted_recommendations %}
+ * [{{ rec.name }}]({{ rec.url }}) {% endfor %}
