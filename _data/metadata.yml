@@ -1,7 +1,7 @@
 site:
   url: "https://obrhubr.org"
   title: "Niklas Oberhuber's Posts & Notes"
-  description: "Hey! I'm Niklas and I write about anything that crosses my mind and computer science topics."
+  description: "Hey, I'm Niklas! I like to write about anything that crosses my mind, most of which is related to computers."
   keywords: ["Blog", "Personal Blog", "Software", "Machine Learning", "Data Analysis", "Programming"]
   image: 
     url: "/assets/favicon.png"
