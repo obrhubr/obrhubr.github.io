@@ -3,6 +3,9 @@ site:
   title: "Niklas Oberhuber's Posts & Notes"
   description: "Hey, I'm Niklas! I like to write about anything that crosses my mind, most of which is related to computers."
   keywords: ["Blog", "Personal Blog", "Software", "Machine Learning", "Data Analysis", "Programming"]
+  
+  gtag: "G-07W7KYBHYN"
+  
   image: 
     url: "/assets/favicon.png"
     width: 32
