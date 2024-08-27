@@ -63,6 +63,10 @@ body {
     line-height: 1.6em;
 }
 
+footer {
+    margin-top: 50px;
+}
+
 .link {
     color: var(--navigation-text-color);
     text-decoration: underline;
