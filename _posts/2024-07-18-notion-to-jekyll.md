@@ -18,7 +18,7 @@ I [previously](https://obrhubr.org/created-blog) wrote about my process to publi
 
 I had a [single script](https://github.com/obrhubr/obrhubr.github.io/blob/5521915354da232c5bc40c8d8a035f6c7d2fd953/notion_export.py) called `notion_export.py` living in my [blog’s repository](https://github.com/obrhubr/obrhubr.github.io) that downloaded all posts and their assets and copied them into my `_posts` directory. This script ran daily on GitHub Actions and mirrored my entire writings from Notion to my blog.
 
-As I added more features, the script grew in size drastically, which is why I refactored it into a [standalone tool](https://github.com/obrhubr/notion-to-jekyll): `notion-to-jekyll`. The basic structure remained indentical, but it’s a ✨python package✨ now. However, there have been a few upgrades.
+As I added more features, the script grew in size drastically, which is why I refactored it into a [standalone tool](https://github.com/obrhubr/notion-to-jekyll): `notion-to-jekyll`. The basic structure remained identical, but it’s a ✨python package✨ now. However, there have been a few upgrades.
 
 - Instead of downloading all posts, it only exports those that have changed since it last downloaded them.
 
@@ -29,6 +29,8 @@ As I added more features, the script grew in size drastically, which is why I re
 - It converts all images to `.jpg` and renames them to an MD5 hash of their content, which fixes the ugly filenames on my blog.
 
 - Use the captions on Notion to add correct alt-text to the images.
+
+- Automatically generate smaller versions of images in order to optimise load times.
 
 - and a lot more small details…
 
