@@ -19,7 +19,7 @@ module Jekyll
 	end
 
 	module ImageResizer
-		TARGET_WIDTHS = [1080, 720, 640, 480, 320]
+		TARGET_WIDTHS = [800, 720, 640, 480, 320]
 
 		def resize_images(content)
 			# Only resize images in production build
@@ -38,6 +38,8 @@ module Jekyll
 
 					# Set the srcset attribute
 					img['srcset'] = build_srcset(src, resized_images)
+					# Set the sizes attribute
+					img['sizes'] = "(max-width: 800px) 100vw, (min-width: 801px) 800px"
 
 					# Set the src attribute to the original image
 					img['src'] = src
