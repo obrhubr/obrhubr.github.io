@@ -1,6 +1,6 @@
 ---
 layout: page
-title: "Writing Notion to Jekyll, a Tool for my Blog"
+title: "Writing the Tool notion-to-jekyll for my Blog"
 time: 1 minute
 published: 2024-07-18
 colortags: [{'id': '2ed41265-7c0a-4aa6-9c43-6ca82f1a0459', 'name': 'Short', 'color': 'default'}, {'id': 'd4527084-e89a-472f-a8aa-454b5d0a3eeb', 'name': 'Blogging', 'color': 'gray'}, {'id': '26e3acab-0124-4773-a185-49dd8760c91c', 'name': 'API', 'color': 'orange'}]

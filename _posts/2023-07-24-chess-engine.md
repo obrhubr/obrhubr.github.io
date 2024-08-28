@@ -1,6 +1,6 @@
 ---
 layout: page
-title: "How to build a chess engine and fail"
+title: "How to Build a Chess Engine and Fail"
 time: 9 minutes
 published: 2023-07-24
 colortags: [{'id': '91758743-8ccc-4495-9e97-0f2e67538e81', 'name': 'Chess Engines', 'color': 'blue'}, {'id': '4260119c-7ec5-48b3-ba5b-96f4335cdc7f', 'name': 'AI', 'color': 'yellow'}, {'id': '28d7f40f-be75-455e-9d82-781b78d1548c', 'name': 'Games', 'color': 'pink'}]
