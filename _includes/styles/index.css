@@ -82,6 +82,10 @@ a {
 	word-wrap: break-word;
 }
 
+.post-content a:visited {
+    color: var(--link-visited-color);
+}
+
 a:hover {
     color: var(--link-hover-color);
 }

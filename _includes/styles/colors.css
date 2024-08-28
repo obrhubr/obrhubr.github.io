@@ -10,7 +10,8 @@
     --main-text-color: rgb(192, 192, 192);
     --secondary-text-color: rgb(147, 147, 147);
     --link-text-color: rgb(252, 30, 163);
-    --link-hover-color: rgb(255, 159, 217);
+    --link-visited-color: rgb(125, 54, 95);
+    --link-hover-color: rgb(254, 180, 224);
     
     --navigation-text-color: rgb(25, 182, 255);
 
