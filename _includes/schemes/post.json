@@ -12,7 +12,7 @@
 	"description": "{{ page.excerpt }}",
 	{% if page.image %}{% if page.image != "none" %}"image": {
 		"@type": "ImageObject",
-		"url": "{{ site.url }}/assets{{ page.url }}/{{ page.image }}",
+		"url": "{{ site.url }}/{{ page.image }}",
 		"width": {{ site.data.metadata.site.previewimage.width }},
 		"height": {{ site.data.metadata.site.previewimage.height }}
 	},{% endif %}{% endif %}
