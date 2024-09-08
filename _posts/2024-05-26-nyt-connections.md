@@ -1,6 +1,6 @@
 ---
 layout: page
-title: "Learning how to make great Puzzles by recreating the NYT Puzzle “Connections”"
+title: "Learning how to make great Puzzles through “Connections”"
 time: 7 minutes
 published: 2024-05-26
 colortags: [{'id': 'f50f3705-0c22-40e2-a074-91d12222a447', 'name': 'Puzzle', 'color': 'purple'}, {'id': '11658a68-3c22-4966-b5fe-93f7c296ba7e', 'name': 'Data Analysis', 'color': 'green'}, {'id': 'b4957fab-6b30-4589-a430-e71f10a30aeb', 'name': 'Web Development', 'color': 'purple'}]
