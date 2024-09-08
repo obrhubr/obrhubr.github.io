@@ -6,7 +6,7 @@ published: 2024-05-26
 colortags: [{'id': 'f50f3705-0c22-40e2-a074-91d12222a447', 'name': 'Puzzle', 'color': 'purple'}, {'id': '11658a68-3c22-4966-b5fe-93f7c296ba7e', 'name': 'Data Analysis', 'color': 'green'}, {'id': 'b4957fab-6b30-4589-a430-e71f10a30aeb', 'name': 'Web Development', 'color': 'purple'}]
 tags: ['Puzzle', 'Data Analysis', 'Web Development']
 permalink: nyt-connections
-image: preview.png
+image: assets/nyt-connections/preview.png
 favicon: nyt-connections/favicon.png
 excerpt: "I created a clone of the NYT Connections game in german: Verbindungen.
 A short taste of fame on Reddit allows me to evaluate user’s attempts at solving the puzzles. But what makes a puzzle great and could we try to generate them automatically?"

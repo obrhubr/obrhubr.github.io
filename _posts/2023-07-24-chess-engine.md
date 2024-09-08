@@ -6,7 +6,7 @@ published: 2023-07-24
 colortags: [{'id': '91758743-8ccc-4495-9e97-0f2e67538e81', 'name': 'Chess Engines', 'color': 'blue'}, {'id': '4260119c-7ec5-48b3-ba5b-96f4335cdc7f', 'name': 'AI', 'color': 'yellow'}, {'id': '28d7f40f-be75-455e-9d82-781b78d1548c', 'name': 'Games', 'color': 'pink'}]
 tags: ['Chess Engines', 'AI', 'Games']
 permalink: chess-engine
-image: preview.png
+image: assets/chess-engine/preview.png
 favicon: chess-engine/favicon.png
 excerpt: "A Chess-AI is something every programmer should build at least once and [Sebastian Lague’s](https://www.youtube.com/@SebastianLague) [competition](https://www.youtube.com/watch?v=iScy18pVR58) was the perfect opportunity for me to do so. Constrained to 1024 tokens I wanted to implement an evaluation function similar to that of Stockfish’s NNUE but heavily simplified. And instead of using a complex feed-forward algorithm to train the neural network I wanted to optimise the parameters using a genetic algorithm that relied on historical Stockfish data. However, I quickly realised why the model Stockfish uses has 50MBs of data and would not fit into my small bot for the competition…"
 short: False

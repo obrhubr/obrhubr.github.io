@@ -6,7 +6,7 @@ published: 2024-07-19
 colortags: [{'id': 'f50f3705-0c22-40e2-a074-91d12222a447', 'name': 'Puzzle', 'color': 'purple'}, {'id': '4260119c-7ec5-48b3-ba5b-96f4335cdc7f', 'name': 'AI', 'color': 'yellow'}, {'id': '11658a68-3c22-4966-b5fe-93f7c296ba7e', 'name': 'Data Analysis', 'color': 'green'}]
 tags: ['Puzzle', 'AI', 'Data Analysis']
 permalink: crossword
-image: preview.jpg
+image: assets/crossword/preview.jpg
 favicon: crossword/favicon.png
 excerpt: "After writing my own version of the NYT’s puzzle [Connections](https://www.nytimes.com/games/connections), the Mini-Crossword was next. But the challenging part was not writing the crossword player for my site [spiele.obrhubr.org](http://spiele.obrhubr.org/), but constructing the puzzles. But surely I can automate that…"
 short: False

@@ -6,7 +6,7 @@ published: 2024-06-21
 colortags: [{'id': '32482503-541e-4c2d-95f7-3f01e0b4dc97', 'name': 'Security Research', 'color': 'pink'}, {'id': '7977fe03-0c9b-436d-b28e-6b5fe7061907', 'name': 'Reverse Engineering', 'color': 'green'}, {'id': '2b5f0676-d41e-48c1-bb20-cb086cb5f776', 'name': 'Cryptography', 'color': 'blue'}]
 tags: ['Security Research', 'Reverse Engineering', 'Cryptography']
 permalink: reverse-engineering-diploma
-image: preview.png
+image: assets/reverse-engineering-diploma/preview.png
 favicon: reverse-engineering-diploma/favicon.png
 excerpt: "When graduating a French school, your diploma contains a QR code which can be scanned with an app to display your grades, as a means of verification for universities or employers. I want to reverse engineer the app to recreate it’s functionality in Python and enable users without the app to use it."
 short: False
