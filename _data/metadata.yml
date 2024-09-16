@@ -25,14 +25,3 @@ person:
     width: 32
     height: 32
     url: "/assets/favicon.png"
-
-  work:
-    - company: "Journi"
-      url: "https://journiapp.com"
-      description: "2024 Summer Internship for 2 months"
-    - company: "Journi"
-      url: "https://journiapp.com"
-      description: "2023 Summer Internship for 2 months"
-    - company: "Web&Söhne"
-      url: "https://webundsoehne.com"
-      description: "2022 Summer Internship for 2 months"

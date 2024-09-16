@@ -7,11 +7,6 @@ favicon: favicon.png
 
 {{ site.data.metadata.site.description }} ([Github](https://github.com/obrhubr))
 
-### Work Experience
-
-{% for work in site.data.metadata.person.work %}
- - [{{ work.company }}]({{ work.url }}) {{ work.description }} {% endfor %}
-
 ### Acknowledgements
 
 My site's design was heavily inspired by [James Haydon's Blog](https://jameshaydon.github.io), which I discovered through HackerNews.
