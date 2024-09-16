@@ -5,7 +5,7 @@ title: About
 favicon: favicon.png
 ---
 
-Hey, my name is {{ site.data.metadata.site.person.firstname }} ([Github](https://github.com/obrhubr)). I'm a developer from Austria.
+{{ site.data.metadata.site.description }} ([Github](https://github.com/obrhubr))
 
 ### Work Experience
 
