@@ -7,6 +7,8 @@ favicon: favicon.png
 
 {{ site.data.metadata.site.description }} ([Github](https://github.com/obrhubr))
 
+Contact me @ <a>{{ site.data.metadata.person.contact }}</a>.
+
 ### Acknowledgements
 
 My site's design was heavily inspired by [James Haydon's Blog](https://jameshaydon.github.io), which I discovered through HackerNews.

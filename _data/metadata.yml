@@ -21,6 +21,7 @@ person:
   github: "https://github.com/obrhubr"
   gender: "male"
   jobTitle: "Software Engineer"
+  contact: contact [at] thisdomain
   image:
     width: 32
     height: 32
