@@ -1,5 +1,5 @@
 # Build the Jekyll site
-FROM jekyll/jekyll:3.8 AS builder
+FROM jekyll/jekyll:3.0.5 AS builder
 
 WORKDIR /srv/jekyll
 COPY . .
