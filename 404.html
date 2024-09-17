@@ -1,0 +1,29 @@
+---
+layout: default
+title: Not Found
+
+favicon: favicon.png
+---
+
+<p>
+    Sorry, I didn't write about <span id="error-url">the topic you searched for</span>  yet! 
+    If you would like me to (or just want to reach out) feel free to contact me @ <a>{{ site.data.metadata.person.contact }}</a>.
+</p>
+<p>
+    Please check out my <a href="/">other posts</a>!
+</p>
+
+<script>
+    function getPathName() {
+        const path = window.location.pathname;
+        let pathName = path.replace(/\//g, ' ').replace(/\./g, ' ').trim();
+
+        return pathName;
+    }
+
+    // show error path in the page's text
+    const pathName = getPathName();
+    if (pathName) {
+        document.getElementById('error-url').textContent = `"${pathName}"`;
+    }
+</script>   

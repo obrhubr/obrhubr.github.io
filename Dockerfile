@@ -1,12 +1,22 @@
 # Build the Jekyll site
-FROM jekyll/jekyll:3.0.5 AS builder
+FROM ruby:3.1.3-bullseye AS builder
 
-WORKDIR /srv/jekyll
+# Install js runtime for katex
+RUN apt-get install -y curl gpg
+RUN curl -fsSL https://deb.nodesource.com/setup_22.x -o nodesource_setup.sh
+RUN bash nodesource_setup.sh
+RUN apt-get install -y nodejs
+
+WORKDIR /usr/src/app
 COPY . .
-RUN jekyll build
+
+RUN bundle install
+
+ENV JEKYLL_ENV=production
+RUN bundle exec jekyll build
 
 # Serving the site
 FROM nginx:stable-alpine
 
-COPY --from=builder _site /usr/share/nginx/html
+COPY --from=builder /usr/src/app/_site /usr/share/nginx/html
 COPY _nginx/nginx.conf /etc/nginx/conf.d/default.conf
