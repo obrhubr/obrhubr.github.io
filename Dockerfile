@@ -8,9 +8,12 @@ RUN bash nodesource_setup.sh
 RUN apt-get install -y nodejs
 
 WORKDIR /usr/src/app
-COPY . .
+
+COPY Gemfile .
 
 RUN bundle install
+
+COPY . .
 
 ENV JEKYLL_ENV=production
 RUN bundle exec jekyll build
