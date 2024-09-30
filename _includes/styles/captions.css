@@ -1,4 +1,4 @@
-.caption {
+p > .caption {
 	color: var(--secondary-text-color);
 
 	margin: 0px;
