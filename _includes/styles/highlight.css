@@ -87,6 +87,13 @@
 
 pre { white-space: pre; overflow: auto; }
 
+.katex-display {
+	display: block;
+	width: 100%;
+	overflow: scroll;
+	padding-bottom: 5px;
+}
+
 /* custom scrollbar */
 ::-webkit-scrollbar {
 	width: 20px;
