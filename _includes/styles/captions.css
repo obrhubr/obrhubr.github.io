@@ -1,0 +1,7 @@
+.caption {
+	color: var(--secondary-text-color);
+
+	margin: 0px;
+	margin-top: 2px;
+	text-align: center;
+}

@@ -26,8 +26,10 @@
 			{% include /styles/posts.css %}
 			{% include /styles/table.css %}
 			{% include /styles/highlight.css %}
+			{% include /styles/math.css %}
 			{% include /styles/metadata.css %}
 			{% include /styles/md.css %}
+			{% include /styles/captions.css %}
 		</style>
 
 		<!-- Page Favicon -->
@@ -78,5 +80,11 @@
 		<div class="main">
 			{{ content }}
 		</div>
+
+
+		<!-- Scripts loaded after content -->
+		<script>
+			{% include /scripts/captions.js %}
+		</script>
 	</body>
 </html>
