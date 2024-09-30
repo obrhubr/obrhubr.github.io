@@ -108,3 +108,8 @@ img {
 h1, h2, h3, h4, h5 {
     color: var(--title-text-color);
 }
+
+/* Make the html part of katex rendered math disappear*/
+.katex-html {
+    display: none;
+}
