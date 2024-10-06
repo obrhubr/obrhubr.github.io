@@ -11,7 +11,7 @@ excerpt: "When graduating a French school, your diploma contains a QR code which
 short: False
 sourcecode: "https://github.com/obrhubr/reverseengineering-diploma"
 math: True
-image: assets/reverse-engineering-diploma/preview.png
+image: assets/reverse-engineering-diploma/preview.webp
 ---
 
 At 15:50 Eastern European Time on the 18th of June 2024, I walked out of my last exam, having finally finished school after 13 years. This also meant that I could get into programming again, having been forced to quit my work in favour of studying.

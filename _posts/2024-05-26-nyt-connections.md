@@ -83,7 +83,7 @@ But there is an interesting phenomenon, the second most common order is to only 
 
 The title of the tricky categories which were immediately solved were: “Words in James Bond titles” and “Words from Goethe’s book titles”. In hindsight, these are very obvious to people who have a bit of general knowledge - and Goethe is *very* famous in Germany and Austria. 
 
-(You can play the puzzles these are from at [spiele.obrhubr.org/verbindungen/play.html?number=l55J4qxSSJh8SSQcUs2E](https://spiele.obrhubr.org/verbindungen/play.html?number=l55J4qxSSJh8SSQcUs2E) and [spiele.obrhubr.org/verbindungen/play.html?number=anQYl1GaSWsmQlJYBUs3](https://spiele.obrhubr.org/verbindungen/play.html?number=l55J4qxSSJh8SSQcUs2E))
+(You can play the puzzles these are from at [this link on spiele.obrhubr.org](https://spiele.obrhubr.org/verbindungen/play.html?number=l55J4qxSSJh8SSQcUs2E) and [this link on spiele.obrhubr.org](https://spiele.obrhubr.org/verbindungen/play.html?number=l55J4qxSSJh8SSQcUs2E))
 
 ## What makes a great Connections Game?
 

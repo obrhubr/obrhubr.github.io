@@ -11,7 +11,7 @@ excerpt: "After writing my own version of the NYT’s puzzle [Connections](https
 short: False
 sourcecode: "https://github.com/obrhubr/xword-fill"
 math: False
-image: assets/crossword/preview.jpg
+image: assets/crossword/preview.webp
 ---
 
 After writing my own version of the NYT’s puzzle [Connections](https://www.nytimes.com/games/connections), the Mini-Crossword was next. But the challenging part was not writing the crossword player for my site [spiele.obrhubr.org](http://spiele.obrhubr.org/), it is constructing the puzzles. But surely I can automate that…
