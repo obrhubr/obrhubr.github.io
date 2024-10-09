@@ -1,7 +1,7 @@
 ---
 layout: page
 title: "How to Build a Chess Engine and Fail"
-time: 11 minutes
+time: 12 minutes
 published: 2023-07-24
 colortags: [{'id': '91758743-8ccc-4495-9e97-0f2e67538e81', 'name': 'Chess Engines', 'color': 'blue'}, {'id': '4260119c-7ec5-48b3-ba5b-96f4335cdc7f', 'name': 'AI', 'color': 'yellow'}, {'id': '28d7f40f-be75-455e-9d82-781b78d1548c', 'name': 'Games', 'color': 'pink'}]
 tags: ['Chess Engines', 'AI', 'Games']
@@ -128,15 +128,29 @@ While the ultra-high rate of compression from 2x45065 inputs to only 6x8x8 is cl
 
 ### Debugging
 
-The dashboard I built shows: depth reached, the amount of nodes traversed and the memory consumed by hash tables storing certain evaluations among others. The engine dumps this information into a JSON file with each iteration, which is picked up by the server and refreshes the dashboard.
+The dashboard I built shows depth reached, the amount of nodes traversed and the memory consumed by hash tables storing certain evaluations among others. 
 
-![Graphical interface of my debugging tool. It shows the current state of the board and the best predicted state.](/assets/chess-engine/ccee14a7efbf0635149fe31ef9427cb0.webp)
+The engine dumps this information into a JSON file with each iteration, which is picked up by the server and refreshes the dashboard. Monitoring applications this way is common for web development, where distributed systems are otherwise impossible to debug.
 
-The information on the bottom right is especially helpful to debug some complex issues with mates. It shows the best move chosen and the evaluation, but also the sequence of moves the engine explored to determine this course of action. It allows us humans to understand the engine’s rationale for a certain move, by allowing us to see the final state at depth $$ n $$ (if both players play optimally).
+![Graphical interface of my debugging tool.](/assets/chess-engine/ccee14a7efbf0635149fe31ef9427cb0.webp)
+
+The information on the bottom right is especially helpful to debug some complex issues with mates. It shows the best move chosen and the evaluation, but also the sequence of moves the engine explored to determine this course of action. 
+
+Inspection of deeper internal states allows us humans to understand the engine’s rationale for a certain move. For example by visualising the final state of the board at depth $$ n $$ (if both players play optimally).
+
+### Beyond pruned Minimax
+
+I also wanted to add more detail about advanced techniques for engine programming that I came across.
+
+After setting up your basic minimax framework, you are then free to have fun. There are tried and tested algorithms, but it’s especially fun trying to tack your on additions onto your progressively more powerful engine.
+
+Below is the list of optimisations I implemented, as they are the lowest hanging fruits.
 
 ### Transposition tables
 
-To avoid wasting cycles by recomputing the optimal move for nodes that were already visited, the engine uses transposition tables. They use a hash of the board as the key and store the best move (as calculated at depth $$ n $$). The dashboard also allows us to inspect the usage rates of the transposition tables. This is very interesting for debugging end-games, where the tables see a lot of use.
+To avoid wasting cycles by recomputing the optimal move for nodes that were already visited, the engine uses transposition tables. A hash of the board is used as the key under which the best move (as calculated at depth $$ n $$) is persisted. 
+
+The dashboard also allows us to inspect the usage rates of the transposition tables, which is interesting for optimisation and sizing the table.
 
 ### Quiescence search and search extensions
 
