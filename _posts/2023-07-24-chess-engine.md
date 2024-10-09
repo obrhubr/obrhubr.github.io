@@ -1,7 +1,7 @@
 ---
 layout: page
 title: "How to Build a Chess Engine and Fail"
-time: 9 minutes
+time: 11 minutes
 published: 2023-07-24
 colortags: [{'id': '91758743-8ccc-4495-9e97-0f2e67538e81', 'name': 'Chess Engines', 'color': 'blue'}, {'id': '4260119c-7ec5-48b3-ba5b-96f4335cdc7f', 'name': 'AI', 'color': 'yellow'}, {'id': '28d7f40f-be75-455e-9d82-781b78d1548c', 'name': 'Games', 'color': 'pink'}]
 tags: ['Chess Engines', 'AI', 'Games']
@@ -10,7 +10,7 @@ favicon: chess-engine/favicon.png
 excerpt: "A Chess-AI is something every programmer should build at least once and [Sebastian Lague’s](https://www.youtube.com/@SebastianLague) [competition](https://www.youtube.com/watch?v=iScy18pVR58) was the perfect opportunity for me to do so. Constrained to 1024 tokens I wanted to implement an evaluation function similar to that of Stockfish’s NNUE but heavily simplified. And instead of using a complex feed-forward algorithm to train the neural network I wanted to optimise the parameters using a genetic algorithm that relied on historical Stockfish data. However, I quickly realised why the model Stockfish uses has 50MBs of data and would not fit into my small bot for the competition…"
 short: False
 sourcecode: "https://github.com/obrhubr/chess-challenge-participation"
-math: False
+math: True
 image: assets/chess-engine/preview.png
 ---
 
@@ -121,4 +121,32 @@ This architecture also allows the highly optimized evaluation of the network tha
 ## How could the shortcomings be remediated?
 
 While the ultra-high rate of compression from 2x45065 inputs to only 6x8x8 is clearly too high, a more conservative approach might be able to identify unused or less impactful inputs or nodes in the stockfish NNUE to apply a “pruning” of sorts. Some positions such as (…, pa1) and others where the pawns would have to walk backwards are not even possible and **I assume naively** could easily be removed from the network.
+
+## Addendum
+
+*EDIT - 08.10.2024:* I added this section to highlight some interesting technical behind the scenes information. If you are interested in building your own chess engine or in debugging complex recursive algorithms, I recommend reading the [section about debugging on GitHub](https://github.com/obrhubr/chess-challenge-participation?tab=readme-ov-file#building-a-tool-to-debug-the-bot) and about the other technical topics just below in the readme.
+
+### Debugging
+
+The dashboard I built shows: depth reached, the amount of nodes traversed and the memory consumed by hash tables storing certain evaluations among others. The engine dumps this information into a JSON file with each iteration, which is picked up by the server and refreshes the dashboard.
+
+![Graphical interface of my debugging tool. It shows the current state of the board and the best predicted state.](/assets/chess-engine/ccee14a7efbf0635149fe31ef9427cb0.webp)
+
+The information on the bottom right is especially helpful to debug some complex issues with mates. It shows the best move chosen and the evaluation, but also the sequence of moves the engine explored to determine this course of action. It allows us humans to understand the engine’s rationale for a certain move, by allowing us to see the final state at depth $$ n $$ (if both players play optimally).
+
+### Transposition tables
+
+To avoid wasting cycles by recomputing the optimal move for nodes that were already visited, the engine uses transposition tables. They use a hash of the board as the key and store the best move (as calculated at depth $$ n $$). The dashboard also allows us to inspect the usage rates of the transposition tables. This is very interesting for debugging end-games, where the tables see a lot of use.
+
+### Quiescence search and search extensions
+
+Sometimes, stopping the search at depth $$ n $$ is harmful to the evaluation, as the board is in a “hot” state, where both players are trading pieces. In these cases, it makes sense to extend the search a bit further, until the evaluation stabilises.
+
+This is the problem [quiescence search](https://www.chessprogramming.org/Quiescence_Search) solves. By continuing the search just a bit longer, the engine achieves more accurate results. It works by only exploring captures, until there are only normal moves left. If we didn’t perform this type of search extensions, some unrealised threats wouldn’t be included in the analysis. For example, a pawn threatening to take a queen in the next move wouldn’t matter at all if we stop at the depth just before, as the lost queen wouldn’t be included.
+
+### Time management and early exit
+
+A very difficult aspect of designing an engine is deciding on the amount of time to give it for each move. A basic example would be allocating more time in the endgame to catch a mate that otherwise might be missed. My approach to this issue is documented in the readme, but I am not happy with my results.
+
+<br/>
 
