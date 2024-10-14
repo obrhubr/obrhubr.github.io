@@ -7,6 +7,6 @@
 .katex-display {
 	display: block;
 	width: 100%;
-	overflow: scroll;
+	overflow-x: scroll;
 	padding-bottom: 5px;
 }
