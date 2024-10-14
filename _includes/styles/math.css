@@ -1,6 +1,6 @@
 /* Make the html part of katex rendered math disappear*/
 .katex-html {
-    display: none;
+ display: none;
 }
 
 /* Add scrollbar to overflowing equations */
@@ -8,5 +8,6 @@
 	display: block;
 	width: 100%;
 	overflow-x: scroll;
+ overflow-x: hidden;
 	padding-bottom: 5px;
 }
