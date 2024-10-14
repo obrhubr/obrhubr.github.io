@@ -5,6 +5,9 @@
 		<meta charset="utf-8">
 		<meta name="viewport" content="width=device-width, initial-scale=1">
 
+		<!-- RSS Autodiscovery -->
+		<link rel="alternate" type="application/rss+xml" title="human-readable label" href="/feed.xml"/>
+
 		<!-- Page title -->
 		{% if page.url == "/" %}
 			<title>{{ site.data.metadata.person.name }}'s {{ page.title }}</title>
