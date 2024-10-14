@@ -8,6 +8,6 @@
 	display: block;
 	width: 100%;
 	overflow-x: scroll;
- overflow-x: hidden;
+	overflow-y: hidden;
 	padding-bottom: 5px;
 }
