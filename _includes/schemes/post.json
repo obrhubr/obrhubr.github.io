@@ -5,16 +5,12 @@
 	"keywords": [{% for tag in page.colortags %}"{{ tag.name }}"{% if forloop.last == false %},{% endif %}{% endfor %}],
 	"url": "{{site.url}}{{page.url}}",
 	"datePublished": "{{ page.published | date: '%FT%T%:z' }}",
-	"dateCreated": "{{ page.published | date: '%FT%T%:z' }}",
-	"dateModified": "{{ page.published | date: '%FT%T%:z' }}",
 	"wordCount": {{ page.content | number_of_words }},
 	"inLanguage": "en-UK",
 	"description": "{{ page.excerpt }}",
 	{% if page.image %}{% if page.image != "none" %}"image": {
 		"@type": "ImageObject",
-		"url": "{{ site.url }}/{{ page.image }}",
-		"width": {{ site.data.metadata.site.previewimage.width }},
-		"height": {{ site.data.metadata.site.previewimage.height }}
+		"url": "{{ site.url }}/{{ page.image }}"
 	},{% endif %}{% endif %}
 	"author": {% include schemes/_includes/person.json %},
 	"isPartOf": {
