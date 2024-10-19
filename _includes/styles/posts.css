@@ -2,7 +2,7 @@
     padding-left: 0;
 }
 
-.post {
+.post-list > li {
     margin-bottom: 30px;
 
     list-style-type: none;
@@ -25,14 +25,10 @@
 }
 
 .inline-icon {
-    margin-left: 0 !important;
-    margin-right: 0 !important;
+    display: inline;
 
-    width: 20px !important;
-    height: 20px !important;
-
-    vertical-align: top !important;
-    display: inline !important;
+    width: 20px;
+    height: 20px;
 }
 
 .excerpt p {
