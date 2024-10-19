@@ -1,7 +1,6 @@
 :root {
     color-scheme: light dark;
     
-    
     /* Tag colors */
     --tag-text-color: #FFFFFF;
 
@@ -39,8 +38,8 @@
 
 @media (prefers-color-scheme: light) {
     :root {
-        --main-bg-color: rgb(255, 255, 255);
-        --sec-bg-color: rgb(255, 255, 255);
+        --main-bg-color: rgb(255, 252, 249);
+        --sec-bg-color: rgb(255, 252, 249);
     
         --title-text-color: rgb(0, 0, 0);
         --decoration-color: rgb(165, 165, 165);
@@ -49,10 +48,10 @@
         
         --main-text-color: rgb(11, 11, 11);
         --secondary-text-color: rgb(62, 62, 62);
-        --link-text-color: rgb(252, 30, 163);
-        --link-visited-color: rgb(254, 180, 224);
+        --link-text-color: rgb(208, 29, 137);
+        --link-visited-color: rgb(203, 141, 178);
         --link-hover-color: rgb(125, 54, 95);
         
-        --navigation-text-color: rgb(25, 182, 255);
+        --navigation-text-color: rgb(17, 132, 185);
     }
 }
