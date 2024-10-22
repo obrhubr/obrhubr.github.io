@@ -18,7 +18,7 @@ At 15:50 Eastern European Time on the 18th of June 2024, I walked out of my last
 
 Three days later, I was sent a PDF with the grades I received in my exams. What stood out to me however, was the QR code in the top right. This it what the PDF looks like. (And no this isn’t the real one. In fact, go ahead and scan the QR code, I dare you.)
 
-![The censored diploma PDF.](/assets/reverse-engineering-diploma/641085a95634f069a3ca93f8ab73c2c9.webp)
+![The censored diploma PDF.](/assets/reverse-engineering-diploma/b3510450bba868fc35f499a5d976947a.webp)
 
 The only clue to the code’s function is a small text below referencing [CycladesVérif](https://play.google.com/store/apps/details?id=fr.edu.rennes.cyclades.mobile.verifcertif.verifDocEducNat&hl=de_AT), a mobile application. To quench my curiosity I downloaded it and scanned the code. What I got was a summary of my personal information and grades. I would guess the code is for universities or employers to verify that you didn’t tamper with the PDF in order to boost your grades. They provide an example of what it looks like after scanning a QR code on the [Play Store](https://play-lh.googleusercontent.com/WDq09uvaMeZDMV7hnSlb4_W0vgpx7wiSzMILhqz32ptSqt8u5YWC_afSuVJN0zersg=w2560-h1440-rw):
 
@@ -83,8 +83,8 @@ openssl rsautl -verify -inkey key.pem -pubin -in data.bin -raw -hexdump
 0020 - ff ff ff ff ff ff ff ff-ff ff ff ff ff ff ff ff   ................
 0030 - ff ff ff 00 42 61 63 63-61 6c 61 75 72 e9 61 74   ....Baccalaur.at
 0040 - XX XX XX XX XX XX XX XX-XX XX XX XX XX XX XX XX    g.n.ral session
-0050 - XX XX XX XX XX XX XX XX-XX XX XX XX XX XX XX XX    2024|XXXXYYYYY|
-0060 - XX XX XX XX XX XX XX XX-XX XX XX XX XX XX XX XX   XXXXXX|XXXXXX|10
+0050 - XX XX XX XX XX XX XX XX-XX XX XX XX XX XX XX XX    XXXX|XXXXYYYYY|
+0060 - XX XX XX XX XX XX XX XX-XX XX XX XX XX XX XX XX   XXXXXX|XXXXXX|00
 0070 - XX XX XX XX XX XX XX XX-XX XX XX XX XX XX XX XX   .00|Admis Mentio
 0080 - XX XX XX XX XX XX XX XX-XX XX XX XX XX XX XX XX   n Tr.s Bien avec
 0090 - XX XX XX XX XX XX XX XX-XX XX XX XX XX XX XX XX    les f.licitatio
