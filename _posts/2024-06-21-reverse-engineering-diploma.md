@@ -83,8 +83,8 @@ openssl rsautl -verify -inkey key.pem -pubin -in data.bin -raw -hexdump
 0020 - ff ff ff ff ff ff ff ff-ff ff ff ff ff ff ff ff   ................
 0030 - ff ff ff 00 42 61 63 63-61 6c 61 75 72 e9 61 74   ....Baccalaur.at
 0040 - XX XX XX XX XX XX XX XX-XX XX XX XX XX XX XX XX    g.n.ral session
-0050 - XX XX XX XX XX XX XX XX-XX XX XX XX XX XX XX XX    XXXX|XXXXYYYYY|
-0060 - XX XX XX XX XX XX XX XX-XX XX XX XX XX XX XX XX   XXXXXX|XXXXXX|00
+0050 - XX XX XX XX XX XX XX XX-XX XX XX XX XX XX XX XX    2024|XXXXYYYYY|
+0060 - XX XX XX XX XX XX XX XX-XX XX XX XX XX XX XX XX   XXXXXX|XXXXXX|10
 0070 - XX XX XX XX XX XX XX XX-XX XX XX XX XX XX XX XX   .00|Admis Mentio
 0080 - XX XX XX XX XX XX XX XX-XX XX XX XX XX XX XX XX   n Tr.s Bien avec
 0090 - XX XX XX XX XX XX XX XX-XX XX XX XX XX XX XX XX    les f.licitatio
