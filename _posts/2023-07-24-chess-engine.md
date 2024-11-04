@@ -18,7 +18,7 @@ image: assets/chess-engine/preview.png
 
 A Chess-AI is something of a rite of passage for every software engineer, as is a snake clone or a calculator console application. If you did not try to build one yet, you are certainly missing out (or preserving your own sanity, whatever you prefer). Between the [chessprogrammingwiki.org](https://www.chessprogramming.org/Main_Page) and other online resources this is now a pretty well explored field, but that is not to say that innovation is impossible and nothing changed since the days of Deep Blue (the first ever chess computer the officially beat a grandmaster).
 
-In recent years Stockfish, the most advanced computer chess engine, has gotten a major upgrade in the form of a NNUE, a fast neural network of sorts which is used as it’s evaluation function. An evaluation function does exactly what it sounds like, it is used by the engine to evaluate the current position.
+In recent years Stockfish, the most advanced computer chess engine, has gotten a major upgrade in the form of a NNUE, a fast neural network of sorts which is used as it’s evaluation function. An evaluation function does exactly what it sounds like, it is used by the engine to evaluate the current position. The replacement of the hand-crafted evaluation function by a neural network seems to be just one more example of the [Bitter Lesson](http://www.incompleteideas.net/IncIdeas/BitterLesson.html).
 
 Today I would group chess engines into two categories: “explore the most possibilities as fast as possible” (Stockfish) and “have a very sophisticated evaluation function in the form of a neural network” (Leela Chess Zero).
 
