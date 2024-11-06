@@ -1,0 +1,26 @@
+---
+layout: default
+title: Colophon
+
+favicon: favicon.png
+---
+
+<p>
+    This page is built using Jekyll - see the full source code under <a href="https://github.com/obrhubr/obrhubr.github.io">obrhubr/obrhubr.github.io</a>.
+</p>
+<p>
+    All content is fully accessible without Javascript, which is only used to display image’s alt-text.
+</p>
+<p>
+    I provide an <a href="https://obrhubr.org/feed.xml">RSS feed</a> for the site. You can follow for updates, using your feed reader of choice.
+</p>
+
+<h2>Design</h2>
+<p>
+    The design was originally inspired by <a href="https://jameshaydon.github.io/">James Haydon’s blog</a> and grew over time. The font I use on the site was taken from <a href="https://xeiaso.net/">xeiaso.net</a>, thank you for providing this great font!
+</p>
+<p>
+    The content is edited on Notion and then pulled into a markdown document using a custom built tool based on <a href="https://github.com/echo724/notion2md">notion2md</a>. 
+    If you want to use this tool too, you can! 
+    Head over to the repository at <a href="https://github.com/obrhubr/notion-to-jekyll">obrhubr/notion-to-jekyll</a> - you can customise it to fit your use-case with the provided command line options.
+</p>
