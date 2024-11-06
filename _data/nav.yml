@@ -4,5 +4,8 @@
  - name: About
    url: /about.html
 
+ - name: Colophon
+   url: /colophon.html
+
  - name: RSS Feed
    url: https://obrhubr.github.io/feed.xml
