@@ -42,16 +42,7 @@
 		<!-- Katex stylesheet -->
 		<link rel="preload" as="style" href="/assets/styles/external/katex.min.css">
 		{% endif %}
-
-		<!-- Google tag (gtag.js) -->
-		<script async src="https://www.googletagmanager.com/gtag/js?id={{ site.data.metadata.site.gtag }}"></script>
-		<script>
-			window.dataLayer = window.dataLayer || [];
-			function gtag(){dataLayer.push(arguments);}
-			gtag('js', new Date());
-
-			gtag('config', '{{ site.data.metadata.site.gtag }}');
-		</script>
+		
 		<!-- Tinylytics Tracking -->
 		<script src="https://tinylytics.app/embed/jPxZ6BT8ZoNsiFoRiBNz.js" defer></script>
 
