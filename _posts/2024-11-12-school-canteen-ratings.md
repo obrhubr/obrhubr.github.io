@@ -42,7 +42,7 @@ After scanning one of the QR codes placed all over the canteen, students would a
 
 In order to incentivise people to vote everyday, they needed to get something back from the site too. After rating today’s food, students were then able to see what others thought and how the votes evolved live. This also created some fun discussions when opinions on certain meals differed wildly.
 
-![Dashboard showing the most liked meals.](/assets/school-canteen-ratings/e93df8d9b6adde83f81525027a7ad91b.webp)
+![Dashboard showing some meal’s statistics.](/assets/school-canteen-ratings/e93df8d9b6adde83f81525027a7ad91b.webp)
 
 ## Some security Measures
 
@@ -90,8 +90,4 @@ The data indeed confirms that vegetarian meals were rated, on average, almost an
  | Yes | 2.89559 | 
 
 Sometimes you don’t discover new things when doing data analysis, sometimes you only confirm what you already knew. But it’s nice when intuition and the facts line up - even though it came at the expense of more healthy and balanced meals at school…
-
-<br/>
-
-<br/>
 
