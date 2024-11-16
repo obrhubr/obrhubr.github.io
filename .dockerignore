@@ -1,9 +1,0 @@
-Dockerfile
-Gemfile.lock
-.jekyll-cache
-_site
-.github/workflows
-README.md
-CNAME
-.gitignore
-.devcontainer

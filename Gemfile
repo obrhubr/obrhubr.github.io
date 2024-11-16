@@ -2,8 +2,8 @@
 
 source "https://rubygems.org"
 
-gem "jekyll"
-gem 'jekyll-feed'
+gem 'jekyll'
+gem 'jekyll-feed', github: 'obrhubr/jekyll-feed'
 gem 'jekyll-sitemap'
 gem 'kramdown-math-katex'
 gem 'nokogiri'

@@ -10,6 +10,7 @@ kramdown:
 
 feed:
   excerpt_only: true
+  referrer: "?ref=rss"
 
 plugins_dir: ./_plugins
 
