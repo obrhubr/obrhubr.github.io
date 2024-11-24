@@ -12,7 +12,7 @@ layout: default
 			<span style="background-color: var(--{{ tag.color }});" class="tag">{{ tag.name }}</span>
 		{% endfor %}
 	</div>
-	{% if page.sourcode != "" %}
+	{% if (page.sourcecode | size) > 0 %}
 		<div class="detail sourcecode">
 			You can find the <b>sourcecode</b> at: 
 			<a href="{{ page.sourcecode }}" target="_blank">{{ page.sourcecode }}</a>
