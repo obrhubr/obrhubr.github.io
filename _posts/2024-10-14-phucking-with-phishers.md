@@ -14,19 +14,21 @@ math: False
 image: assets/phucking-with-phishers/preview.png
 ---
 
-A few days ago, a friend messaged me, asking me to report his hacked Instagram account. When his account messaged me on Instagram a few days later, I had all but forgotten his warning. The message came in around midnight on a Friday evening, imploring me to vote for my friend in a competition. It also came with instructions: a link and the demand for a confirmation screenshot.
+A while ago a friend messaged me, asking me to report his hacked Instagram account. When his account reached out to me on Instagram a few days later, I had all but forgotten his warning. The message came in around midnight on a Friday evening, imploring me to vote for my friend in a competition. It also came with instructions: a link and the demand for a confirmation screenshot.
 
-The site they pointed me to is hosted on Vercel for free, under a `xxxxx.vercel.app` domain. Already, a few alarm bells went off in my head, the first of which was that the name of the competition they had told me about in the message didn’t match the one on the website at all.
+The site the scammers pointed me to is hosted on Vercel, under a free `xxxxx.vercel.app` domain. At these first signs, a few alarm bells already went off in my head. Most obvious was that the name of the competition - their cover story - mentioned in the message didn’t match the one on the website at all.
 
 ![Screenshot of the phishing site’s home screen.](/assets/phucking-with-phishers/15abdd44be212d064a692c7d6e4ec238.webp)
 
-But this being midnight, I didn’t fully process any of that and simply clicked on the `Vote with Instagram` button. This led me to a very realistic sign-in screen. But no redirect to Instagram, which meant no password manager filling out my credentials. That confirmed to me this was a scam, jolting even my very sleepy self awake. This is also where I remembered my friend telling me about his account having been hacked…
+But this being midnight, I didn’t fully process any of that and simply clicked on the `Vote with Instagram` button. This led me to a very faithfully reproduced sign-in screen. But no redirect to Instagram, which meant no password manager filling out my credentials. That confirmed to me this was a scam, jolting even my very sleepy self awake. This is also where I remembered my friend telling me about his account having been hacked…
 
 Now I wanted to investigate. After entering fake credentials, I clicked on `Log In` and was shown an error pop up. 
 
 ![Error pop-up shown when the user attempts to log in.](/assets/phucking-with-phishers/f59ff31c8cbef73b800238d038b28ab5.webp)
 
-This is quite smart because it tricks people into typing their password again and again, which reduces the number of mistyped credentials they get. Asking for a screenshot to confirm their vote is probably also an ingenious social engineering tactic? People can’t just pretend they voted, they have to actually go onto the site, because they don’t want to refuse their “friend’s” demand.
+This is quite smart because it tricks people into typing their password again and again, which reduces the number of mistyped credentials they get. And you be skeptical if this actually works, but as you’ll see the data does back up this strategie’s effectiveness.
+
+Asking for a screenshot to confirm their vote is probably also an ingenious social engineering tactic? People can’t just pretend they voted, they have to actually go onto the site, because they don’t want to refuse their “friend’s” demand.
 
 ## Who are they?
 

@@ -14,7 +14,7 @@ math: False
 image: assets/school-canteen-ratings/preview.png
 ---
 
-I love building things on the internet, because people will interact with your stuff. They’ll mess with it through any and all mediums that someone creative might find. Exposing an API? Someone will misuse it! You’ll fix it, only for them to discover a different hole. You’re playing a game with a person you’ve never seen, only piecing together an idea of who they might be and what they’re like. 
+I love building things on the internet, because people will interact with your stuff. They’ll mess with it through any and all mediums that someone creative might find. Exposing an API? Someone will misuse it! You’ll fix it, only for them to discover a different hole. You’re playing a of Whac-a-Mole game with a person you’ve never seen, but you’re slowly puzzling together an idea of who they might be and what they’re like.
 
 In this particular case, I discovered the lonely campaign of a user against their least favourite dish, flooding my feedback poll with negative votes.
 
@@ -58,13 +58,13 @@ I didn’t record the rejected voting attempts sadly, so I don’t know the true
 
 The graph shows that some people managed to vote multiple times, either by clearing their cookies or by switching to incognito. These attempts only represented a tiny fraction of the votes. 
 
-I know this, because after I started seeing people actually trying to vote twice, I wanted to prevent more knowledgeable attempts. In addition to the token, I also started storing a fingerprint and the voter’s IP server-side, along with their request. I now know that this is very wrong, but at the time I sadly wasn’t aware (The data is long deleted, was only ever used in order to provide these simple stats and never shared with anyone).
+I know this, because after I started seeing people actually trying to vote twice, I wanted to prevent more knowledgeable attempts. In addition to the token, I also started storing a fingerprint and the voter’s IP server-side, along with their request. I now know that this is very wrong, but at the time I sadly wasn’t aware (The data is long deleted, was only ever used in order to provide these simple stats and was never shared with anyone).
 
 On one of the final days that the site was live (the 11th of May), you can see an explosion in votes, but the unique count tells a different story. About two thirds of the votes were cast from the same device. More incriminating is the absence of a user token for each of the votes, something which couldn’t have happened, had the public front-end been correctly used.
 
-This targeted campaign, rating the meal with 1/5, was ran against the truly worthy target of the “Topfenschmarn”, a sweet pancake made from curd, enjoyed with berries (see [this site for an example](https://www.milch.com/de/rezepte/topfenschmarrn-mit-zwetschkenroester-88/)). Usually this is a tasty delicacy, but our canteen indeed often butchered it.
+This targeted disinformation campaign, flooding the meal’s ratings with 1/5s, was conducted against the truly worthy target of the “Topfenschmarn”, a sweet pancake made from curd, enjoyed with berries (see [this site for an example](https://www.milch.com/de/rezepte/topfenschmarrn-mit-zwetschkenroester-88/)). Usually this is a tasty delicacy, but our canteen indeed often butchered it.
 
-I forgive this vigilante for his methods because of his noble intentions - saving many pupils from this dish. It is also very funny to imagine someone clearing their browser’s cookies 27 times just to tarnish the reputation of a pancake.
+I forgive this vigilante for his methods because of his clearly noble intentions, saving the next generation of pupils from this dish. It is also very funny to imagine someone clearing their browser’s cookies 27 times just to tarnish the reputation of a pancake.
 
 ## Analysing the Votes
 
