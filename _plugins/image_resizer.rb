@@ -33,6 +33,11 @@ module Jekyll
 					src = img['src']
 					next unless src
 
+					# Check if the file is a GIF
+					if File.extname(src).downcase == '.gif'
+						next # Skip resizing for GIFs
+					end
+
 					# Resize the image and include the original in the srcset
 					resized_images = resize_image(src)
 
