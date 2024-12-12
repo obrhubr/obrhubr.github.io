@@ -14,7 +14,7 @@ math: False
 image: assets/school-canteen-ratings/preview.png
 ---
 
-I love building things on the internet, because people will interact with your stuff. They’ll mess with it through any and all mediums that someone creative might find. Exposing an API? Someone will misuse it! You’ll fix it, only for them to discover a different hole. You’re playing a of Whac-a-Mole game with a person you’ve never seen, but you’re slowly puzzling together an idea of who they might be and what they’re like.
+I love building things on the internet, because people will interact with your stuff. They’ll mess with it through any and all mediums that someone creative might find. Exposing an API? Someone will misuse it! You’ll fix it, only for them to discover a different hole. You’re playing Whac-a-Mole with a person you’ve never seen, but you’re slowly puzzling together an idea of who they might be and what they’re like.
 
 In this particular case, I discovered the lonely campaign of a user against their least favourite dish, flooding my feedback poll with negative votes.
 
