@@ -41,7 +41,7 @@ jobs:
         env:
             NOTION_TOKEN: ${{ secrets.NOTION_TOKEN }}
             DB_ID: ${{ secrets.DB_ID }}
-            LOGSNAG_TOKEN: ${{ secrets.LOGSNAG_TOKEN }}
+            LOGSNAG_TOKEN: ${{ secrets.NTFY_CHANNEL }}
       - name: Commit to repository
         uses: stefanzweifel/git-auto-commit-action@v5
         with:
