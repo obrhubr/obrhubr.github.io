@@ -37,7 +37,7 @@ jobs:
       - name: Run exporter
         run: |
           cd ./blog
-          notion-to-jekyll --log
+          notion-to-jekyll --ntfy
         env:
             NOTION_TOKEN: ${{ secrets.NOTION_TOKEN }}
             DB_ID: ${{ secrets.DB_ID }}
