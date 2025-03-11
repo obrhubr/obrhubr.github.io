@@ -1,7 +1,7 @@
 ---
 layout: page
 title: "Dithering in Colour"
-time: 4 minutes
+time: 3 minutes
 published: 2025-03-08
 colortags: [{'id': '65ba48da-4c0d-4f9f-b81b-030901b44c27', 'name': 'Computer Graphics', 'color': 'purple'}]
 tags: ['Computer Graphics']
@@ -44,25 +44,13 @@ Images are usually stored in the sRGB colour space, which is tailored to CRT’s
 
 ![Dithering a black-to-white gradient will be wrong without linearising first.](/assets/dithering-in-colour/20e8d36702ad74b4796e2902b80a2f46.webp)
 
-This means that dithering in sRGB directly will produce results that are too bright. Before dithering, we need to linearise - convert to a linear colour-space. We can now compare brightness directly and get a correct result. At the end, we convert back to sRGB and get a correct result. [Surma explains linearisation pretty well](https://surma.dev/things/ditherpunk/) and you should also check out [this stackoverflow answer](https://stackoverflow.com/questions/596216/formula-to-determine-perceived-brightness-of-rgb-color/56678483#56678483), which is very thorough.
+This means that dithering in sRGB directly will produce results that are too bright. Before dithering, we need to linearise - convert to a linear colour-space. We can now compare brightness directly and get a correct result. At the end, we convert back to sRGB and get a correct result. [Surma explains linearisation pretty well](https://surma.dev/things/ditherpunk/) and you should also check out [this stackoverflow answer](https://stackoverflow.com/questions/596216/formula-to-determine-perceived-brightness-of-rgb-color/56678483#56678483), which is very thorough. [This post from John Novak](https://blog.johnnovak.net/2016/09/21/what-every-coder-should-know-about-gamma/) is the best explanation of gamma you can find and I recommend reading it.
 
 If we also want to take human perception into account, we need to assign different weights to each channel. By scaling the colours before comparing, we preserve [perceptual luminance](https://en.wikipedia.org/wiki/Grayscale#Colorimetric_(perceptual_luminance-preserving)_conversion_to_grayscale). The linked Wikipedia post lists the following values: `0.2126 R + 0.7152 G + 0.0722 B`.
 
-As far as I can evaluate it, [ditherit.com](http://ditherit.com/) doesn’t seem to linearise. If you want to play with a correct implementation, there is the [dither](https://github.com/makew0rld/dither) library and the corresponding command line utility [didder](https://github.com/makew0rld/didder) from [makew0rld](https://github.com/makew0rld). Check out the [authors explanation about linearisation on his blog](https://www.makeworld.space/2021/02/dithering.html).
+If you want to play with a correct implementation, there is the [dither](https://github.com/makew0rld/dither) library and the corresponding command line utility [didder](https://github.com/makew0rld/didder) from [makew0rld](https://github.com/makew0rld). Check out the [authors explanation about linearisation on his blog](https://www.makeworld.space/2021/02/dithering.html).
 
-## Aesthetics
-
-Dithering doesn’t only serve an aesthetic purpose of course, and in cases where it is used for lossy compression, colour correctness is of utmost importance. But in a more artistic context, I personally think that sometimes, non-linearised dithering looks better.
-
-![Gradient dithered with and without linearising.](/assets/dithering-in-colour/af99b0474cb03fb7dad0750b8491d1e2.webp)
-
-To me, the image in the middle (not linearised) looks to bright, the right image too dark (created with didder, colour-correct).
-
-![Comparison of my non-linearised dithering and didder’s correct code on Dürer’s “Young Hare”.](/assets/dithering-in-colour/966bce52baecafe58ed4b854661186f9.webp)
-
-Both [didder](https://github.com/makew0rld/didder)’s correct and linearised dithering and the non-linearised version look off to me. Maybe my monitor is not well calibrated or I am using didder wrong, but I just prefer the non-linearised result. 
-
-I am not implying that didder is wrong, just that I personally prefer the brighter results. If you want to play with my python implementation, [check it out on GitHub](https://github.com/obrhubr/ditherpy).
+If you want to play with my python implementation, [check it out on GitHub](https://github.com/obrhubr/ditherpy).
 
 <br/>
 
