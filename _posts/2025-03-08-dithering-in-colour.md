@@ -40,11 +40,13 @@ We have just committed a mortal sin of image processing. I didn’t notice it, y
 
 First, we failed to linearise the sRGB input image, which results in overly bright dithered outputs. And second, we didn’t take into account human perception, as red is seen as brighter than green for example.
 
-Images are usually stored in the sRGB colour space, which is tailored to CRT’s. The issue arises when we want to quantitatively compare brightness in sRGB. Because it’s not a linear colour space, the difference in brightness going from `10` to `20` is not the same as from `100` to `110`, for example. 
+Images are usually stored in the sRGB colour space, which is gamma encoded. An issue arises when we want to quantitatively compare brightness in sRGB. Because it’s not a linear colour space, the difference in brightness going from `10` to `20` is not the same as from `100` to `110`, for example.
 
 ![Dithering a black-to-white gradient will be wrong without linearising first.](/assets/dithering-in-colour/20e8d36702ad74b4796e2902b80a2f46.webp)
 
-This means that dithering in sRGB directly will produce results that are too bright. Before dithering, we need to linearise - convert to a linear colour-space. We can now compare brightness directly and get a correct result. At the end, we convert back to sRGB and get a correct result. [Surma explains linearisation pretty well](https://surma.dev/things/ditherpunk/) and you should also check out [this stackoverflow answer](https://stackoverflow.com/questions/596216/formula-to-determine-perceived-brightness-of-rgb-color/56678483#56678483), which is very thorough. [This post from John Novak](https://blog.johnnovak.net/2016/09/21/what-every-coder-should-know-about-gamma/) is the best explanation of gamma you can find and I recommend reading it.
+This means that dithering in sRGB directly will produce results that are too bright. Before dithering, we need to linearise - convert to a linear colour-space.
+
+[Surma explains linearisation pretty well](https://surma.dev/things/ditherpunk/) and you should also check out [this stackoverflow answer](https://stackoverflow.com/questions/596216/formula-to-determine-perceived-brightness-of-rgb-color/56678483#56678483), which is very thorough. [This post from John Novak](https://blog.johnnovak.net/2016/09/21/what-every-coder-should-know-about-gamma/) is the best explanation of gamma you can find and I recommend reading it.
 
 If we also want to take human perception into account, we need to assign different weights to each channel. By scaling the colours before comparing, we preserve [perceptual luminance](https://en.wikipedia.org/wiki/Grayscale#Colorimetric_(perceptual_luminance-preserving)_conversion_to_grayscale). The linked Wikipedia post lists the following values: `0.2126 R + 0.7152 G + 0.0722 B`.
 
