@@ -38,7 +38,7 @@ If you want to play with dithering and different palettes yourself, check out [d
 
 We have just committed a mortal sin of image processing. I didn’t notice it, you might not have noticed either, but colour-space enthusiasts will be knocking on your door shortly. 
 
-First, we failed to linearise the sRGB input image, which results in overly bright dithered outputs. And second, we didn’t take into account human perception, as red is seen as brighter than green for example.
+First, we failed to linearise the sRGB input image, which results in overly bright dithered outputs. And second, we didn’t take into account human perception, as green is perceived brighter than red for example.
 
 Images are usually stored in the sRGB colour space, which is gamma encoded. An issue arises when we want to quantitatively compare brightness in sRGB. Because it’s not a linear colour space, the difference in brightness going from `10` to `20` is not the same as from `100` to `110`, for example.
 
