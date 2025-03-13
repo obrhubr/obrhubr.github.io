@@ -4,6 +4,7 @@ plugins:
 
 author: obrhubr
 url: https://obrhubr.org
+title: Niklas Oberhuber's Blog
 
 kramdown:
   math_engine: katex
