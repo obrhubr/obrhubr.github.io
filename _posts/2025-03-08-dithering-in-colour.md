@@ -50,7 +50,7 @@ This means that dithering in sRGB directly will produce results that are too bri
 
 If we also want to take human perception into account, we need to assign different weights to each channel. By scaling the colours before comparing, we preserve [perceptual luminance](https://en.wikipedia.org/wiki/Grayscale#Colorimetric_(perceptual_luminance-preserving)_conversion_to_grayscale). The linked Wikipedia post lists the following values: `0.2126 R + 0.7152 G + 0.0722 B`.
 
-The two following comparisons should illustrate the kind of errors not linearising produces. If the linearised version looks wrong to you, try opening it on a larger monitor in it’s original size and check your gamma settings.
+The two following comparisons should illustrate the kind of errors not linearising produces. If the linearised images look wrong to you, try opening them in full resolution (one pixel of the image should correspond to one pixel on your monitor) on a device with correct sRGB gamma at `2.2`.
 
 ![Comparison of Dürer’s Young Hare in the original, linearised and dithered and dithered but not linearised versions.](/assets/dithering-in-colour/640cc78e6577a09ea1b8939babf11f85.keep.png)
 
@@ -77,6 +77,8 @@ Here’s the black and white gradient from before, but comparing Atkinson and Fl
 ![Comparison of Atkinson and Floyd-Steinberg dithering with a black and white gradient.](/assets/dithering-in-colour/b421b2e982b5efd0d86c4d24fd11bce6.keep.png)
 
 You can clearly see how the missing `2/8th` make darker greys disappear.
+
+Dithered images should only be saved as PNGs (or GIFs and other non-compressed formats like `.bmp`) because compression artefacts will ruin the effect. Thank you [Garmelon](https://plugh.de/) for pointing out that I previously had enabled automatic conversion to `.webp` for my blog, which messed with the effects.
 
 TL;DR; Linearise the image’s colour space before dithering, consider perceptual luminance while selecting the closest colour from your palette and apply gamma-correction before exporting the results.
 
