@@ -38,6 +38,11 @@ module Jekyll
 						next # Skip resizing for GIFs
 					end
 
+					# Check if image should be kept in original form
+					if src.include?(".keep.")
+						next
+					end
+
 					# Resize the image and include the original in the srcset
 					resized_images = resize_image(src)
 

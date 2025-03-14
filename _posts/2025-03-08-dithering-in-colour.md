@@ -24,7 +24,7 @@ However both of them convert their input images to grayscale before dithering. I
 
 But why restrict ourselves to monochromatic palettes? Instead of converting the image to grayscale before dithering, we could use any palette!
 
-![Albrecht Dürer painting dithered in RGB, CMYK and a Gameboy-like palette.](/assets/dithering-in-colour/ac75c25ee4e9c198f8bc50fd41863557.png)
+![Albrecht Dürer painting dithered in RGB, CMYK and a Gameboy-like palette.](/assets/dithering-in-colour/ac75c25ee4e9c198f8bc50fd41863557.keep.png)
 
 To dither into “black and white”, we simply compared the scalar value of the pixel to a threshold. If we want to work with colours, we will have to account for all channels (red, green and blue values of the pixel). Instead of a simple comparison between two scalars, we have to find the closest colour 3d (colour) space. 
 
@@ -42,7 +42,7 @@ First, we failed to linearise the sRGB input image, which results in overly brig
 
 Images are usually stored in the sRGB colour space, which is gamma encoded. An issue arises when we want to quantitatively compare brightness in sRGB. Because it’s not a linear colour space, the difference in brightness going from `10` to `20` is not the same as from `100` to `110`, for example.
 
-![Dithering a black-to-white gradient will be wrong without linearising first.](/assets/dithering-in-colour/de84179f42083d526fa2dda86f65c664.png)
+![Dithering a black-to-white gradient will be wrong without linearising first.](/assets/dithering-in-colour/de84179f42083d526fa2dda86f65c664.keep.png)
 
 This means that dithering in sRGB directly will produce results that are too bright. Before dithering, we need to linearise the image - convert to a linear colour-space.
 
@@ -52,9 +52,9 @@ If we also want to take human perception into account, we need to assign differe
 
 The two following comparisons should illustrate the kind of errors not linearising produces. If the linearised version looks wrong to you, try opening it on a larger monitor in it’s original size and check your gamma settings.
 
-![Comparison of Dürer’s Young Hare in the original, linearised and dithered and dithered but not linearised versions.](/assets/dithering-in-colour/640cc78e6577a09ea1b8939babf11f85.png)
+![Comparison of Dürer’s Young Hare in the original, linearised and dithered and dithered but not linearised versions.](/assets/dithering-in-colour/640cc78e6577a09ea1b8939babf11f85.keep.png)
 
-![Comparison of an RGB gradient, the linearised and dithered gradient and the dithered gradient, without linearisation.](/assets/dithering-in-colour/c4bea55843250ca603319425db14466f.png)
+![Comparison of an RGB gradient, the linearised and dithered gradient and the dithered gradient, without linearisation.](/assets/dithering-in-colour/c4bea55843250ca603319425db14466f.keep.png)
 
 If you want to play with a correct implementation, there is the [dither](https://github.com/makew0rld/dither) library and the corresponding command line utility [didder](https://github.com/makew0rld/didder) from [makew0rld](https://github.com/makew0rld). Check out the [authors explanation about linearisation on his blog](https://www.makeworld.space/2021/02/dithering.html).
 
@@ -74,7 +74,7 @@ This results in images that appear darker. Floyd-Steinberg on the other hand, fu
 
 Here’s the black and white gradient from before, but comparing Atkinson and Floyd-Steinberg, both in a linearised colour space:
 
-![Comparison of Atkinson and Floyd-Steinberg dithering with a black and white gradient.](/assets/dithering-in-colour/b421b2e982b5efd0d86c4d24fd11bce6.png)
+![Comparison of Atkinson and Floyd-Steinberg dithering with a black and white gradient.](/assets/dithering-in-colour/b421b2e982b5efd0d86c4d24fd11bce6.keep.png)
 
 You can clearly see how the missing `2/8th` make darker greys disappear.
 
@@ -83,6 +83,4 @@ TL;DR; Linearise the image’s colour space before dithering, consider perceptua
 <br/>
 
 *This has become more of a link collection than a post. But I hope that someone finds it helpful to have all resources and a basic explanation in one place… If you know more than me about colours and noticed any errors, please reach out!*
-
-<br/>
 
