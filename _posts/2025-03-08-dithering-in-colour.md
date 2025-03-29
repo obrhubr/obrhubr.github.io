@@ -18,27 +18,29 @@ After reading a post on the HN frontpage from [amanvir.com](https://amanvir.com/
 
 ## Dithering into arbitrary palettes
 
-The linked post from [Aman](https://amanvir.com/) does an excellent job of explaining dithering into a black and white palette using [Atkinson Dithering](https://en.wikipedia.org/wiki/Atkinson_dithering). I can also recommend [surma.dev](https://surma.dev/things/ditherpunk/)’s post, he explains more than just error diffusion (for example [ordered dithering](https://en.wikipedia.org/wiki/Ordered_dithering)).
+The linked post from [Aman](https://amanvir.com/) does an excellent job of explaining dithering into a black and white palette using [Atkinson Dithering](https://en.wikipedia.org/wiki/Atkinson_dithering) (for a look at techniques like [ordered dithering](https://en.wikipedia.org/wiki/Ordered_dithering) see [surma.dev](https://surma.dev/things/ditherpunk/)’s great post).
 
-However both of them convert their input images to grayscale before dithering. If the sum of the pixel and the accumulated error is lighter than the threshold, they pin it to pure white, otherwise to pure black: `colour = 255 if colour >= 127 else 0`.
-
-But why restrict ourselves to monochromatic palettes? Instead of converting the image to grayscale before dithering, we could use any palette!
+However both of them convert their input images to grayscale before dithering. But why restrict ourselves to monochromatic palettes? Instead of converting the image to grayscale before dithering, we could use any palette!
 
 ![Albrecht Dürer painting dithered in RGB, CMYK and a Gameboy-like palette.](/assets/dithering-in-colour/ac75c25ee4e9c198f8bc50fd41863557.keep.png)
 
-To dither into “black and white”, we simply compared the scalar value of the pixel to a threshold. If we want to work with colours, we will have to account for all channels (red, green and blue values of the pixel). Instead of a simple comparison between two scalars, we have to find the closest colour 3d (colour) space. 
+To dither into black and white, we compare the pixel’s lightness to a threshold. If it’s closer to black, it’s dithered to black and the error is diffused to the surrounding pixels.
 
-For each distinct colour in the palette, the distance to the pixel’s colour is computed using euclidean distance. We also accumulate the error for each colour channel individually, similar to what is done in monochrome error diffusion dithering.
+If we want to work with colours instead, we will have to account for all three channels (red, green and blue values). Instead of a simple comparison between two scalars, we have to find the closest colour in 3d (colour) space.
 
-![Distance in 3d colour space.](/assets/dithering-in-colour/c57d6c5d831cb40c5012fe0eaa8b254b.webp)
+First we choose a palette, which should have dark and light values, otherwise the diffused error will grow out of control. For each colour in the chosen palette, the distance to the current pixel’s colour is computed using euclidean distance. See the diagram below for an illustration of this process, using the example of `rgb(40, 220, 80)`.
+
+![Diagram illustrating measuring distance in 3d colour space.](/assets/dithering-in-colour/c57d6c5d831cb40c5012fe0eaa8b254b.webp)
+
+We then diffuse the error for each colour channel individually, similar to what is done in monochrome error diffusion dithering. In the example above, the error would be `(4 - 190, 220 - 176, 80 - 66)` which results in `(21, 44, 12)`. Thus the next pixels will be slightly lighter, to compensate.
 
 If you want to play with dithering and different palettes yourself, check out [ditherit.com](http://ditherit.com/), which has a pretty nice web interface.
 
 ## Linearising
 
-We have just committed a mortal sin of image processing. I didn’t notice it, you might not have noticed either, but colour space enthusiasts will be knocking on your door shortly. 
+I have just committed a mortal sin of image processing unwittingly. You might not have noticed either, but colour space enthusiasts will be knocking on my door shortly.
 
-First, we failed to linearise the sRGB input image, which results in overly bright dithered outputs. And second, we didn’t take into account human perception, as green is perceived brighter than red for example.
+First, we failed to linearise the sRGB input image, which results in overly bright dithered outputs. And second, we didn’t take into account human perception: green is perceived brighter than red for example.
 
 Images are usually stored in the sRGB colour space, which is gamma encoded. An issue arises when we want to quantitatively compare brightness in sRGB. Because it’s not a linear colour space, the difference in brightness going from `10` to `20` is not the same as from `100` to `110`, for example.
 
@@ -48,7 +50,7 @@ This means that dithering in sRGB directly will produce results that are too bri
 
 [Surma explains linearisation pretty well](https://surma.dev/things/ditherpunk/) and you should also check out [this stackoverflow answer](https://stackoverflow.com/questions/596216/formula-to-determine-perceived-brightness-of-rgb-color/56678483#56678483), which is very thorough. [This post from John Novak](https://blog.johnnovak.net/2016/09/21/what-every-coder-should-know-about-gamma/) is the best explanation of gamma you can find and I recommend reading it.
 
-If we also want to take human perception into account, we need to assign different weights to each channel. By scaling the colours before comparing, we preserve [perceptual luminance](https://en.wikipedia.org/wiki/Grayscale#Colorimetric_(perceptual_luminance-preserving)_conversion_to_grayscale). The linked Wikipedia post lists the following values: `0.2126 R + 0.7152 G + 0.0722 B`.
+If we want to take human perception into account, we need to assign different weights to each channel. By scaling the colours before comparing, we preserve [perceptual luminance](https://en.wikipedia.org/wiki/Grayscale#Colorimetric_(perceptual_luminance-preserving)_conversion_to_grayscale). The linked Wikipedia post lists the following values: `0.2126 R + 0.7152 G + 0.0722 B`.
 
 The two following comparisons should illustrate the kind of errors not linearising produces. If the linearised images look wrong to you, try opening them in full resolution (one pixel of the image should correspond to one pixel on your monitor) on a device with correct sRGB gamma at `2.2`.
 

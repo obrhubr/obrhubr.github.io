@@ -18,19 +18,19 @@ I love building things on the internet, because people will interact with your s
 
 In this particular case, I discovered the lonely campaign of a user against their least favourite dish, flooding my feedback poll with negative votes.
 
-## Nostalgia feels like the Wrong Word when you’re still Young
+<br/>
 
-I re-visited my school recently to pick up a few documents after graduation. While waiting, I found a sticker, hiding on the far end of one of the outdoor lunch tables. Somehow, traces of a project I had led in the student council a few years ago were still left. What I had found were the last remnants of my first website that saw real users.
+I re-visited my school recently to pick up a few documents after graduation. While waiting, I found a sticker, hiding on the far end of one of the outdoor lunch tables. What I had found were the last remnants of my first website that saw real users.
 
 ![Sticker asking for ratings from the students with a QR code linking to the site.](/assets/school-canteen-ratings/7fe95e07ca0d296ab6621de4fbe027b8.webp)
 
-During my tenure in the student council there was a shift towards a more vegetarian regime, always offering at least one vegetarian option and introducing no-meat days. Some people complained very vocally about the new policy, so our canteen’s direction wanted to gauge the students' reactions to the new menus.
+During my tenure in the student council there was a shift towards a more vegetarian regime, introducing no-meat days for example. Some people complained very vocally about the new policy, so our canteen’s direction wanted to gauge the students' reactions to the new menus.
 
-Instead of going for a simple vote, I saw the perfect opportunity to put my - then very new - programming skills to some use and build a website. After some hiccups, the site ran for 2 months and collected a total of 337 votes. In the grand scheme of things, that wasn’t a lot of people - but I had fun and learned a lot.
+I saw the perfect opportunity to get some real-world programming experience and thought why not build a website. After some hiccups, the site ran for 2 months and collected a total of 337 votes. In the grand scheme of things, that wasn’t a lot of people - but I had fun and learned a lot.
 
 ## Minimal Infrastructure
 
-I built the site completely in Typescript, using NextJS for the front-end and ExpressJs on the back-end. Because this was supposed to be temporary and I had no idea how much data I would end up with, I went with a NoSQL Firebase solution. In hindsight, I worried way too much about scale and went for server-less hosting on Google Cloud. This also made sense because voting was only open from 11:50 to 13:50 every day.
+I built the site completely in Typescript, using NextJS for the front-end and ExpressJs on the back-end. Because this was supposed to be temporary and I had no idea how much data I would end up with, I went with a NoSQL Firebase solution and server-less hosting on Google Cloud. 
 
 The server-less approach paid off - quite literally - and I forked over a total of 3.11€ to Google Cloud, excluding the domain.
 
@@ -48,19 +48,19 @@ In order to incentivise people to vote everyday, they needed to get something ba
 
 While this was a school website, I still considered the threat model of a technically versed student trying to fuck with my results. Also, even more benign user interactions like accidental repeated voting should not be counted. I was proven right when I later discovered evidence of someone actually trying to manipulate the results.
 
-I couldn’t require login, as this would increase friction too much and nobody would vote. So I had to find another way to block people from voting twice, both from their device and through the API. Preventing API access could have been accomplished - admittedly only by defence in depth - through a CSRF token loaded when requesting the page. But since I had split front-end and back-end, this would have been too complicated for what it was worth.
+I couldn’t require login, as this would increase friction too much and nobody would vote. So I had to find another way to block people from voting twice, both from their device and through the API. Preventing API access could have been accomplished - admittedly only by defence in depth - through a CSRF token loaded when requesting the page. But since I had already decided to split front-end and back-end, this would have been more complicated for what it was worth.
 
-My first line of defence against people getting creative in order to vote twice was to simply store a cookie containing a UUID after they voted, expiring the next day. But instead of notifying them that they had already voted, I discarded it silently on the back-end. This would give those that simply wanted to try manipulating the results a quick “success”, while preventing them from digging deeper to circumvent my defences.
+My first line of defence against people getting creative in order to vote twice was to simply store a cookie containing a UUID after they voted. If they tried to vote twice,  instead of notifying them that they had already voted, I discarded it silently on the back-end. This would give those that simply wanted to try manipulating the results a quick “success”, while preventing them from digging deeper to circumvent my defences.
 
 I didn’t record the rejected voting attempts sadly, so I don’t know the true number of people just sitting there, thinking they had out-smarted the stupid guy that set up the site.
 
+Some people managed to vote multiple times, either by clearing their cookies or by switching to incognito. I was able to count these duplicates thanks to a second layer of defense. In addition to the token, I also started storing a fingerprint and the voter’s IP server-side, along with their request.
+
 ![Graph comparing unique votes vs. unfiltered votes over time.](/assets/school-canteen-ratings/551da1abb8b2f5ee05c1cc8675abdd8f.webp)
 
-The graph shows that some people managed to vote multiple times, either by clearing their cookies or by switching to incognito. These attempts only represented a tiny fraction of the votes. 
+On one of the final days that the site was live (the 11th of May), you can see an explosion in votes, but the unique count tells a different story. About two thirds of the votes were cast from the same device. 
 
-I know this, because after I started seeing people actually trying to vote twice, I wanted to prevent more knowledgeable attempts. In addition to the token, I also started storing a fingerprint and the voter’s IP server-side, along with their request. I now know that this is very wrong, but at the time I sadly wasn’t aware (The data is long deleted, was only ever used in order to provide these simple stats and was never shared with anyone).
-
-On one of the final days that the site was live (the 11th of May), you can see an explosion in votes, but the unique count tells a different story. About two thirds of the votes were cast from the same device. More incriminating is the absence of a user token for each of the votes, something which couldn’t have happened, had the public front-end been correctly used.
+More incriminating is the absence of a user token for each of the votes, something which couldn’t have happened, had the public front-end been correctly used.
 
 This targeted disinformation campaign, flooding the meal’s ratings with 1/5s, was conducted against the truly worthy target of the “Topfenschmarn”, a sweet pancake made from curd, enjoyed with berries (see [this site for an example](https://www.milch.com/de/rezepte/topfenschmarrn-mit-zwetschkenroester-88/)). Usually this is a tasty delicacy, but our canteen indeed often butchered it.
 
@@ -68,7 +68,7 @@ I forgive this vigilante for his methods because of his clearly noble intentions
 
 ## Analysing the Votes
 
-So what are the most liked meals our school canteen offered? The most popular meal, with a perfect score were chicken wings - perhaps unsurprisingly for a school canteen. 
+So what are the most liked meals our school canteen offered? The most popular meal, with a perfect score were chicken wings - perhaps unsurprisingly for a school canteen.
 
 If you look at the amount of green (vegetables) in the most popular and then the most unpopular meals, it doesn’t take a data scientist nor a sophisticated model to spot a trend.
 

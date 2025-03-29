@@ -14,9 +14,11 @@ math: False
 image: assets/phucking-with-phishers/preview.png
 ---
 
-A while ago a friend messaged me, asking me to report his hacked Instagram account. When his account reached out to me on Instagram a few days later, I had all but forgotten his warning. The message came in around midnight on a Friday evening, imploring me to vote for my friend in a competition. It also came with instructions: a link and the demand for a confirmation screenshot.
+A while ago a friend messaged me, asking me to report his hacked Instagram account. When his account reached out to me on Instagram a few days later, I had all but forgotten his warning. 
 
-The site the scammers pointed me to is hosted on Vercel, under a free `xxxxx.vercel.app` domain. At these first signs, a few alarm bells already went off in my head. Most obvious was that the name of the competition - their cover story - mentioned in the message didn’t match the one on the website at all.
+The message came in around midnight on a Friday, the scammers imploring me to cast a vote for “my friend” in a competition. It also came with instructions: a link and the demand for a confirmation screenshot.
+
+The site the scammers pointed me to was hosted on Vercel, under a free `xxxxx.vercel.app` domain. At these first signs, alarm bells already went off in my head. Most obvious was that the their cover story didn’t match what was on the site.
 
 ![Screenshot of the phishing site’s home screen.](/assets/phucking-with-phishers/15abdd44be212d064a692c7d6e4ec238.webp)
 
