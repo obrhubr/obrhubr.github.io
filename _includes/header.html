@@ -1,9 +1,10 @@
-<nav class="nav">
-	{% for link in site.data.nav %}
-	  <div>
-		<a class="link" href="{{ link.url }}">
-		  {{ link.name }}
-		</a>
-	  </div>
-	{% endfor %}
-</nav>
+<header>
+	<a href="/"><h1>{{ site.data.metadata.person.name }}</h1></a>
+	<nav>
+		{% for link in site.data.nav %}
+			<a class="link" href="{{ link.url }}">
+			{{ link.name }}
+			</a>
+		{% endfor %}
+	</nav>
+</header>

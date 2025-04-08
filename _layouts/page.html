@@ -2,15 +2,10 @@
 layout: default
 ---
 
-<div class="metadata">
+<section class="metadata">
 	<div class="detail">
-		Published on {{ page.published | date_to_string: "ordinal", "UK" }}.
-		{{ page.time }} long read.
-	</div>
-	<div class="tags">
-		{% for tag in page.colortags %}
-			<span style="background-color: var(--{{ tag.color }});" class="tag">{{ tag.name }}</span>
-		{% endfor %}
+		Published on <b>{{ page.published | date_to_string: "ordinal", "UK" }}</b>.
+		<b>{{ page.time }}</b> long read.
 	</div>
 	{% assign sourcode_length = page.sourcecode | size %}
 	{% if sourcode_length > 0 %}
@@ -19,10 +14,10 @@ layout: default
 			<a href="{{ page.sourcecode }}" target="_blank">{{ page.sourcecode }}</a>
 		</div>
 	{% endif %}
-</div>
 
-<hr>
+	<hr>
+</section>
 
-<main class="post-content">
+<content class="post-content">
 	{{ content | resize_images }}
-</mai>
+</content>

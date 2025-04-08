@@ -1,19 +1,10 @@
-<h3>Archive :</h3>
-<ul class="post-list">
-	{% for post in site.posts %}
-		<li class="post">
-			<span class="published-date">
-				{{ post.published }}
-			</span>
-
-			<span class="inline-sep">
-				>
-			</span>
-			
-			<img class="inline-icon" src="/assets/{{ post.favicon }}"/>
-			<span>
-				<a class="link title" href="{{ post.url }}">{{ post.title }} </a>
-			</span>
+<section>
+	<ol class="post-list">
+		{% for post in site.posts %}
+		<li>
+			<time>{{ post.published }}</time>
+			<a href="{{ post.url }}">{{ post.title }}</a>
 		</li>
-  	{% endfor %}
-</ul>
+		{% endfor %}
+	</ol>
+</section>

@@ -18,40 +18,40 @@
 
 @media (prefers-color-scheme: dark) {
     :root {
-        --main-bg-color: rgb(18, 18, 18);
-        --sec-bg-color: rgb(18, 18, 18);
+        --main-bg-color: rgb(24, 26, 27);
     
-        --title-text-color: white;
-        --decoration-color: rgb(60, 60, 60);
+        --header-text-color: #DCCCBB;
+
+        --title-text-color: rgb(255, 255, 255);
+        --highlight-text-color: #EAB464;
+        
+        --main-text-color: rgb(232, 230, 227);
+        --secondary-text-color: rgb(122, 122, 122);
+
+        --link-text-color: rgb(112, 170, 216);
+        --link-visited-color: #96b6c9;
+        --link-hover-color: rgb(254, 180, 224);
     
         --table-color: rgb(40, 40, 40);
-        
-        --main-text-color: rgb(192, 192, 192);
-        --secondary-text-color: rgb(122, 122, 122);
-        --link-text-color: rgb(252, 30, 163);
-        --link-visited-color: rgb(125, 54, 95);
-        --link-hover-color: rgb(254, 180, 224);
-        
-        --navigation-text-color: rgb(25, 182, 255);
     }
 }
 
 @media (prefers-color-scheme: light) {
     :root {
-        --main-bg-color: rgb(255, 252, 249);
-        --sec-bg-color: rgb(255, 252, 249);
+        --main-bg-color: rgb(255, 255, 238);
     
+        --header-text-color: #b6a18a;
+
         --title-text-color: rgb(0, 0, 0);
-        --decoration-color: rgb(165, 165, 165);
+        --highlight-text-color: #ffb23f;
+        
+        --main-text-color: rgb(34, 34, 34);
+        --secondary-text-color: rgb(80, 80, 80);
+
+        --link-text-color: rgb(53, 148, 226);
+        --link-visited-color: #5ea8d3;
+        --link-hover-color: rgb(254, 180, 224);
     
-        --table-color: rgb(218, 218, 218);
-        
-        --main-text-color: rgb(11, 11, 11);
-        --secondary-text-color: rgb(62, 62, 62);
-        --link-text-color: rgb(208, 29, 137);
-        --link-visited-color: rgb(203, 141, 178);
-        --link-hover-color: rgb(125, 54, 95);
-        
-        --navigation-text-color: rgb(17, 132, 185);
+        --table-color: rgb(40, 40, 40);
     }
 }

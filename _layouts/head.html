@@ -14,26 +14,13 @@
 		{% else %}
 			<title>{{ page.title }} - {{ site.data.metadata.person.name }}</title>
 		{% endif %}
-
-		<!-- Fonts -->
-		<link rel="preload" href="/assets/fonts/iosevka-aile-bold.woff2" as="font" crossorigin="anonymous">
-		<link rel="preload" href="/assets/fonts/iosevka-aile-normal.woff2" as="font" crossorigin="anonymous">
-		<link rel="preload" href="/assets/fonts/iosevka-aile-normalitalic.woff2" as="font" crossorigin="anonymous">
 		
 		<!-- Stylesheets -->
 		<style>
 			{% include /styles/colors.css %}
 			{% include /styles/index.css %}
-			{% include /styles/title.css %}
-			{% include /styles/navigation.css %}
-			{% include /styles/posts.css %}
-			{% include /styles/table.css %}
-			{% include /styles/highlight.css %}
-			{% include /styles/math.css %}
-			{% include /styles/metadata.css %}
-			{% include /styles/md.css %}
-			{% include /styles/captions.css %}
-			{% include /styles/audio.css %}
+			{% include /styles/special.css %}
+			{% include /styles/code.css %}
 		</style>
 
 		<!-- Page Favicon -->
@@ -74,9 +61,7 @@
 		</script>
   	</head>
 	<body>
-		<div class="main">
-			{{ content }}
-		</div>
+		{{ content }}
 
 
 		<!-- Scripts loaded after content -->

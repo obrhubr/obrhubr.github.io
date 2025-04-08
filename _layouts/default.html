@@ -4,16 +4,8 @@ layout: head
 
 {% include header.html %}
 
-<div class="pagetitlediv">
-	<div class="spacer">
-		<div class="pagetitle">
-			{{ page.title }}
-		</div>
-	</div>
-</div>
+<h2>{{ page.title }}</h2>
 
-<main>
-	{{ content }}
-</main>
+<content>{{ content }}</content>
 
 {% include footer.html %}
