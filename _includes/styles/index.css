@@ -3,6 +3,8 @@
 	--line-height-base: 1.6em;
 }
 
+@import url(https://cdn.jsdelivr.net/npm/firacode@6.2.0/distr/fira_code.css);
+
 html, body {
 	height: 100%;
 	background-color: var(--main-bg-color);
@@ -15,7 +17,7 @@ body {
 	margin: auto;
 	padding: 0 20px;
 
-	font-family: Georgia, serif;
+	font-family: 'Fira Code', sans-serif;
 	font-size: var(--font-size-base);
 	font-weight: 400;
 	line-height: var(--line-height-base);
@@ -98,6 +100,8 @@ img {
 time {
 	color: var(--secondary-text-color);
 	margin: 0 1em 0 10px;
+	flex-shrink: 0;
+	white-space: nowrap;
 }
 
 .metadata {
