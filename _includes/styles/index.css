@@ -2,8 +2,27 @@
 	--font-size-base: calc(14px + 0.25vw);
 	--line-height-base: 1.6em;
 }
+  
+@font-face {
+	font-family: 'Fira Code';
+	src: url('assets/fonts/FiraCode-Regular.woff2') format('woff2');
+	font-weight: 400;
+	font-style: normal;
+}
+  
+@font-face {
+	font-family: 'Fira Code';
+	src: url('assets/fonts/FiraCode-Medium.woff2') format('woff2');
+	font-weight: 500;
+	font-style: normal;
+}
 
-@import url(https://cdn.jsdelivr.net/npm/firacode@6.2.0/distr/fira_code.css);
+@font-face {
+	font-family: 'Fira Code';
+	src: url('assets/fonts/FiraCode-Bold.woff2') format('woff2');
+	font-weight: 700;
+	font-style: normal;
+}
 
 html, body {
 	height: 100%;
