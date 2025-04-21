@@ -20,19 +20,24 @@
     :root {
         --main-bg-color: rgb(24, 26, 27);
     
-        --header-text-color: #DCCCBB;
+        --header-text-color: #B5446E;
 
         --title-text-color: rgb(255, 255, 255);
-        --highlight-text-color: #CADC9F;
+        --highlight-text-color: #94A3B8;
         
         --main-text-color: rgb(232, 230, 227);
         --secondary-text-color: rgb(122, 122, 122);
 
         --link-text-color: rgb(112, 170, 216);
-        --link-visited-color: #96b6c9;
-        --link-hover-color: rgb(254, 180, 224);
+        --link-visited-color: rgb(112, 170, 216);
+        --link-hover-color: #F1B5CB;
     
-        --table-color: rgb(40, 40, 40);
+        --table-color: rgb(66, 66, 66);
+        --table-text: rgb(150, 150, 150);
+
+        /* Code highlights */
+        --highlight-bg: rgb(20, 20, 20);
+        --highlight-text: #e6dfd3;
     }
 }
 
@@ -40,18 +45,23 @@
     :root {
         --main-bg-color: rgb(255, 255, 238);
     
-        --header-text-color: #b6a18a;
+        --header-text-color: #B5446E;
 
         --title-text-color: rgb(0, 0, 0);
-        --highlight-text-color: #ffb23f;
+        --highlight-text-color: #7A7265;
         
         --main-text-color: rgb(34, 34, 34);
         --secondary-text-color: rgb(80, 80, 80);
 
         --link-text-color: rgb(53, 148, 226);
-        --link-visited-color: #5ea8d3;
-        --link-hover-color: rgb(254, 180, 224);
+        --link-text-color: rgb(53, 148, 226);
+        --link-hover-color: #F1B5CB;
     
-        --table-color: rgb(40, 40, 40);
+        --table-color: rgb(195, 195, 195);
+        --table-text: var(--secondary-text-color);
+
+        /* Code highlights */
+        --highlight-bg: rgb(20, 20, 20);
+        --highlight-text: #e6dfd3;
     }
 }

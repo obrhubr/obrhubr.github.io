@@ -54,7 +54,6 @@ h1 {
 	color: var(--header-text-color) !important;
 	text-transform: uppercase;
 	letter-spacing: 10px;
-	line-height: 1em;
 }
 
 h2 {

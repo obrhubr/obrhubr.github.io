@@ -66,11 +66,12 @@
 .highlight .vm { color: #f8f8f2 } /* Name.Variable.Magic */
 .highlight .il { color: #ae81ff } /* Literal.Number.Integer.Long */
 
-/* Setting background colors */
-.highlight .hll { background-color: #49483e }
-.highlight  { background: #272822; color: #f8f8f2 }
-.highlight .err { color: #960050; background-color: #1e0010 } /* Error */
-.language-plaintext {  color: #e6db74; background: #272822; }
+/* Setting background colours */
+.highlight  { background: var(--highlight-bg); color: var(--highlight-text); }
+.highlight .err { color: var(--highlight-text); background-color: var(--highlight-bg); } /* Hide Error */
+
+/* Setting inline code colours */
+.language-plaintext {  color: var(--highlight-text); background: var(--highlight-bg); }
 
 /* Styling of the boxes */
 .language-plaintext {
@@ -82,7 +83,7 @@
 .highlight {
 	margin: 0;
 	padding: 3px 10px 3px 10px;
-	border-radius: 5px;
+	border-radius: 10px;
 }
 
 pre { white-space: pre; overflow: auto; }

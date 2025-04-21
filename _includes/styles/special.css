@@ -19,32 +19,59 @@ p > .caption {
 
 /* Table */
 table {
-	margin: 0;
+	margin: 0 auto;
 
-	border-collapse: collapse;
-    width: 100%;
+	border-collapse: separate;
+	border-spacing: 0;
+	
     text-align: left;
     overflow: hidden;
 
-	overflow-x:scroll;
-   	display:block;
+	overflow-x: scroll;
+   	display: block;
+
+	color: var(--table-text);
 }
 
 thead tr {
     background-color: var(--main-bg-color);
-    text-align: left;
+    text-align: center;
 }
 
 th, td {
-    padding: 5px 5px;
+    padding: 10px 10px;
     border-bottom: 1px solid var(--table-color);
     border-right: 1px solid var(--table-color);
-    border-left: 1px solid var(--table-color);
-    border-top: 1px solid var(--table-color);
+
+    text-align: center;
 }
 
 thead th {
 	color: var(--title-text-color);
+}
+
+/* Round table corners */
+table tr td:first-child, 
+table tr th:first-child {
+  	border-left: 1px solid var(--table-color);
+}
+
+table tr th {
+	border-top: 1px solid var(--table-color);
+}
+
+table tr:first-child th:first-child {
+	border-top-left-radius: 10px;
+}
+table tr:first-child th:last-child {
+	border-top-right-radius: 10px;
+}
+table tr:last-child td:first-child {
+	border-bottom-left-radius: 10px;
+}
+table tr:last-child td:last-child {
+	border-bottom-right-radius: 10px;
+	margin-bottom: 10px;
 }
 
 /* Make the html part of katex rendered math disappear*/
