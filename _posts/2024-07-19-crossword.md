@@ -14,7 +14,7 @@ math: False
 image: assets/crossword/preview.webp
 ---
 
-After writing my own version of the NYT’s puzzle [Connections](https://www.nytimes.com/games/connections), the Mini-Crossword was next. But the challenging part was not writing the crossword player for my site [spiele.obrhubr.org](http://spiele.obrhubr.org/), it is constructing the puzzles. But surely I can automate that…
+After [writing my own version](https://obrhubr.org/nyt-connections) of the NYT’s puzzle [Connections](https://www.nytimes.com/games/connections), the Mini-Crossword was next. But the challenging part was not writing the crossword player for my site [spiele.obrhubr.org](http://spiele.obrhubr.org/), it is constructing the puzzles. But surely I can automate that…
 
 ## Crossword Rules
 
@@ -127,7 +127,7 @@ Maybe this reflects a more general trend (reflected in [google trends](https://t
 
 Another fun observation is the appearance of new words. `TSA` was first used on the 19th of February 2007. `IKEA` similarly increased in popularity as the brand’s recognition grew in the USA. Trend words such as `LOL`, `OMG` and other online abbreviations also see an upward trend.
 
-![Plot showing words increasing most and decreasing most in usage.](/assets/crossword/4cd5477080c48f4e61996a94d6bd05be.webp)
+![Diagram showing words increasing and decreasing most in usage.](/assets/crossword/4cd5477080c48f4e61996a94d6bd05be.webp)
 
 Word usage also correlates with companies popularity, `AOL` for example saw it’s usage increase into the 2000s and then fall again.
 
@@ -152,11 +152,11 @@ This  I ran the embeddings for all clues in about 6000 puzzles and, according to
 
 To visualise the progression in difficulty over the week, we can use colours to show the similarity on the grid, where red means less similar (harder to solve). As this diagram illustrates, difficulty increases over the week.
 
-![Image illustrating the blog post.](/assets/crossword/71cfa9332982abdd4103aab18100bd6a.webp)
+![Heatmap of crossword difficulty by day for a specific week of NYT crosswords.](/assets/crossword/71cfa9332982abdd4103aab18100bd6a.webp)
 
 Here is the result of the same analysis, but carried out for all the puzzles in my dataset. And again, progression is apparent.
 
-![Image illustrating the blog post.](/assets/crossword/7f263adc44011ec3dd238eab94cda259.webp)
+![Heatmap of NYT crossword difficulty by day.](/assets/crossword/7f263adc44011ec3dd238eab94cda259.webp)
 
 ## Can an LLM write a good Clue?
 
@@ -194,9 +194,9 @@ I used this [Google Colab](https://colab.research.google.com/drive/135ced7oHytdx
  | trivia | One way to find a lost pet | Stereotypical British item | Maurice Micklewhite, Jr., Oscar winner | Tennis legend Arthur | Inventor's need, briefly | 
  | out-of-the-box | What may be electronic but not digital? | Riddle, essentially | Gadget that may be paired | Something that can be played like a piano | Like an analog clock, but not quite | 
 
-As you can see the results are not very encouraging. Although there are some exceptions, for all most instructions the model ignored the type and difficulty.
+As you can see the results are not very encouraging. Although there are some exceptions, for  most instructions the model ignored the type and difficulty I asked it for.
 
-Weirdly, `Tennis legend Arthur` came up quite frequently while testing, it might be some local minima that the model got stuck in while fine-tuning on trivia clues. I am really interested in getting this to work better, so if you have any ideas on how to improve this, let me know at [obrhubr.org/contact](https://obrhubr.org/contact).
+Weirdly, `Tennis legend Arthur` came up quite frequently while testing, it might be some local minima that the model got stuck in while fine-tuning on trivia clues. I am really interested in getting this to work better, so if you have any ideas on how to improve this, let me know about it!
 
 ## Putting it all together
 
