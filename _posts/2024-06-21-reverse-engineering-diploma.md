@@ -48,7 +48,7 @@ But there was one more thing to try first: Did the app access the internet to fe
 
 Armed with the little knowledge of Android apps I had, I looked at the APK, in search of useful Java code. 
 
-And Java code I found, but it was mostly gibberish. Anyone slightly familiar with Java knows that what you’re looking for is the `MainActivity`. But what i discovered in was an empty file.
+And Java code I found, but it was mostly gibberish. Anyone slightly familiar with Java knows that what you’re looking for is the `MainActivity`. But what I discovered in the method was some meaningless boilerplate.
 
 After a bit of googling I realised something, which should be obvious if you took the time to read the name of the imported package: the app was using [Flutter](https://flutter.dev/). And after a bit more googling (well a lot more) and 50 Reddit threads later, I knew to look for a file called `libapp.so`. It should have the (compiled) Dart code for the app, which would mostly be unreadable to humans.
 
