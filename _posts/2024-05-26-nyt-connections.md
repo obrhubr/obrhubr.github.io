@@ -10,7 +10,7 @@ favicon: nyt-connections/favicon.png
 excerpt: "I created a clone of the NYT Connections game in german: Verbindungen.
 A short taste of fame on Reddit allows me to evaluate user’s attempts at solving the puzzles. But what makes a puzzle great and could we try to generate them automatically?"
 short: False
-sourcecode: "https://"
+sourcecode: "https://github.com/obrhubr/web-puzzles"
 math: False
 image: assets/nyt-connections/preview.png
 ---
