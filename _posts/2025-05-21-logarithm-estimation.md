@@ -22,7 +22,7 @@ While reading through the fantastic book *[The Lost Art of Logarithms](https://w
 
 We note that due to the nature of the logarithm (always referring to base 10 from here one out), the logarithm of any number $$ N $$ is approximately equal to the number of digits of $$ N $$ minus one. This is quite easy to see when thinking about numbers between 100 and 1000 for example:
 
-$$ \begin{align} 100 &\leq N < 1000 \\\ \log(100) &\leq \log(N) < \log(100) \\\ 2 &\leq \log(N) < 3  \end{align} $$
+$$ \begin{align} 100 &\leq N < 1000 \\\ \log(100) &\leq \log(N) < \log(1000) \\\ 2 &\leq \log(N) < 3  \end{align} $$
 
 This approximation by itself might seem useless at first: knowing that the logarithm of 5 is between 0 and 1 is pointless. But in combination with the following property of logarithms:
 
