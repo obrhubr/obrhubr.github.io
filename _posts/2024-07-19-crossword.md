@@ -10,6 +10,7 @@ favicon: crossword/favicon.png
 excerpt: "After writing my own version of the NYT’s puzzle [Connections](https://www.nytimes.com/games/connections), the Mini-Crossword was next. But the challenging part was not writing the crossword player for my site [spiele.obrhubr.org](http://spiele.obrhubr.org/), but constructing the puzzles. But surely I can automate that…"
 short: False
 sourcecode: "https://github.com/obrhubr/xword-fill"
+hn: 
 math: False
 image: assets/crossword/preview.webp
 ---

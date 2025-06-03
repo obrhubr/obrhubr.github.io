@@ -10,11 +10,17 @@ layout: default
 	{% assign sourcode_length = page.sourcecode | size %}
 	{% if sourcode_length > 0 %}
 		<div class="detail sourcecode">
-			You can find the <b>sourcecode</b> at: 
+			You can find the <b>sourcecode</b> at:
 			<a href="{{ page.sourcecode }}" target="_blank">{{ page.sourcecode }}</a>
 		</div>
 	{% endif %}
 
+	{% assign hn_length = page.hn | size %}
+	{% if hn_length > 0 %}
+		<div class="detail hn">
+		This post was <a href="{{ page.hn }}" target="_blank">discussed on HN</a>.
+		</div>
+	{% endif %}
 	<hr>
 </section>
 

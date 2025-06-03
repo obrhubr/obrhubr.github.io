@@ -11,6 +11,7 @@ excerpt: "I created a clone of the NYT Connections game in german: Verbindungen.
 A short taste of fame on Reddit allows me to evaluate user’s attempts at solving the puzzles. But what makes a puzzle great and could we try to generate them automatically?"
 short: False
 sourcecode: "https://github.com/obrhubr/web-puzzles"
+hn:
 math: False
 image: assets/nyt-connections/preview.png
 ---
@@ -33,7 +34,7 @@ When first loading the site you are presented with the blank grid of 16 words of
 
 I soon added some basic level of analytics, giving in to my urge to collect data everywhere and from everyone. The site would store the game history, mistakes made and if it was solved. This proved very useful later…
 
-A friend encouraged me to post the site to the [r/de](https://reddit.com/r/de) and [r/austria](https://reddit.com/r/austria) subreddits. At first the posts racked up views and upvotes (2.1k views in total), but I was quickly yanked back to reality by the moderators of the communities. 
+A friend encouraged me to post the site to the [r/de](https://reddit.com/r/de) and [r/austria](https://reddit.com/r/austria) subreddits. At first the posts racked up views and upvotes (2.1k views in total), but I was quickly yanked back to reality by the moderators of the communities.
 
 They - in typical reddit fashion - reminded me that self-promotion is strictly prohibited by striking me with the ban hammer. Even though I was not selling anything, which I also told them, they were adamant on keeping their users safe from my posts.
 
@@ -53,7 +54,7 @@ Knowing that all puzzles were played at least ten times, I think this graph trul
 
 You can see that the puzzles I created were solved at much higher rates than those my friend created. He is either making fiendishly difficult puzzles on purpose or is smarter than all of us.
 
-But now I also now know that the puzzle published on the 2nd of June shouldn’t have been that easy. 
+But now I also now know that the puzzle published on the 2nd of June shouldn’t have been that easy.
 
 **2. The next question that begged to be answered was: How well did we choose the difficulties of the different categories?**
 
@@ -81,7 +82,7 @@ Which at least tells us that Medium and Straightforward are - as expected - the 
 
 But there is an interesting phenomenon, the second most common order is to only solve the tricky category and nothing else, with 12 occurrences. This seemed bizarre at first but we can actually learn something important from this.
 
-The title of the tricky categories which were immediately solved were: “Words in James Bond titles” and “Words from Goethe’s book titles”. In hindsight, these are very obvious to people who have a bit of general knowledge - and Goethe is *very* famous in Germany and Austria. 
+The title of the tricky categories which were immediately solved were: “Words in James Bond titles” and “Words from Goethe’s book titles”. In hindsight, these are very obvious to people who have a bit of general knowledge - and Goethe is *very* famous in Germany and Austria.
 
 (You can play the puzzles these are from at [this link on spiele.obrhubr.org](https://spiele.obrhubr.org/verbindungen/play.html?number=l55J4qxSSJh8SSQcUs2E) and [this link on spiele.obrhubr.org](https://spiele.obrhubr.org/verbindungen/play.html?number=l55J4qxSSJh8SSQcUs2E))
 
@@ -128,4 +129,3 @@ Repeat until you are left with 4 categories: (This is a real example)
 <br/>
 
 This is not a very good Connections puzzle, but it is a playable one. And if you aren’t a friend of mine who likes to create too difficult puzzles (you know who you are!), a playable puzzle is better than an impossible puzzle and most of all, better than nothing.
-

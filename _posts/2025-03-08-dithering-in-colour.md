@@ -10,6 +10,7 @@ favicon: dithering-in-colour/favicon.png
 excerpt: "Inspired by multiple posts on dithering, I set out to create a correct implementation of Atkinson dithering with support for RGB colour palettes. The post also outlines implementing linearising the colour-space and correcting for human perception."
 short: False
 sourcecode: "https://github.com/obrhubr/ditherpy"
+hn: "https://news.ycombinator.com/item?id=43315029"
 math: False
 image: assets/dithering-in-colour/preview.png
 ---

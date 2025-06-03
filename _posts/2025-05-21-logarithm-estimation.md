@@ -10,7 +10,8 @@ favicon: logarithm-estimation/favicon.png
 excerpt: "While reading through the fantastic book *[The Lost Art of Logarithms](https://www.lostartoflogarithms.com/)* by [Charles Petzold](https://www.charlespetzold.com/) I was nerd-sniped by a [simple method](https://www.lostartoflogarithms.com/chapter04/) of estimating the logarithm of any number base 10. According to the book, it was developed by [John Napier](https://en.wikipedia.org/wiki/John_Napier) (the father of the logarithm) about 1615.
 I implemented the method in python to understand it better."
 short: False
-sourcecode: 
+sourcecode:
+hn: "https://news.ycombinator.com/item?id=44142251"
 math: True
 ---
 
@@ -60,39 +61,39 @@ decimal.getcontext().prec = 100
 
 def get_scientific(num):
     num = decimal.Decimal(num)
-    
+
     # Calculate length of the number in a 'naive' way, without using the log
     # Using log10 here would kind of defeat the point
     # Because the length never exceeds 10, counting them manually is always possible
     length = len(str(math.floor(num))) - 1
     mantissa = num / (10 ** length)
-    
+
     return mantissa, length
 
 def count_digits(num, precision: int):
     assert(precision > 0)
-    
+
     mantissa, exponent = get_scientific(num ** 10)
-    
+
     # Apply the trick here by doing the calculation iteratively
     for _ in range(precision - 1):
         # Use the properties of exponents
         # (m x 10^exp)^10 = m^10 x 10^(10 * exp)
         mantissa = mantissa ** 10
         exponent *= 10
-        
+
         mantissa, new_exponent = get_scientific(mantissa)
         # Calculate the contribution of the new mantissa to the exponent and add it
         exponent += new_exponent
 
     return exponent
-    
+
 def logarithm(num, precision):
     # Count the number of digits
     n_digits = count_digits(num, precision)
     # Divide by the exponent
     result = n_digits / decimal.Decimal(10 ** precision)
-    
+
     return f"{result:.{precision}f}"
 ```
 
@@ -103,4 +104,3 @@ I’m not super happy with the implementation because of the `decimal` import wh
 <br/>
 
 I wrote this little post in order to remember this neat little trick better and to maybe expose some people who wouldn’t have read chapter 4 in the book to it. I can only recommend checking out the [content straight from the source, online and for free](https://www.lostartoflogarithms.com/)!
-

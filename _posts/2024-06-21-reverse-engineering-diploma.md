@@ -10,6 +10,7 @@ favicon: reverse-engineering-diploma/favicon.png
 excerpt: "When graduating a French school, your diploma contains a QR code which can be scanned with an app to display your grades, as a means of verification for universities or employers. I want to reverse engineer the app to recreate it’s functionality in Python and enable users without the app to use it."
 short: False
 sourcecode: "https://github.com/obrhubr/reverseengineering-diploma"
+hn: "https://news.ycombinator.com/item?id=40878538"
 math: True
 image: assets/reverse-engineering-diploma/preview.webp
 ---

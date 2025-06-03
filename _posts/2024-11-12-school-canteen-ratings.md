@@ -10,6 +10,7 @@ favicon: school-canteen-ratings/favicon.png
 excerpt: "I’m not sure you can really call someone rating their least favourite dish with 1/5 in an informal poll on my website voter fraud, but I sure felt like a detective uncovering a crime while looking through my logs and analytics. It also makes me look better than saying: “I allowed voting multiple times because of lacking security.”"
 short: False
 sourcecode: 
+hn: 
 math: False
 image: assets/school-canteen-ratings/preview.png
 ---

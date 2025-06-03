@@ -10,6 +10,7 @@ favicon: kelly-criterion/favicon.png
 excerpt: "If you want to put some fraction of your money into a risky venture, how much should you invest? In order to maximise long term wealth, the Kelly Criterion is often used to size the bet. This post shows how to derive the gambling formula from the Kelly Criterion and it’s application to different games. It can be used in a simple simulation or to maximise profits in more complicated scenarios, such as Blackjack."
 short: False
 sourcecode: "https://github.com/obrhubr/kelly-criterion-ship-investor"
+hn: "https://news.ycombinator.com/item?id=41822687"
 math: True
 image: assets/kelly-criterion/preview.png
 ---

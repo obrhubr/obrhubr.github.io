@@ -10,6 +10,7 @@ favicon: phucking-with-phishers/favicon.png
 excerpt: "Phishers tried to steal my Instagram credentials. They also forget to properly secure their database…"
 short: False
 sourcecode: 
+hn: 
 math: False
 image: assets/phucking-with-phishers/preview.png
 ---
