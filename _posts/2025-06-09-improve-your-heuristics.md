@@ -27,13 +27,15 @@ But you don’t need to learn about everything to be right about most things, ju
 
 There are ways to guess that result in being right more often, these methods are called [heuristics](https://en.wikipedia.org/wiki/Heuristic). You don’t just approach the problem from one angle, you find multiple related topics and engage with the question from as many sides as possible. You start out with things you know and try to figure out if they follow similar patterns. You could use etymology if possible, you could start with historical knowledge or geographical indications. A famous example which has influenced both pop-culture and bad job interview questions is the [Fermi estimation](https://en.wikipedia.org/wiki/Fermi_problem).
 
-The one thing that links all of these techniques is that you require *some* knowledge to start. You can’t Descartes yourself out of there, at some point, you have to set the *tabula rasa*. To get to a Fermi estimate of the number of tennis balls in a stadium, you have to know how large a tennis ball **and** a stadium are.
+The one thing that links all of these techniques is that you require some knowledge to start. You can’t Descartes yourself out of there, at some point, you have to set the *tabula rasa*. To get to a Fermi estimate of the number of tennis balls in a stadium, you have to know how large a tennis ball and a stadium are.
 
-So the key to being right more often is to know more. *Duh*, you say, *wouldn’t have needed to read the post to know that*. But you can’t just go around learning things willy nilly, you have to be somewhat methodical, because what you learn is extremely important. Some bits of knowledge are way more efficient at jump starting a good heuristic than others.
+So the key to being right more often is to know more. *Duh*, you say, *wouldn’t have needed to read the post to know that*. But you can’t just go around learning things willy nilly, you have to be somewhat methodical, because what you learn is extremely important. 
+
+This post isn’t about the heuristics in particular, but rather about what to learn to be more efficient at jump starting a good heuristic.
 
 ## What (and How) to Learn to Learn More
 
-On the great beach of human knowledge, some bits of knowledge are seashells, some are grains of sand, and some just algae (Stay away kids, Oswald acted alone!). You want to pick the shells up first, then collect grains. I don’t pretend to have the answers on this topic and I would love to know about your personal priorities when it comes to general knowledge - the following is meant as an impulse for reflection.
+On the great beach of human knowledge, some bits of knowledge are seashells, some are grains of sand, and some just algae (Stay away kids, Oswald acted alone!). You want to pick the shells up first, then collect grains.
 
 There are some obvious force multipliers when it comes to knowing more. Knowing how to read and use a computer are obvious things, but using spaced-repetition techniques like [Anki](https://apps.ankiweb.net/) can boost your recall feels like a hidden superpower in comparison. 
 
@@ -45,7 +47,7 @@ On another note, some mental math and basic statistics is always useful, one of 
 
 ## What to Learn About to Know More
 
-Now that we know how to multiply the amount we **can** learn, we should focus on **what** to learn. **Because some fields can multiply the amount of things you can correctly guess a lot more than others.** Again, these are what I have come up with personally, and I’d love to hear about your ideas.
+Now that we know how to multiply the amount we **can** learn, we should focus on **what** to learn, because some knowledge can boost the amount of things you can correctly guess a lot more than others.
 
 You should certainly know a lot of geography, the more the better. This is one of the most useful categories, as this can help for questions from history to politics, philosophy, etc… Know where countries are, how many there are, their flags and political systems. Know their rivers and what oceans or seas they border.
 
@@ -64,4 +66,6 @@ Noticing things isn’t always good, [medical students have the problem of notic
 My conclusion would be that specialisation isn’t bad (it certainly helps to be **sure**, which is mostly better than right), as long as it comes with a healthy dose of general knowledge. Knowing the rights things can increase the frequency of you being right by an enormous amount.
 
 <br/>
+
+I don’t pretend to be an expert on this subject, and I would love for you to reach out and tell me if I have missed any techniques or areas that could help boost the efficiency of heuristics.
 
