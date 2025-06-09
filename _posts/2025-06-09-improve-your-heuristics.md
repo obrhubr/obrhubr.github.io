@@ -12,7 +12,7 @@ To be right more often, you need to know more, which helps improve your heuristi
 short: False
 sourcecode: 
 hn: 
-math: False
+math: True
 ---
 
 I’ve been playing the game [Endless Quiz](https://www.endquiz.com/quiz.php) a lot with my friends recently, and one thing I’ve noticed is that you don’t need to **know** to be **right**. The game asks a question - which usually is about music, geography, physics, medicine, biology, computer science or the arts - and then presents four choices, always plausible.
@@ -39,13 +39,13 @@ On the great beach of human knowledge, some bits of knowledge are seashells, som
 
 There are some obvious force multipliers when it comes to knowing more. Knowing how to read and use a computer are obvious things, but using spaced-repetition techniques like [Anki](https://apps.ankiweb.net/) can boost your recall feels like a hidden superpower in comparison. 
 
-Associating some bits of information with other, related bits is what helps to remember things better, in general. This is why [mnemonic peg systems](https://en.wikipedia.org/wiki/Mnemonic_peg_system) such as the [major system](https://major-system.info/en/), which associates words to numbers and helps memorise them (this is how some people know 100 digits of pi) work. By using these techniques effectively, you’ll be able to learn more, faster.
+Associating some bits of information with other, related bits is what helps to remember things better, in general. This is why [mnemonic peg systems](https://en.wikipedia.org/wiki/Mnemonic_peg_system) such as the [major system](https://major-system.info/en/), which associates words to numbers and helps memorise them (this is how some people know 100 digits of $$ \pi $$). By using these techniques effectively, you’ll be able to learn more, faster.
 
 Another fantastic force multiplier is language, specifically Greek and Latin words. This helps by giving you the ability to figure things out only through etymology. Let’s assume you didn’t know what *agriculture* meant. By knowing that it’s composed of *ager* (lat. for *field*) and *cultura* (lat. for *cultivation*) you could easily figure it out.
 
 On another note, some mental math and basic statistics is always useful, one of my favourite blogs is [Entropic Thoughts](https://entropicthoughts.com/), I would especially recommend his posts about [Bayes Rules](https://entropicthoughts.com/bayes-rule-odds-form), [SPC](https://entropicthoughts.com/statistical-process-control-a-practitioners-guide) and the [Kelly Criterion](https://obrhubr.org/kelly-criterion). If you know how to square and take roots (don’t forget the [logarithm](https://obrhubr.org/logarithm-estimation)) in your head, you’ll be able to apply more advanced techniques quicker.
 
-## What to Learn About to Know More
+## What to Learn to Know More
 
 Now that we know how to multiply the amount we **can** learn, we should focus on **what** to learn, because some knowledge can boost the amount of things you can correctly guess a lot more than others.
 
