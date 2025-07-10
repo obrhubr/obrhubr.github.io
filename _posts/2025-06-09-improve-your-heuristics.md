@@ -19,7 +19,7 @@ I’ve been playing the game [Endless Quiz](https://www.endquiz.com/quiz.php) a 
 
 ![Example question from the game. None of the choices are not US States, they all could be correct.](/assets/improve-your-heuristics/cc665253db4b080f1958f50dac9535ee.webp)
 
-So either you know the answer, by knowing the topic inside out, or you can **guess**. The same techniques and rules apply for a quiz with four choices and real life. 
+So either you know the answer, by knowing the topic inside out, or you can **guess**. The same techniques and rules apply for a quiz with four choices and in the real world. 
 
 But you don’t need to learn about everything to be right about most things, just a few specific bits of knowledge can massively boost the amount of times you know the answer to difficult questions.
 

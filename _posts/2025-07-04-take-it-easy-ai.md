@@ -1,6 +1,6 @@
 ---
 layout: page
-title: "Exploring the Game Take-It-Easy"
+title: "The 167 Point Ceiling of the Game Take-It-Easy"
 time: 7 minutes
 published: 2025-07-04
 colortags: [{'id': '4260119c-7ec5-48b3-ba5b-96f4335cdc7f', 'name': 'AI', 'color': 'yellow'}, {'id': 'f50f3705-0c22-40e2-a074-91d12222a447', 'name': 'Puzzle', 'color': 'purple'}, {'id': '28d7f40f-be75-455e-9d82-781b78d1548c', 'name': 'Games', 'color': 'pink'}, {'id': '805abdfa-25d7-4253-b70a-011688c45da1', 'name': 'Statistics', 'color': 'blue'}]
@@ -8,7 +8,8 @@ tags: ['AI', 'Puzzle', 'Games', 'Statistics']
 permalink: take-it-easy-ai
 favicon: take-it-easy-ai/favicon.png
 excerpt: "Instead of simply enjoying a cool board game, I dissect and explore the different approaches to solving the imperfect information game Take-It-Easy.
-I compare basic heuristics to a more sophisticated reinforcement learning approach."
+I compare basic heuristics to a more sophisticated reinforcement learning approach.
+What’s the best a computer can do?"
 short: False
 sourcecode: "https://github.com/obrhubr/take-it-easy"
 hn: 
@@ -70,7 +71,7 @@ In the case of Take-It-Easy, the neural network spits out a probability distribu
 
 ## Training
 
-But the model has to learn to accurately estimate the probability distribution somehow… To make things more difficult, Take-it-Easy gives us only limited immediate feedback (the reward for completing a line) while the final score can only be calculated at the end.
+But the model has to learn to accurately estimate the probability distribution somehow… To make things even more difficult, Take-it-Easy gives us only limited immediate feedback (the reward for completing a line) while the final score can only be calculated at the end.
 
 The [Bellman equation](https://en.wikipedia.org/wiki/Bellman_equation) allows us to bridge the gap between reward and final score. The evaluation function $$ \mathbb{Z} $$ is updated according to the immediate reward $$ r $$ and the probability distribution of the next state (according to optimal policy) noted $$ \mathbb{Z}(s') $$. 
 
@@ -82,9 +83,9 @@ The model kind of bootstraps itself, as each iteration learns from the previous 
 
 ## Limits
 
-I trained many different configurations, varying different parameters: hidden size, learning rate, epsilon, output size, dataset size, etc...
+While experimenting, I trained many model configurations, varying different parameters: hidden size, learning rate, epsilon, output size, dataset size, etc...
 
-The results were pretty consistent, changes in any of the parameters didn’t affect performance and only reduced or increased the rate at which the model improved initially. But all of them eventually hit the seemingly hard limit of ~167.
+The results were all pretty consistent. Changes in any of the parameters didn’t affect performance and only reduced or increased the rate at which the model improved initially. But all models eventually hit the seemingly hard limit of ~167.
 
 I wasted at least a couple hundred hours and a pretty sum renting GPUs for training, all in a futile attempt to increase the score (If you want to take a shot at training your own model, I provided a [Colab notebook](https://github.com/obrhubr/take-it-easy/tree/master?tab=readme-ov-file#on-google-colab)).
 
@@ -98,9 +99,9 @@ This intuitively makes sense: the random order of the pieces drawn means that th
 
 ## Interpreting the Trained Model’s Parameters
 
-AI interpretability being a hot topic currently, I wanted to try my hand at a similar effort. To visualise what effect placing a piece on a tile would have, I mapped the input neuron (corresponding to the tiles) weights to their corresponding tile and line on the board.
+I wanted to find out more about the strategies employed by the different models, in order to find out if they converged - and got stuck on - a consistent strategy. To visualise what effect on the score placing a piece on a tile would have, I mapped each input neuron’s weights to their corresponding tile and line on the board.
 
-The board is one hot encoded before being fed to the network, meaning that each tile is converted to 9 distinct inputs - one for each possible line value.
+The mapping from board to neural network input is based on one-hot encoding. For each tile, we encode 9 bits of information about the piece on it: three lines per tile and three possible line values for each of them.
 
 ![Visualising the one hot encoding of the tile <9, 4, 6>.](/assets/take-it-easy-ai/ef9ecf1d95b309785222ee7a5ef49bb2.webp)
 
@@ -108,9 +109,13 @@ A red line means that placing a piece with that line on this tile influences the
 
 ![Graphic showing neuron weights mapped to their tile and corresponding line.](/assets/take-it-easy-ai/9d71e4d30f19a7482362cc25303ead40.webp)
 
-The evaluation of a board stays consistent over all model configurations that I’ve trained, diverging by only a few points maximum. What is interesting is that the mapping of weights to lines is not at all universal. Every model shows different patterns in this visualisation, which might be another clue that there isn’t a single best strategy.
+What is interesting is that the mapping of weights to lines is not at all universal. Every model shows a different pattern when visualised this way. This might be due to this not being a very reliable test, or…
+
+The actual predicted score of the same board stays consistent (a few points maximum), no matter the model configuration. Therefore, this might be another clue that there isn’t a single best strategy and that Take-It-Easy is too random to score more than ~167 points on average.
 
 ## Open Questions
+
+Going through polarbart’s code in detail, slowly reconstructing his model architecture and fiddling with different optimisations (or un-optimisations because of a lack of understanding…), helped me gain a lot of insights into this type of reinforcement learning. But there are a few things I don’t understand and maybe by sharing I’ll get an answer.
 
 For those not familiar with loss metrics, usually loss starts out high, as the model quickly adapts to the training data, and then slowly reaches a minimum, not improving any further. Here, because of the constantly changing policy, like a moving target, the loss increases.
 
