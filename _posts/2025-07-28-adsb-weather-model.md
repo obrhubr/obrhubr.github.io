@@ -9,8 +9,8 @@ permalink: adsb-weather-model
 favicon: adsb-weather-model/favicon.png
 excerpt: "Each second thousands of planes send messages about their location and flight data - in ADS-B messages. These are intended to prevent mid-air collisions, but we can exploit the aggregated data to map out atmospheric conditions. By deriving the wind speed from the broadcast flight data, we can model wind speed and direction."
 short: False
-sourcecode: 
-hn: 
+sourcecode:
+hn:
 math: False
 image: assets/adsb-weather-model/preview.png
 ---
@@ -67,7 +67,7 @@ After letting the model run for a while, I got the following GIF - notice the ou
 
 Each frame contains data from about 650 aircraft. The step size of the simulation was set to 15 minutes - which is quite a lot. The density plot visualises the accuracy - more aircraft, higher accuracy. As this is during the night, there is less activity, which results in less data for the model.
 
-## How Accurate is the Data
+## How Accurate is the Model?
 
 While the wind vectors certainly do look interesting and somewhat realistic, are they really accurate? To compare the output of the simulation with real wind conditions, I found [Cameron Beccario](https://nullschool.net/)’s earth-wide wind visualisation.
 
@@ -86,4 +86,3 @@ I tried my best to replicate the style of the reference model to make a final vi
 ![My data visualised in the style of ](/assets/adsb-weather-model/8d14febeec1386cffa94602688a18a2b.gif)
 
 My data visualised in the style of [earth.nullschool.net](http://earth.nullschool.net/).
-
