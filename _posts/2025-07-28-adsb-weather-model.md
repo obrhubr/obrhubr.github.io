@@ -9,8 +9,8 @@ permalink: adsb-weather-model
 favicon: adsb-weather-model/favicon.png
 excerpt: "Each second thousands of planes send messages about their location and flight data - in ADS-B messages. These are intended to prevent mid-air collisions, but we can exploit the aggregated data to map out atmospheric conditions. By deriving the wind speed from the broadcast flight data, we can model wind speed and direction."
 short: False
-sourcecode:
-hn:
+sourcecode: 
+hn: "https://news.ycombinator.com/item?id=44734515"
 math: False
 image: assets/adsb-weather-model/preview.png
 ---
@@ -35,7 +35,7 @@ The excellent book [“The 1090 Megahertz Riddle”](https://mode-s.org/1090mhz/
 
 ## Collecting Data
 
-By aggregating and processing the messages about position and heading, we can build a very crude meteorological model! All the work in this blog post is based on this [paper](https://journals.plos.org/plosone/article/file?id=10.1371%2Fjournal.pone.0205029&type=printable) (code available at [github.com/junzis/meteo-particle-model](https://github.com/junzis/meteo-particle-model)).
+By aggregating and processing the messages about position and heading, we can build a very crude meteorological model! All the work in this blog post is based on this [paper](https://journals.plos.org/plosone/article/file?id=10.1371%2Fjournal.pone.0205029&type=printable) (code available at [github.com/junzis/meteo-particle-model](https://github.com/junzis/meteo-particle-model)). See also the [paper](https://erichorvitz.com/planesenors.pdf) by [Erich Orvitz](https://erichorvitz.com/) about a similar system ([from HN](https://news.ycombinator.com/item?id=44734515#44764111)).
 
 ADS-B messages contain information about both ground speed (measured using a GPS) and airspeed (which is the plane’s speed relative to the surrounding air, measured by on-board sensors).
 
@@ -86,3 +86,4 @@ I tried my best to replicate the style of the reference model to make a final vi
 ![My data visualised in the style of ](/assets/adsb-weather-model/8d14febeec1386cffa94602688a18a2b.gif)
 
 My data visualised in the style of [earth.nullschool.net](http://earth.nullschool.net/).
+
