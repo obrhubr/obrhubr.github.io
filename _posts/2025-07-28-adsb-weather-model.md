@@ -69,15 +69,13 @@ Each frame contains data from about 650 aircraft. The step size of the simulatio
 
 ## How Accurate is the Model?
 
-While the wind vectors certainly do look interesting and somewhat realistic, are they really accurate? To compare the output of the simulation with real wind conditions, I found [Cameron Beccario](https://nullschool.net/)’s earth-wide wind visualisation.
+While the wind vectors certainly do look interesting and somewhat realistic, are they really accurate? To compare the output of the simulation with real wind conditions, I found [Cameron Beccario](https://nullschool.net/)’s earth-wide wind visualisation at [earth.nullschool.net](https://earth.nullschool.net/).
 
-![Comparison between my model and ](/assets/adsb-weather-model/176acdba386f449c4e6f9b31f35fd2c7.webp)
-
-Comparison between my model and [the reference model](https://earth.nullschool.net/#2024/04/30/1500Z/wind/isobaric/250hPa/orthographic=-346.96,47.37,1791/loc=6.666,30.896) powered by GFS.
+![Comparison between my model and the reference model powered by GFS.](/assets/adsb-weather-model/176acdba386f449c4e6f9b31f35fd2c7.webp)
 
 The comparison is not exact, but it’s pretty close. I tried to match up the same countries in both images and the height of the aircraft in my model is about 11km while the data on the right is for 250 hPa ([nullschool.net](https://earth.nullschool.net/about.html) says 250 hPa corresponds to about 10,500m).
 
-You can recognise the same high-speed winds over the Mediterranean (from Greece to Turkey), where the speed even matches up quite closely - our model predicting 50 m/s and the reference showing 152 km/h.
+You can recognise the same high-speed winds over the Mediterranean (from Greece to Turkey), where the speed even matches up quite closely - our model predicting 50 m/s (180 km/h) and the reference showing 152 km/h.
 
 I’d say that’s a success!
 
