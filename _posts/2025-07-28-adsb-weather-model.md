@@ -81,7 +81,7 @@ I’d say that’s a success!
 
 I tried my best to replicate the style of the reference model to make a final visualisation.
 
-![My data visualised in the style of ](/assets/adsb-weather-model/8d14febeec1386cffa94602688a18a2b.gif)
+![My data visualised in the style of ](/assets/adsb-weather-model/2959b3196f1911816d757978eac50035.gif)
 
 My data visualised in the style of [earth.nullschool.net](http://earth.nullschool.net/).
 
