@@ -12,6 +12,7 @@ kramdown:
 feed:
   excerpt_only: true
   referrer: "?ref=rss"
+  tracking: "https://tinylytics.app/pixel/jPxZ6BT8ZoNsiFoRiBNz"
 
 plugins_dir: ./_plugins
 
