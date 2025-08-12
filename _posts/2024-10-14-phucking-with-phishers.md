@@ -21,13 +21,13 @@ The message came in around midnight on a Friday, the scammers imploring me to ca
 
 The site the scammers pointed me to was hosted on Vercel, under a free `xxxxx.vercel.app` domain. At these first signs, alarm bells already went off in my head. Most obvious was that the their cover story didn’t match what was on the site.
 
-![Screenshot of the phishing site’s home screen.](/assets/phucking-with-phishers/15abdd44be212d064a692c7d6e4ec238.webp)
+![<p>Screenshot of the phishing site’s home screen.</p>](/assets/phucking-with-phishers/15abdd44be212d064a692c7d6e4ec238.webp)
 
 But this being midnight, I didn’t fully process any of that and simply clicked on the `Vote with Instagram` button. This led me to a very faithfully reproduced sign-in screen. But no redirect to Instagram, which meant no password manager filling out my credentials. That confirmed to me this was a scam, jolting even my very sleepy self awake. This is also where I remembered my friend telling me about his account having been hacked…
 
 Now I wanted to investigate. After entering fake credentials, I clicked on `Log In` and was shown an error pop up. 
 
-![Error pop-up shown when the user attempts to log in.](/assets/phucking-with-phishers/f59ff31c8cbef73b800238d038b28ab5.webp)
+![<p>Error pop-up shown when the user attempts to log in.</p>](/assets/phucking-with-phishers/f59ff31c8cbef73b800238d038b28ab5.webp)
 
 This is quite smart because it tricks people into typing their password again and again, which reduces the number of mistyped credentials they get. And you be skeptical if this actually works, but as you’ll see the data does back up this strategie’s effectiveness.
 
@@ -49,7 +49,7 @@ The only thing you can do against this, is to send a constant stream of realisti
 
 ## How many people fall for this
 
-![De Nachtwacht, Rembrandt, 1642 - or what I imagined myself looking like at night, digging into the site’s code.](/assets/phucking-with-phishers/2e758a46e016aa853da6c1a9b55bc7ab.webp)
+![<p>De Nachtwacht, Rembrandt, 1642 - or what I imagined myself looking like at night, digging into the site’s code.</p>](/assets/phucking-with-phishers/2e758a46e016aa853da6c1a9b55bc7ab.webp)
 
 Something I neglected to mention until now is that they hadn’t set up any access control on Firebase. They logged all data coming in, directly on the client. This meant that I could watch while people where getting phished. Thanks to this, I was able to alert victims I knew to the fact they had been phished. Thankfully, for a few people this actually worked and they were able to change their password fast enough.
 
@@ -57,17 +57,17 @@ I exfiltrated the data and began analysing the victims behaviour, in order to be
 
 The first thing that stood out to me was the time (localised for each victim) people visited the site. Most were phished early in the morning or in the evening. We could either explain this by assuming most people don’t check their phones during work hours. Or we could draw the further-fetched conclusion that people are more vulnerable at odd hours, when they are potentially more tired.
 
-![Bar chart showing at which times most people fall for the scam.](/assets/phucking-with-phishers/3ac98a5f7a8bc1beb63a33c7f52664b3.webp)
+![<p>Bar chart showing at which times most people fall for the scam.</p>](/assets/phucking-with-phishers/3ac98a5f7a8bc1beb63a33c7f52664b3.webp)
 
 Remember how the site shows `Something went wrong while casting your vote`, to trick less technically versed people into logging in more often? If you are tech-savvy enough - using a password manager or at least having better security practices - you should in theory not fall for such a simple phishing attempt. The data, as plotted below, seems to support the conclusion that users falling for this are less tech-savvy (by this crude metric).
 
 The graph below plots the amount of times a user logs in against the complexity of their password. To count the amount of times a person signed in, I grouped the credential pairs by matching them over multiple log in attempts. If the data shows an attempt with `login_a` and `password_a` and  `login_b` with `password_a`, we know they belong to the same, “real” user. Two more things stand out: there are less users logging in with very complex password and they become aware of the scam quicker.
 
-![Scatter plot showing the password complexity compared to the login attempts made by users.](/assets/phucking-with-phishers/f6672319ffd49a3fca195926377c310d.webp)
+![<p>Scatter plot showing the password complexity compared to the login attempts made by users.</p>](/assets/phucking-with-phishers/f6672319ffd49a3fca195926377c310d.webp)
 
 After the phishers compromise the first account, they spread virally through the victims social network. With every new person they infect, they can spread to their followers. I tried to visualise this process, plotting the victims locations over time on a map. A pattern of slowly spreading out from the root to other cities is visible.
 
-![Map showing the victims locations spreading across Europe, over time.](/assets/phucking-with-phishers/19e6e3e08df2c1bf01c228b089eaf28a.gif)
+![<p>Map showing the victims locations spreading across Europe, over time.</p>](/assets/phucking-with-phishers/19e6e3e08df2c1bf01c228b089eaf28a.gif)
 
 There are a however also some users that noticed that the site was a scam and used credentials like `NoHacker123` to protest. Another person tried to convert the sinning scammers to Christianity by sending them the password `repentnowcauseJesuslovesu`.
 

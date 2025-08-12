@@ -46,7 +46,7 @@ For these odds and a fair coin, according to Kelly, the growth rate of your weal
 
 This median case is what the Kelly Criterion optimises for (see point two in [this Less Wrong post](https://www.lesswrong.com/posts/DfZtwtGD6ymFtXmdA/kelly-is-just-about-logarithmic-utility#2)).
 
-![Diagram of a logarithmic function and Kelly himself.](/assets/kelly-criterion/add55295a1fceea5153e60a05198ec32.webp)
+![<p>Diagram of a logarithmic function and Kelly himself.</p>](/assets/kelly-criterion/add55295a1fceea5153e60a05198ec32.webp)
 
 The logarithm acts as a sort of model for losses compounding, because it tends to negative infinity very quickly for negative returns, penalizing losses and diminishes the effect large improbable wins have on the expected value.
 
@@ -58,7 +58,7 @@ Your job is to determine the best investment, given the risks associated with th
 
 I urge you to try it out before reading any further and to see if you would have had potential to be a wealthy magnate in bygone times.
 
-![World map showing the different straits and their safety ratings.](/assets/kelly-criterion/40ad7950715ebf1290ecbe8af626c777.webp)
+![<p>World map showing the different straits and their safety ratings.</p>](/assets/kelly-criterion/40ad7950715ebf1290ecbe8af626c777.webp)
 
 To succeed in the harsh business climate of past times and win the game, we always need to choose an investment that maximises our long-term wealth. Oh wait, isn’t that what the Kelly Criterion is for?
 
@@ -74,7 +74,7 @@ To test this formula, I transcribed the ship investor game into a python script.
 
 Here is what 200 Kelly bettors wealth looks like, over a span of 500 turns.
 
-![Graph showing the wealth over time of a large number of Kelly bettors.](/assets/kelly-criterion/0296c860a5a836ddfaad14523829ea5f.webp)
+![<p>Graph showing the wealth over time of a large number of Kelly bettors.</p>](/assets/kelly-criterion/0296c860a5a836ddfaad14523829ea5f.webp)
 
 On average, the bettors take a large profit, increasing their wealth from 100 ducats to over 100 million in 500 steps. The median wealth is also on a steady climb. But some unlucky investors take a large hit, because over 10k turns, even 1 in 10000 events happen and they lose everything.
 
@@ -82,7 +82,7 @@ This is why most people use fractional Kelly, choosing to invest only half or ev
 
 If we compare the Kelly bettors to other investment strategies, a cautious, median and greedy bettor, we can see why the Criterion is widely used. Even though in the short term, due to luck other strategies might outperform Kelly, it ends up on top - by a large margin - in the long term.
 
-![Different betting strategies compared to the Kelly bet.](/assets/kelly-criterion/493d5aa5c939fc05f1ade28281414e91.webp)
+![<p>Different betting strategies compared to the Kelly bet.</p>](/assets/kelly-criterion/493d5aa5c939fc05f1ade28281414e91.webp)
 
 ## Deriving the Gambling Formula
 
@@ -108,7 +108,7 @@ To find the optimal fraction to invest - the Kelly bet - we want to find the fra
 
 The graph shows the growth rate as a function of the invested fraction. You can try to play around with the above function on [Desmos](https://www.desmos.com/calculator/y2e7vb4lvq) for different probabilities and returns.
 
-![Graphing the growth rate against the fraction of wealth invested.](/assets/kelly-criterion/ba39232d3caffec946955617ce15afa5.webp)
+![<p>Graphing the growth rate against the fraction of wealth invested.</p>](/assets/kelly-criterion/ba39232d3caffec946955617ce15afa5.webp)
 
 $$ \begin{align}    \frac{\text{d}}{\text{d} f}G = 0 \\\    \frac{\text{d}}{\text{d} f} \cdot  p \log(fB + 1) + \frac{\text{d}}{\text{d} f} \cdot  q \log(1 - f) = 0\end{align} $$
 
@@ -132,7 +132,7 @@ I wrote a simulation that plays about ten thousand hands of blackjack for each t
 
 With this data, we can then determine the growth rate for the fraction invested as a line on the graph below. The Kelly Bet is the fraction with the highest growth rate, marked with the green line here, for a true count of `+16` (which is very rare) at 0.59%. For negative counts, you shouldn’t bet at all according to Kelly.
 
-![Graph showing growth rates for different true counts in Blackjack. Playing with one deck, reshuffling at 25%. Dealer stands on soft 17, no doubling.](/assets/kelly-criterion/fd26f3c359db7d8a0a3c015b0966cc73.webp)
+![<p>Graph showing growth rates for different true counts in Blackjack. Playing with one deck, reshuffling at 25%. Dealer stands on soft 17, no doubling.</p>](/assets/kelly-criterion/fd26f3c359db7d8a0a3c015b0966cc73.webp)
 
 In practice, this means that professional gamblers counting cards are betting more on tables with high counts and the allowed minimum at tables with a low count in order to maximise growth.
 

@@ -25,7 +25,7 @@ The most important rule for this type of crossword is that every square must be 
 
 There are two publication specific rules: For the New York Times’ crossword, famously edited by Will Shortz, there are [very specific rules](https://www.cruciverb.com/index.php?action=ezportal%3Bsa%3Dpage%3Bp%3D21). If you are interested in more general advice around constructing, have a look at [this post](https://generalisms.com/constructing/) by Lloyd Morgan, which I found very insightful.
 
-![American Crossword by the NYT](/assets/crossword/360be6c812cabf6bbe3f31e8978f70bc.webp)
+![<p>American Crossword by the NYT</p>](/assets/crossword/360be6c812cabf6bbe3f31e8978f70bc.webp)
 
 So what does the process of constructing a crossword look like? To get started you have to find a few words which will be the “main” entries in your crossword. They might be themed (connected by a common thread) or just plain interesting to you. This is the creative part!
 
@@ -41,13 +41,13 @@ These tools use something called a “scored wordlist” to fill the grid using 
 
 Now how do I get from wordlist to a filled puzzle? There are a few different algorithms floating around but the simplest approach seemed to be a recursive one, using backtracking.
 
-![Illustration of the backtracking algorithm in action.](/assets/crossword/bd2934e745b2957b88b190753a629568.webp)
+![<p>Illustration of the backtracking algorithm in action.</p>](/assets/crossword/bd2934e745b2957b88b190753a629568.webp)
 
 Backtracking works by filling in the words one by one. Once you hit a dead-end - in this case a grid that cannot be filled anymore - you go back one step and try the next word. Repeat until you have a fully filled grid. I implemented the algorithm in python, take a look at [github.com/obrhubr/xword-fill](https://github.com/obrhubr/xword-fill). The basic implementation of this algorithm works very well for this task, but is painfully slow (almost 25s for a 5x5 grid).
 
 To visualise the process a bit more, I wrote a little script that extracts the tree that the solver travels while filling the grid. This is what a real example of filling a 5x5 grid looks like.
 
-![Tree travelled by solver while filling grid.](/assets/crossword/931835823e82f08ca12688a6d6d360d0.webp)
+![<p>Tree travelled by solver while filling grid.</p>](/assets/crossword/931835823e82f08ca12688a6d6d360d0.webp)
 
 ## Optimising the Backtracking Algorithm
 
@@ -63,11 +63,11 @@ The first lookup table’s key is the word length. Now, instead of searching the
 
 The second is a bit more complex. The key is: `word length` + `letter` + `position of letter`. That means that each word has as many entries in the DB as it has letters. The word “KANGAROO” would be stored under `8K1` and `8A2` etc… 
 
-![Building the lookup table.](/assets/crossword/ba9b40720bf4149b2532365b85fbf35f.webp)
+![<p>Building the lookup table.</p>](/assets/crossword/ba9b40720bf4149b2532365b85fbf35f.webp)
 
 So how do we use the lookup tables to find the words matching our grid? Let’s say we need to fill in the following word in the grid “_ B C”. It first get separated into two distinct searches, “_ B _” and then “_ _ C”. We then convert these to the format of the keys in the second lookup table. “_ B _” gets converted to `3B2` and “_ _ C” to `3C3`. Under each of these keys, we find a list of indices that point to words in the first lookup table. But since we are only interested in words that match both of our constraints, we have to find the words that are stored under all keys. And there we have it, only words matching “_ B C” are left.
 
-![Searching the lookup table.](/assets/crossword/fee3208de31d048873dd6746031d0950.webp)
+![<p>Searching the lookup table.</p>](/assets/crossword/fee3208de31d048873dd6746031d0950.webp)
 
 ## The Wordlist
 
@@ -85,7 +85,7 @@ To improve this rather basic scoring even further, I used a [list of words](http
 
 You can download the list here [github.com/obrhubr/deutsche-kreuzwörter](https://github.com/obrhubr/deutsche-kreuzwoerter). And voilà, the fruits of our labour, a filled German crossword, revealed in all it’s glory:
 
-![Grid filled by our python program with the German wordlist.](/assets/crossword/5f4664dafeb06c0fb25948305face31a.webp)
+![<p>Grid filled by our python program with the German wordlist.</p>](/assets/crossword/5f4664dafeb06c0fb25948305face31a.webp)
 
 ## How to Write a Crossword Clue
 
@@ -97,7 +97,7 @@ However, some puzzles were provided in `.puz` format, which was created for the 
 
 The `puzzle.puz` file is a binary file. Converted to ASCII the file looks like this (the `.` represent invalid ASCII chars):
 
-![Diagram of the contents of the binary file.](/assets/crossword/82de3a26205eeccd77232d88716f740e.webp)
+![<p>Diagram of the contents of the binary file.</p>](/assets/crossword/82de3a26205eeccd77232d88716f740e.webp)
 
 At the top `ACROSS&DOWN` is the magic number that identifies this as a `.puz` file. It then contains the solution and the player’s current progress, the metadata, clues and any additional information like rebuses and circles in null separated strings.
 
@@ -128,7 +128,7 @@ Maybe this reflects a more general trend (reflected in [google trends](https://t
 
 Another fun observation is the appearance of new words. `TSA` was first used on the 19th of February 2007. `IKEA` similarly increased in popularity as the brand’s recognition grew in the USA. Trend words such as `LOL`, `OMG` and other online abbreviations also see an upward trend.
 
-![Diagram showing words increasing and decreasing most in usage.](/assets/crossword/4cd5477080c48f4e61996a94d6bd05be.webp)
+![<p>Diagram showing words increasing and decreasing most in usage.</p>](/assets/crossword/4cd5477080c48f4e61996a94d6bd05be.webp)
 
 Word usage also correlates with companies popularity, `AOL` for example saw it’s usage increase into the 2000s and then fall again.
 
@@ -153,11 +153,11 @@ This  I ran the embeddings for all clues in about 6000 puzzles and, according to
 
 To visualise the progression in difficulty over the week, we can use colours to show the similarity on the grid, where red means less similar (harder to solve). As this diagram illustrates, difficulty increases over the week.
 
-![Heatmap of crossword difficulty by day for a specific week of NYT crosswords.](/assets/crossword/71cfa9332982abdd4103aab18100bd6a.webp)
+![<p>Heatmap of crossword difficulty by day for a specific week of NYT crosswords.</p>](/assets/crossword/71cfa9332982abdd4103aab18100bd6a.webp)
 
 Here is the result of the same analysis, but carried out for all the puzzles in my dataset. And again, progression is apparent.
 
-![Heatmap of NYT crossword difficulty by day.](/assets/crossword/7f263adc44011ec3dd238eab94cda259.webp)
+![<p>Heatmap of NYT crossword difficulty by day.</p>](/assets/crossword/7f263adc44011ec3dd238eab94cda259.webp)
 
 ## Can an LLM write a good Clue?
 
@@ -165,7 +165,7 @@ Writing clues is hard and that’s why editors - like [Will Shortz](https://en.w
 
 In order to have more control over the generated clues, I opted for labelling the clue data with more context. For about two hundred examples, I added tags: a difficulty rating (from 1 to 5) and a type of clue (`blank`, `synonym`, `explainer`, `out-of-the-box`, `trivia` ).
 
-![Site I built to label the clues.](/assets/crossword/4a90b2daced98126ca58fed0ce06e064.webp)
+![<p>Site I built to label the clues.</p>](/assets/crossword/4a90b2daced98126ca58fed0ce06e064.webp)
 
 Some examples of labelled data:
 
@@ -203,5 +203,5 @@ Weirdly, `Tennis legend Arthur` came up quite frequently while testing, it might
 
 To finish off this article I wanted to put all elements together in order to create a final masterpiece: a fully computer generated crossword. You can play it [here](https://crosshare.org/crosswords/HOMaZilYRICJT4lMoanw/can-a-computer-program-be-a-cruciverbalist) or print it out.
 
-![The AI generated crossword in image format.](/assets/crossword/8e97542321d8b06df72f3bf608db6d4d.webp)
+![<p>The AI generated crossword in image format.</p>](/assets/crossword/8e97542321d8b06df72f3bf608db6d4d.webp)
 

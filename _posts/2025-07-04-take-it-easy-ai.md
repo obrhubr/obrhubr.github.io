@@ -25,11 +25,11 @@ image: assets/take-it-easy-ai/preview.png
 
 Each piece has three lines on it, one vertical, one diagonal from left to right (LR) and one from right to left (RL). There are three different “line values” per direction: the vertical line can be worth either 1, 5 or 9, the diagonal LR 3, 4 or 8 and the diagonal RL 2, 6 or 7.
 
-![Take-it-Easy board (with numbered tiles) and pieces.](/assets/take-it-easy-ai/0f4cbe24484db169924f9ffdb660361b.webp)
+![<p>Take-it-Easy board (with numbered tiles) and pieces.</p>](/assets/take-it-easy-ai/0f4cbe24484db169924f9ffdb660361b.webp)
 
 A completed line - meaning a fully connected path going vertically or diagonally from one end of the board to the other - is worth it’s length times the value of the line. The maximum possible score is 307, which can be achieved in only 16 different ways.
 
-![Example of a board scored with 121 points.](/assets/take-it-easy-ai/8c8f60bb8b01c671686baa7176b3aecf.webp)
+![<p>Example of a board scored with 121 points.</p>](/assets/take-it-easy-ai/8c8f60bb8b01c671686baa7176b3aecf.webp)
 
 If you want to take a shot at playing yourself, go to [take-it-easy.obrhubr.org](https://take-it-easy.obrhubr.org/). See if you can beat the AI!
 
@@ -43,7 +43,7 @@ To establish a baseline performance, we’ll compare different basic strategies.
 
 A greedy bot that places pieces randomly except if it can complete a line halves the number of games scoring 0 and ups the mean to 23 points (plot 2).
 
-![Comparing score distribution for: random move selection; naïve move selection and basic heuristics.](/assets/take-it-easy-ai/3c7b284d848b00f3bb185031b844e2ab.webp)
+![<p>Comparing score distribution for: random move selection; naïve move selection and basic heuristics.</p>](/assets/take-it-easy-ai/3c7b284d848b00f3bb185031b844e2ab.webp)
 
 To improve on that score, I wrote an evaluation function that captures the potential value of an uncompleted line. This basic heuristic scores lines that have a good chance of being finished higher than those that are already blocked, according to the number of pieces with the right line on them left.
 
@@ -57,7 +57,7 @@ After fooling around for a bit, I gave up due to my limited knowledge and search
 
 Here are the final scores, which easily beat my previous bots.
 
-![Histogram showing the scores achieved by the model.](/assets/take-it-easy-ai/ab818bbb2c94b770b631831db53a96c1.webp)
+![<p>Histogram showing the scores achieved by the model.</p>](/assets/take-it-easy-ai/ab818bbb2c94b770b631831db53a96c1.webp)
 
 About a hundred hours of training and a significant jump in computational complexity gets us a median score of 168 points (28 more than the basic heuristics). The best score achieved also increases from 250 to 280.
 
@@ -67,7 +67,7 @@ Instead of manually writing an evaluation function like before, the bot has a ne
 
 In the case of Take-It-Easy, the neural network spits out a probability distribution for the expected final score. This approach works so well because the distribution manages to capture the randomness of the game better than just the usual single score (see the [paper](https://arxiv.org/abs/1710.10044) referenced by polarbart).
 
-![State and probability distribution given by neural network for each possible next state.](/assets/take-it-easy-ai/0befd680bfa2f5424a19901eb81c2b49.webp)
+![<p>State and probability distribution given by neural network for each possible next state.</p>](/assets/take-it-easy-ai/0befd680bfa2f5424a19901eb81c2b49.webp)
 
 ## Training
 
@@ -89,7 +89,7 @@ The results were all pretty consistent. Changes in any of the parameters didn’
 
 I wasted at least a couple hundred hours and a pretty sum renting GPUs for training, all in a futile attempt to increase the score (If you want to take a shot at training your own model, I provided a [Colab notebook](https://github.com/obrhubr/take-it-easy/tree/master?tab=readme-ov-file#on-google-colab)).
 
-![Comparison of the scores achieved during training and validation of different model configurations.](/assets/take-it-easy-ai/9f4189729ae8c8c26ce255859d876a61.webp)
+![<p>Comparison of the scores achieved during training and validation of different model configurations.</p>](/assets/take-it-easy-ai/9f4189729ae8c8c26ce255859d876a61.webp)
 
 This hard limit on the score could either be the result of a pretty huge local minima that halts progress, or it could be evidence of the natural entropy of the game itself.
 
@@ -103,11 +103,11 @@ I wanted to find out more about the strategies employed by the different models,
 
 The mapping from board to neural network input is based on one-hot encoding. For each tile, we encode 9 bits of information about the piece on it: three lines per tile and three possible line values for each of them.
 
-![Visualising the one hot encoding of the tile <9, 4, 6>.](/assets/take-it-easy-ai/ef9ecf1d95b309785222ee7a5ef49bb2.webp)
+![<p>Visualising the one hot encoding of the tile &lt;9, 4, 6&gt;.</p>](/assets/take-it-easy-ai/ef9ecf1d95b309785222ee7a5ef49bb2.webp)
 
 A red line means that placing a piece with that line on this tile influences the model’s first layer positively, while a blue line means the next layer is negatively influenced.
 
-![Graphic showing neuron weights mapped to their tile and corresponding line.](/assets/take-it-easy-ai/9d71e4d30f19a7482362cc25303ead40.webp)
+![<p>Graphic showing neuron weights mapped to their tile and corresponding line.</p>](/assets/take-it-easy-ai/9d71e4d30f19a7482362cc25303ead40.webp)
 
 What is interesting is that the mapping of weights to lines is not at all universal. Every model shows a different pattern when visualised this way. This might be due to this not being a very reliable test, or…
 
@@ -121,7 +121,7 @@ For those not familiar with loss metrics, usually loss starts out high, as the m
 
 The loss staying high after its initial climb seems to further indicate that the game is truly capped at about 167 points due to randomness.
 
-![Loss over time during training of the different models.](/assets/take-it-easy-ai/2c5f0c7081a792fb3d2ec3bf76f7f53a.webp)
+![<p>Loss over time during training of the different models.</p>](/assets/take-it-easy-ai/2c5f0c7081a792fb3d2ec3bf76f7f53a.webp)
 
 What stood out to me is the small bump happening consistently across model configurations around iteration 20. It might be a critical turning point in model policy, or something else entirely? I would be very interested in an explanation (see my email below)!
 

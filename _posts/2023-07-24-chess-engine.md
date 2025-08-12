@@ -45,7 +45,7 @@ To anyone familiar with chess engine programming, this is essentially the concep
 
 A very basic approach for creating an evaluation function is adding up the values of each piece a player has on the board and calculating the difference between these values for both players, which results in a score. Instead of assigning a static value to each type of piece (8 for a queen, 3 for a knight etc…) we weight their value based on their position on the field. One basic improvement we could make is to increase the value of a pawn the further it progresses up the board.
 
-![Basic piece square table.](/assets/chess-engine/6bb234dacbdd09a4b74399d0cd462e3d.webp)
+![<p>Basic piece square table.</p>](/assets/chess-engine/6bb234dacbdd09a4b74399d0cd462e3d.webp)
 
 Instead of coming up with such rules by ourselves, copying the idea of the NNUE, we “train” our model on a lot of games and come up with very sophisticated weighting strategies.
 
@@ -53,7 +53,7 @@ The implementation would work as follows. Store the weights of each square in a 
 
 The result would be a board with only the values of the currently occupied squares left. We then take the sum of the values of the 6 different boards (6 piece types: pawn, knight, bishop, rook, queen, king) for each player. By then substracting both of these sums - which represent each player’s strenght - we get a value in the format of the classic stockfish evaluation. `-1.5` for example to represent black winning by a small margin, `+7.9` to represent white having a very powerful advantage.
 
-![Diagram illustrating the evaluation function using the piece square table.](/assets/chess-engine/59c448dbbf4c0046375589710e8a0445.webp)
+![<p>Diagram illustrating the evaluation function using the piece square table.</p>](/assets/chess-engine/59c448dbbf4c0046375589710e8a0445.webp)
 
 ## Implementing the genetic algorithm and training
 
@@ -63,7 +63,7 @@ Genetic algorithms on the contrary don’t use these more sophisticated techniqu
 
 Our training would therefore look something like this: we instantiate the model with randomly selected numbers between some reasonable boundaries. We then evaluate these “weights” on known chess-board positions to assign a fitness to each. At the end of each iteration, we select the very best. We then slightly and randomly mutate the values to create a lot of “children” of the best model and test their fitness again. This is the genetic (or evolutionary) part of the algorithm.
 
-![Diagram illustrating genetic algorithms.](/assets/chess-engine/f0b3936b7457d28c933641f75129320d.webp)
+![<p>Diagram illustrating genetic algorithms.</p>](/assets/chess-engine/f0b3936b7457d28c933641f75129320d.webp)
 
 Rinse and repeat for a few hundred generations and we would be left with a single model that has been optimized for the fitness function.
 
@@ -115,7 +115,7 @@ But adding the additional context that Stockfish provides to it’s NNUE was sim
 
 ## How does the NNUE solve this problem?
 
-![Comparison between Stockfish’s NNUE weights and the piece square tables used by my bot.](/assets/chess-engine/32d8925bbb1bf60d7408d8313e2443ec.webp)
+![<p>Comparison between Stockfish’s NNUE weights and the piece square tables used by my bot.</p>](/assets/chess-engine/32d8925bbb1bf60d7408d8313e2443ec.webp)
 
 [Stockfish’s NNUE](https://github.com/official-stockfish/nnue-pytorch/blob/master/docs/nnue.md#what-is-nnue) is essentially made up of a heavily overparametrised input layer and a simple 4 layer network behind it. What this means is that instead of using bitboards representing the positions of the different pieces as inputs and applying the weights and biases, it instead gives the NNUE the positions of every single piece in relation to every single king position. This provides the network the necessary context to evaluate the position, which our simplified version lacked.
 
@@ -123,13 +123,11 @@ Concretely this translates to a model architecture consisting of 2x45056 inputs.
 
 For example, if white is to move, there are 11 other piece types (W Queen, W Rook, W Bishop, W Knight, W Pawn, B King, B Queen, B Rook, B Bishop, B Knight, B Pawn) that have to be taken into account. For each of the pieces on the board, we would then get the pair of `(king position, piece positions)`, and activate the corresponding input node of the network.
 
-![Diagram illustrating how the NNUE works.](/assets/chess-engine/e9ab53336453783922c30c0bf838ade3.webp)
+![<p>Diagram illustrating how the NNUE works.</p>](/assets/chess-engine/e9ab53336453783922c30c0bf838ade3.webp)
 
 This graphic from the [chessprogrammingwiki.org](https://www.chessprogramming.org/Main_Page) nicely summarizes the reset of the model architecture.
 
-![Diagram of the NNUE’s architecture from the ](/assets/chess-engine/fe0b0091d0b0219fd0689c3eb12c0fc2.webp)
-
-Diagram of the NNUE’s architecture from the [chessprogrammingwiki.org](https://www.chessprogramming.org/Main_Page).
+![<p>Diagram of the NNUE’s architecture from the <a href="https://www.chessprogramming.org/Main_Page">chessprogrammingwiki.org</a>.</p>](/assets/chess-engine/fe0b0091d0b0219fd0689c3eb12c0fc2.webp)
 
 This architecture also allows the highly optimized evaluation of the network that makes Stockfish so fast. As long as the king does not move, you only have to update a single input node to recompute the evaluation for each move.
 
@@ -147,7 +145,7 @@ The dashboard I built to debug my own application shows depth reached, the amoun
 
 The engine dumps this information into a JSON file with each iteration, which is picked up by the server and refreshes the dashboard. Monitoring applications this way is common in web development, where distributed systems are otherwise impossible to debug. But to my knowledge, displaying a system’s health status and other vital information is not as common in other fields, which may benefit.
 
-![Graphical interface of my debugging tool.](/assets/chess-engine/ccee14a7efbf0635149fe31ef9427cb0.webp)
+![<p>Graphical interface of my debugging tool.</p>](/assets/chess-engine/ccee14a7efbf0635149fe31ef9427cb0.webp)
 
 The information on the bottom right is especially helpful to debug some complex issues with mates. It shows the best move chosen and the evaluation, but also the sequence of moves the engine explored to determine this course of action. 
 

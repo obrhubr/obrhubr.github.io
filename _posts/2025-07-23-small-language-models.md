@@ -27,15 +27,15 @@ We’ve come a long way since the simple lookup-table-like system developed for 
 
 Markov Chains model stochastic processes. They model the way a random system - the weather for example - evolves from one state to another. If it’s `sunny`, there’s then a certain probability for `cloudy`, and from `cloudy` it’s more likely to get `rainy`. A Markov chain can be “trained” on a set of examples to approximate these probabilities.
 
-![Weather modeling Markov chain visualised.](/assets/small-language-models/7b3d212c7707151715e539b9ea361e84.webp)
+![<p>Weather modeling Markov chain visualised.</p>](/assets/small-language-models/7b3d212c7707151715e539b9ea361e84.webp)
 
 Because Markov Chains are essentially directed, weighted graphs, they can be visualised as matrices. The following heatmap shows the probability of a character appearing after another. Notice for example, that after `q` there is almost always a `u`.
 
-![Heatmap visualisation of a second order, character level, Markov chain, trained on Shakespeare.](/assets/small-language-models/d55fcc549577120ac1fcd58f897f639e.webp)
+![<p>Heatmap visualisation of a second order, character level, Markov chain, trained on Shakespeare.</p>](/assets/small-language-models/d55fcc549577120ac1fcd58f897f639e.webp)
 
 The output of a model like this is essentially gibberish (text like “dw ci onerey gomilver” won’t exactly convince human judges in a Turing test) as knowing the single preceding character isn’t very useful to predict the next.
 
-![Comparison of the number of characters of context, the output produced by the Markov Chain and the size of the model.](/assets/small-language-models/c6f543fefd07d494aff8a15cba447424.webp)
+![<p>Comparison of the number of characters of context, the output produced by the Markov Chain and the size of the model.</p>](/assets/small-language-models/c6f543fefd07d494aff8a15cba447424.webp)
 
 We can increase the size of the context (order of the model) to 3, 4 or even 6 characters, which of course massively increases the memory footprint of our markov chain matrix. The size of the Markov Chain grows $$ O(k^n) $$ which makes it impossible to provide more than a few dimensions of context.
 
@@ -57,7 +57,7 @@ The state of the art tokenizing algorithm is called byte pair encoding (BPE). A 
 
 1. Repeat from step 2. for the new list of tokens.
 
-![Showing how BPE works with a simple example.](/assets/small-language-models/487d193eaf9cb381d43c667783426b25.webp)
+![<p>Showing how BPE works with a simple example.</p>](/assets/small-language-models/487d193eaf9cb381d43c667783426b25.webp)
 
 Less frequent combinations will be represented using smaller tokens. BPE also doubles as a compression algorithm.
 
@@ -71,7 +71,7 @@ This is what LLMs do. A generative pre-trained transformer uses a mechanism know
 
 After training a small GPT on the same Shakespeare text as before, tokenized into `10255` tokens with my re-implementation of Karpathy’s `minBPE`, we get the following results.
 
-![Output of our “small language model”.](/assets/small-language-models/b1a2872f2cd73ec20b8309081ff34853.webp)
+![<p>Output of our “small language model”.</p>](/assets/small-language-models/b1a2872f2cd73ec20b8309081ff34853.webp)
 
 <br/>
 

@@ -23,7 +23,7 @@ In this particular case, I discovered the lonely campaign of a user against thei
 
 I re-visited my school recently to pick up a few documents after graduation. While waiting, I found a sticker, hiding on the far end of one of the outdoor lunch tables. What I had found were the last remnants of my first website that saw real users.
 
-![Sticker asking for ratings from the students with a QR code linking to the site.](/assets/school-canteen-ratings/7fe95e07ca0d296ab6621de4fbe027b8.webp)
+![<p>Sticker asking for ratings from the students with a QR code linking to the site.</p>](/assets/school-canteen-ratings/7fe95e07ca0d296ab6621de4fbe027b8.webp)
 
 During my tenure in the student council there was a shift towards a more vegetarian regime, introducing no-meat days for example. Some people complained very vocally about the new policy, so our canteen’s direction wanted to gauge the students' reactions to the new menus.
 
@@ -39,11 +39,11 @@ The server-less approach paid off - quite literally - and I forked over a total 
 
 After scanning one of the QR codes placed all over the canteen, students would access the following portal. They would select the menu they choose today - one of the 3 menus offered that particular day. They would then rate if from 1-5 and finally select which grade they are in.
 
-![Walk through of the app from a user’s perspective.](/assets/school-canteen-ratings/a5d8f896a012abb25c92c8fbd8ceab86.webp)
+![<p>Walk through of the app from a user’s perspective.</p>](/assets/school-canteen-ratings/a5d8f896a012abb25c92c8fbd8ceab86.webp)
 
 In order to incentivise people to vote everyday, they needed to get something back from the site too. After rating today’s food, students were then able to see what others thought and how the votes evolved live. This also created some fun discussions when opinions on certain meals differed wildly.
 
-![Dashboard showing some meal’s statistics.](/assets/school-canteen-ratings/e93df8d9b6adde83f81525027a7ad91b.webp)
+![<p>Dashboard showing some meal’s statistics.</p>](/assets/school-canteen-ratings/e93df8d9b6adde83f81525027a7ad91b.webp)
 
 ## Some security Measures
 
@@ -57,7 +57,7 @@ I didn’t record the rejected voting attempts sadly, so I don’t know the true
 
 Some people managed to vote multiple times, either by clearing their cookies or by switching to incognito. I was able to count these duplicates thanks to a second layer of defense. In addition to the token, I also started storing a fingerprint and the voter’s IP server-side, along with their request.
 
-![Graph comparing unique votes vs. unfiltered votes over time.](/assets/school-canteen-ratings/551da1abb8b2f5ee05c1cc8675abdd8f.webp)
+![<p>Graph comparing unique votes vs. unfiltered votes over time.</p>](/assets/school-canteen-ratings/551da1abb8b2f5ee05c1cc8675abdd8f.webp)
 
 On one of the final days that the site was live (the 11th of May), you can see an explosion in votes, but the unique count tells a different story. About two thirds of the votes were cast from the same device. 
 

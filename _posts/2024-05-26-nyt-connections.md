@@ -11,7 +11,7 @@ excerpt: "I created a clone of the NYT Connections game in german: Verbindungen.
 A short taste of fame on Reddit allows me to evaluate user’s attempts at solving the puzzles. But what makes a puzzle great and could we try to generate them automatically?"
 short: False
 sourcecode: "https://github.com/obrhubr/web-puzzles"
-hn:
+hn: 
 math: False
 image: assets/nyt-connections/preview.png
 ---
@@ -28,13 +28,13 @@ I sent my first puzzle - or “Verbindung” as I like to call them - to a good 
 
 When first loading the site you are presented with the blank grid of 16 words of today's puzzle. There are four categories - with four different difficulties - each with different titles, and four words each that fit into them respectively. The objective is for you to find the words that go into each category. You can read the entire rules at [www.nytimes.com/games/connections](https://www.nytimes.com/games/connections).
 
-![Screenshots of the game on a mobile device.](/assets/nyt-connections/78b13ae5371679835c80503e5775b845.webp)
+![<p>Screenshots of the game on a mobile device.</p>](/assets/nyt-connections/78b13ae5371679835c80503e5775b845.webp)
 
 ## A short taste of fame
 
 I soon added some basic level of analytics, giving in to my urge to collect data everywhere and from everyone. The site would store the game history, mistakes made and if it was solved. This proved very useful later…
 
-A friend encouraged me to post the site to the [r/de](https://reddit.com/r/de) and [r/austria](https://reddit.com/r/austria) subreddits. At first the posts racked up views and upvotes (2.1k views in total), but I was quickly yanked back to reality by the moderators of the communities.
+A friend encouraged me to post the site to the [r/de](https://reddit.com/r/de) and [r/austria](https://reddit.com/r/austria) subreddits. At first the posts racked up views and upvotes (2.1k views in total), but I was quickly yanked back to reality by the moderators of the communities. 
 
 They - in typical reddit fashion - reminded me that self-promotion is strictly prohibited by striking me with the ban hammer. Even though I was not selling anything, which I also told them, they were adamant on keeping their users safe from my posts.
 
@@ -50,17 +50,17 @@ After the massive - a new dimension for me at least - influx of visitors died do
 
 Knowing that all puzzles were played at least ten times, I think this graph truly speaks for itself:
 
-![Graph showing how many attempts at solving each puzzle were successful.](/assets/nyt-connections/42350a06b6e3cce667caa14d8caf7c8a.webp)
+![<p>Graph showing how many attempts at solving each puzzle were successful.</p>](/assets/nyt-connections/42350a06b6e3cce667caa14d8caf7c8a.webp)
 
 You can see that the puzzles I created were solved at much higher rates than those my friend created. He is either making fiendishly difficult puzzles on purpose or is smarter than all of us.
 
-But now I also now know that the puzzle published on the 2nd of June shouldn’t have been that easy.
+But now I also now know that the puzzle published on the 2nd of June shouldn’t have been that easy. 
 
 **2. The next question that begged to be answered was: How well did we choose the difficulties of the different categories?**
 
 In a perfect world, we would like to see the straightforward category to be solved first and most often, then the medium difficulty, etc… But estimating difficulty is very hard, and this was reflected in the data.
 
-![Graph showing how often each of the difficulties were solved first in a puzzle.](/assets/nyt-connections/73325df79cf4cc0cd992c5039a1334a2.webp)
+![<p>Graph showing how often each of the difficulties were solved first in a puzzle.</p>](/assets/nyt-connections/73325df79cf4cc0cd992c5039a1334a2.webp)
 
 The graph shows which categories were solved first and how often. Clearly, most users found the tricky category easier than the hard one, and by a large margin. Also somehow the medium difficulty one was easier than the straightforward category? This was something I did not expect.
 
@@ -82,7 +82,7 @@ Which at least tells us that Medium and Straightforward are - as expected - the 
 
 But there is an interesting phenomenon, the second most common order is to only solve the tricky category and nothing else, with 12 occurrences. This seemed bizarre at first but we can actually learn something important from this.
 
-The title of the tricky categories which were immediately solved were: “Words in James Bond titles” and “Words from Goethe’s book titles”. In hindsight, these are very obvious to people who have a bit of general knowledge - and Goethe is *very* famous in Germany and Austria.
+The title of the tricky categories which were immediately solved were: “Words in James Bond titles” and “Words from Goethe’s book titles”. In hindsight, these are very obvious to people who have a bit of general knowledge - and Goethe is *very* famous in Germany and Austria. 
 
 (You can play the puzzles these are from at [this link on spiele.obrhubr.org](https://spiele.obrhubr.org/verbindungen/play.html?number=l55J4qxSSJh8SSQcUs2E) and [this link on spiele.obrhubr.org](https://spiele.obrhubr.org/verbindungen/play.html?number=l55J4qxSSJh8SSQcUs2E))
 
@@ -129,3 +129,4 @@ Repeat until you are left with 4 categories: (This is a real example)
 <br/>
 
 This is not a very good Connections puzzle, but it is a playable one. And if you aren’t a friend of mine who likes to create too difficult puzzles (you know who you are!), a playable puzzle is better than an impossible puzzle and most of all, better than nothing.
+
