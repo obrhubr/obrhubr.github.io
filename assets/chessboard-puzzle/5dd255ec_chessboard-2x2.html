@@ -1,0 +1,193 @@
+<style>
+    .inline-container {
+        width: 100%;
+        margin: 0 auto;
+    }
+
+    .inline-grid {
+        width: min(100%, 200px);
+        aspect-ratio: 1;
+        margin: 0 auto;
+
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .inline-grid > div:nth-child(1),
+    .inline-grid > div:nth-child(4) {
+        background: #f0d9b5;
+        --fg: #3a2f1c;
+        --fg-muted: #7a6a4f;
+    }
+
+    .inline-grid > div:nth-child(2),
+    .inline-grid > div:nth-child(3) {
+        background: #b58863;
+        --fg: #2a1d0e;
+        --fg-muted: #e8d9c4;
+    }
+
+    .inline-grid-square {
+        container: gridsquare / inline-size;
+        position: relative;
+        cursor: pointer;
+        user-select: none;
+        -webkit-user-select: none;
+        -webkit-tap-highlight-color: transparent;
+    }
+
+    .inline-grid-square:focus-visible {
+        outline: 2px solid #378add;
+        outline-offset: -2px;
+    }
+
+    .inline-grid-coin {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+
+        font-size: 42cqi;
+        font-weight: 500;
+        font-variant-numeric: tabular-nums;
+        line-height: 1;
+        color: var(--fg);
+    }
+
+    .inline-grid-bits {
+        position: absolute;
+        bottom: 4cqi;
+        left: 6cqi;
+
+        font-family: ui-monospace, monospace;
+        font-size: 13cqi;
+        line-height: 1;
+        color: var(--fg-muted);
+    }
+
+    .inline-grid-key-container {
+        position: absolute;
+        bottom: 4cqi;
+        right: 5cqi;
+
+        font-size: 15cqi;
+        line-height: 1;
+    }
+
+    .bottom-line {
+        width: 100%;
+        margin-top: 12px;
+
+        font-size: 13px;
+        line-height: 1.7;
+        color: inherit;
+        opacity: 0.75;
+        text-align: center;
+    }
+
+    .bottom-line span {
+        font-family: ui-monospace, monospace;
+        font-variant-numeric: tabular-nums;
+        color: #2c2c2a;
+        font-weight: 500;
+        opacity: 1;
+        white-space: nowrap;
+    }
+
+    #inline-key-position {
+        padding: 1px 5px;
+        border-radius: 4px;
+
+        background: #faeeda;
+        color: #854f0b;
+    }
+    
+    #inline-xor {
+        color: inherit;
+    }
+</style>
+
+<div class="inline-container">
+    <div class="inline-grid">
+        <div id="inline-grid-1" class="inline-grid-square" role="button" tabindex="0" aria-pressed="false">
+            <div class="inline-grid-coin" id="inline-coin-1" data-value="0">0</div>
+            <div class="inline-grid-bits">00</div>
+            <div class="inline-grid-key-container" id="inline-key-1"></div>
+        </div>
+        <div id="inline-grid-2" class="inline-grid-square" role="button" tabindex="0" aria-pressed="false">
+            <div class="inline-grid-coin" id="inline-coin-2" data-value="0">0</div>
+            <div class="inline-grid-bits">01</div>
+            <div class="inline-grid-key-container" id="inline-key-2"></div>
+        </div>
+        <div id="inline-grid-3" class="inline-grid-square" role="button" tabindex="0" aria-pressed="false">
+            <div class="inline-grid-coin" id="inline-coin-3" data-value="0">0</div>
+            <div class="inline-grid-bits">10</div>
+            <div class="inline-grid-key-container" id="inline-key-3"></div>
+        </div>
+        <div id="inline-grid-4" class="inline-grid-square" role="button" tabindex="0" aria-pressed="false">
+            <div class="inline-grid-coin" id="inline-coin-4" data-value="0">0</div>
+            <div class="inline-grid-bits">11</div>
+            <div class="inline-grid-key-container" id="inline-key-4"></div>
+        </div>
+    </div>
+    <div id="inline-calculation" class="bottom-line" aria-live="polite" aria-atomic="true">
+        The board currently encodes position <span id="inline-key-position">00</span>:
+        <span id="inline-xor">no coins, so 00</span>
+    </div>
+</div>
+
+<script>
+(function () {
+    const board = document.querySelector('.inline-grid');
+    const encodedPosition = document.getElementById('inline-key-position');
+    const calc = document.getElementById('inline-xor');
+
+    const squares = Array.from(board.querySelectorAll('.inline-grid-square'));
+    const coins = squares.map(sq => sq.querySelector('.inline-grid-coin'));
+    const keys = squares.map(sq => sq.querySelector('.inline-grid-key-container'));
+
+    const currentBits = squares.map(() => 0);
+    const width = Math.ceil(Math.log2(squares.length));
+
+    const bin = n => n.toString(2).padStart(width, '0');
+
+    function render() {
+        const live = currentBits
+            .map((bit, i) => (bit ? i : -1))
+            .filter(i => i >= 0);
+
+        const position = live.reduce((acc, i) => acc ^ i, 0);
+
+        keys.forEach((k, i) => { k.textContent = i === position ? '\u{1F5DD}\u{FE0F}' : ''; });
+
+        encodedPosition.textContent = bin(position);
+
+        calc.textContent = live.length
+            ? live.map(bin).join(' \u2295 ') + ' = ' + bin(position)
+            : 'no coins, so ' + bin(0);
+    }
+
+    function toggle(index) {
+        const next = currentBits[index] ^ 1;
+
+        currentBits[index] = next;
+        coins[index].textContent = next;
+        coins[index].dataset.value = next;
+        squares[index].setAttribute('aria-pressed', next === 1);
+
+        render();
+    }
+
+    board.addEventListener('click', (e) => {
+        const square = e.target.closest('.inline-grid-square');
+        if (!square) return;
+
+        const index = squares.indexOf(square);
+        if (index === -1) return;
+
+        toggle(index);
+    });
+
+    render();
+})();
+</script>
