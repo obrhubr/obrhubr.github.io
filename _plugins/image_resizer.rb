@@ -38,6 +38,11 @@ module Jekyll
 						next # Skip resizing for GIFs
 					end
 
+					# Check if the file is an SVG
+					if File.extname(src).downcase == '.svg'
+						next # Skip resizing for SVGs
+					end
+
 					# Check if image should be kept in original form
 					if src.include?(".keep.")
 						next
