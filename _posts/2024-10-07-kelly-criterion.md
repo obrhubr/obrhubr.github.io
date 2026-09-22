@@ -23,7 +23,7 @@ This post was inspired by [Entropic Thoughts](https://entropicthoughts.com/) inc
 
 ## So why the expected value of the logarithm of wealth?
 
-The expected value of a bet $$ E[X] $$ doesn’t make sense in the real world. Betting all your money on a razor thin edge might be worth it in theory, but in reality you’re as likely to lose and what are you going to invest with then?
+The expected value of a bet $$ E[X] $$ doesn’t make sense in the real world. Betting all your money on a razor thin edge might be worth it in theory, but in reality you’re as likely to lose. After burning all your capital on that theoretical edge, what money are you going to invest with?
 
 Let’s take the example of a simple even odds game in which you invest half your money every turn. If you win, you get one and a half times your wealth, if you lose, you still have half your wealth. The expected value is 1, and thus in theory, playing an infinite number of times should net you zero losses.
 
@@ -104,7 +104,7 @@ Now, we apply the Kelly Criterion, and get the growth rate $$ G $$.
 
 $$ \begin{align}    G &= \lim_{n \to +\infty} \frac{1}{n} (\log(W_n)) \\\    &= \lim_{n \to +\infty} p \cdot \log(fB + 1) + q \log(1 - f) \end{align} $$
 
-To find the optimal fraction to invest - the Kelly bet - we want to find the fraction for which $$ G $$ is at it’s maximum - where the growth rate is the highest. By solving $$ \frac{\text{d}}{\text{d} f}G = 0 $$, we find the inflection point, the highest point on a concave curve, and thus the Kelly bet.
+To find the optimal fraction to invest - the Kelly bet - we want to find the fraction for which $$ G $$ is at its maximum - where the growth rate is the highest. By solving $$ \frac{\text{d}}{\text{d} f}G = 0 $$, we find the inflection point, the highest point on a concave curve, and thus the Kelly bet.
 
 The graph shows the growth rate as a function of the invested fraction. You can try to play around with the above function on [Desmos](https://www.desmos.com/calculator/y2e7vb4lvq) for different probabilities and returns.
 
@@ -150,5 +150,5 @@ $$ \begin{align}    G &= p_{3:2} \cdot \log(1 + 1.5f) + p_{1:1} \log(1 + f) + p_
 
 If this magic formula is able to optimise growth rate that effectively, why isn’t everyone rich already? Clearly not even Kelly can turn a losing bet into profit.
 
-The Criterion is very sensitive to change in the probabilities used, which have to be exact in order for the invested fraction to be correct. To hedge against this, a fractional Kelly bet is often used. This means that only 50% or 25% of the calculated fraction is invested. This is a valid strategy because - as you might already have observed - the growth rate is never negative for a fraction between 0 and the Kelly bet. Thus investing less will never lead to losing money.
+The Criterion is very sensitive to change in the probabilities used, which have to be exact in order for the invested fraction to be correct. To hedge against this, a fractional Kelly bet is often used. This means that only 50% or 25% of the calculated fraction is invested. This is a valid strategy because - as you might already have observed - the growth rate is never negative for a fraction between 0 and the Kelly bet. Thus investing less in this framework will never lead to losing more money.
 
